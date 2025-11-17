@@ -9,15 +9,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aerium | Shop with your closet",
+  title: "Aerium | Procurement intelligence",
   description:
-    "Turn your unused items into instant buying power. It's like getting everything for free.",
+    "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
   keywords: ["trading", "buying", "selling", "cash", "items", "marketplace"],
   authors: [{ name: "Aerium" }],
   openGraph: {
-    title: "Aerium | Shop with your closet",
+    title: "Aerium | Procurement intelligence",
     description:
-      "Turn your unused items into instant buying power. It's like getting everything for free.",
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
     url: "https://joinaerium.com",
     siteName: "Aerium",
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aerium | Shop with your closet",
+        alt: "Aerium | Procurement intelligence",
       },
     ],
     locale: "en_US",
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aerium | Shop with your closet",
+    title: "Aerium | Procurement intelligence",
     description:
-      "Turn your unused items into instant buying power. It's like getting everything for free.",
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
     images: ["/og-image.png"],
     creator: "@aerium",
   },

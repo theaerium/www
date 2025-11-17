@@ -9,15 +9,17 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { ref } = await params;
-  
+
   return {
-    title: "Aerium | Shop with your closet",
-    description: "Turn your unused items into instant money. It's like getting everything for free.",
-    keywords: ["trading", "buying", "selling", "cash", "items", "marketplace"],
+    title: "Aerium | Procurement intelligence",
+    description:
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+    keywords: ["savings", "buying", "selling", "cash", "items", "procurement"],
     authors: [{ name: "Aerium" }],
     openGraph: {
-      title: "Aerium | Shop with your closet",
-      description: "Turn your unused items into instant money. It's like getting everything for free.",
+      title: "Aerium | Procurement intelligence",
+      description:
+        "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
       url: `https://joinaerium.com/${ref}`,
       siteName: "Aerium",
       images: [
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Aerium | Shop with your closet",
+          alt: "Aerium | Procurement intelligence",
         },
       ],
       locale: "en_US",
@@ -33,8 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Aerium | Shop with your closet",
-      description: "Turn your unused items into instant buying power. It's like getting everything for free.",
+      title: "Aerium | Procurement intelligence",
+      description:
+        "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
       images: ["/og-image.png"],
       creator: "@aerium",
     },
