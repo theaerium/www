@@ -48,17 +48,17 @@ export default function Hero() {
         <div className="pt-16">
           <div className="relative">
             <div className="bg-gradient-to-b from-cream to-orange rounded-xl sm:rounded-[1rem] lg:rounded-[1rem] pt-10 sm:pt-14 lg:pt-18 px-10 sm:px-14 lg:px-18 pb-6 sm:pb-8 lg:pb-10 min-h-[60vh] sm:min-h-[65vh] md:min-h-[65vh] lg:min-h-[75vh] xl:min-h-[80vh] max-h-[90vh]">
-              {/* Overlaid headline with left indent */}
-              <div className="absolute -top-6 sm:-top-8 lg:-top-10 left-6 sm:left-12 lg:left-16 z-30">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black leading-tight">
+              {/* Overlaid headline centered */}
+              <div className="absolute top-0 sm:top-2 lg:top-4 left-0 right-0 z-30 px-4 sm:px-12 lg:px-16">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black leading-tight text-center">
                   Continuous price monitoring and autonomous negotiations for
                   procurement teams
                 </h1>
               </div>
 
-              {/* Overlaid descriptive text */}
-              <div className="absolute top-56 sm:top-64 lg:top-52 left-6 sm:left-12 lg:left-16 z-30 max-w-2xl">
-                <p className="text-base sm:text-lg lg:text-xl text-black leading-relaxed">
+              {/* Overlaid descriptive text centered */}
+              <div className="absolute top-60 sm:top-72 lg:top-48 left-0 right-0 z-30 px-4 sm:px-12 lg:px-16">
+                <p className="text-base sm:text-lg lg:text-3xl text-black leading-relaxed text-center max-w-4xl mx-auto">
                   We use AI to monitor prices across thousands of SKUs,
                   identifying savings opportunities, creating bidsheets,
                   analyzing, and negotiating with suppliers to deliver savings
@@ -90,8 +90,8 @@ export default function Hero() {
               </div>
 
               {/* CTA Button at bottom */}
-              <div className="absolute bottom-8 left-0 right-0 px-10 sm:left-14 sm:right-auto sm:px-0 lg:left-18 z-30">
-                <Link href="/demo" className="block sm:inline-block">
+              <div className="absolute bottom-16 sm:bottom-20 lg:bottom-24 left-1/2 -translate-x-1/2 z-30 w-full px-10 sm:w-auto sm:px-0">
+                <Link href="/demo" className="block">
                   <Button
                     text="Request a demo"
                     fontSize="large"
@@ -99,7 +99,8 @@ export default function Hero() {
                     textColor="black"
                     hoverColor="#F5F5F5"
                     icon={arrowIcon()}
-                    className="w-full sm:w-auto justify-between"
+                    padding="px-12 py-4"
+                    className="w-full sm:w-auto sm:min-w-[280px] justify-between"
                   />
                 </Link>
               </div>

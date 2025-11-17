@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { addToWaitlist } from '@/utils/waitlist';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
@@ -7,13 +10,13 @@ export async function POST(req: NextRequest) {
     if (!email || typeof email !== 'string') {
       return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
-    
+
     // Basic email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
     }
-    
+
     const result = await addToWaitlist(email, referralId);
     return NextResponse.json({ 
       success: true, 
@@ -23,16 +26,16 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     let message = 'Server error';
     let status = 500;
-    
+
     if (error && typeof error === 'object' && 'message' in error && typeof (error as { message?: unknown }).message === 'string') {
       message = (error as { message: string }).message;
-      
+
       // Handle specific error cases
       if (message === 'Email already registered') {
         status = 409; // Conflict status code
       }
     }
-    
+
     return NextResponse.json({ error: message }, { status });
   }
-} 
+}

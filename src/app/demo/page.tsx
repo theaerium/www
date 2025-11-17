@@ -85,13 +85,13 @@ export default function DemoPage() {
 
       <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-2xl w-full">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black mb-4">
+          <div className="mb-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black mb-4 text-center">
               Giving procurement teams superpowers
             </h1>
 
             {/* Qualifications */}
-            <div className="text-left space-y-4 mb-8">
+            <div className="space-y-4 mb-8 max-w-xl mx-auto">
               <div className="flex items-start">
                 <svg
                   className="w-6 h-6 text-orange-500 mr-3 mt-1 flex-shrink-0"
@@ -227,8 +227,6 @@ export default function DemoPage() {
           )}
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
