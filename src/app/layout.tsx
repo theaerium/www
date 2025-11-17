@@ -10,12 +10,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Aerium | Shop with your closet",
-  description: "Turn your unused items into instant buying power. It's like getting everything for free.",
+  description:
+    "Turn your unused items into instant buying power. It's like getting everything for free.",
   keywords: ["trading", "buying", "selling", "cash", "items", "marketplace"],
   authors: [{ name: "Aerium" }],
   openGraph: {
     title: "Aerium | Shop with your closet",
-    description: "Turn your unused items into instant buying power. It's like getting everything for free.",
+    description:
+      "Turn your unused items into instant buying power. It's like getting everything for free.",
     url: "https://joinaerium.com",
     siteName: "Aerium",
     images: [
@@ -32,7 +34,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Aerium | Shop with your closet",
-    description: "Turn your unused items into instant buying power. It's like getting everything for free.",
+    description:
+      "Turn your unused items into instant buying power. It's like getting everything for free.",
     images: ["/og-image.png"],
     creator: "@aerium",
   },
@@ -55,9 +58,7 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta name="twitter:image:alt" content="Aerium - Buy now, pay never" />
       </head>
-      <body
-        className={`${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistMono.variable} antialiased overflow-x-hidden`}>
         {children}
         <Analytics />
       </body>

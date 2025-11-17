@@ -58,12 +58,9 @@ export default function Header() {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              href="https://apps.apple.com/ca/app/id6751736126"
-              target="_blank"
-            >
+            <Link href="/demo">
               <Button
-                text="Sign up"
+                text="Request a demo"
                 fontSize="large"
                 backgroundColor={theme.colors.orange}
                 textColor={theme.colors.black}
@@ -81,12 +78,9 @@ export default function Header() {
 
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-4">
-            <Link
-              href="https://apps.apple.com/ca/app/id6751736126"
-              target="_blank"
-            >
+            <Link href="/demo">
               <Button
-                text="Sign up"
+                text="Request a demo"
                 backgroundColor={theme.colors.orange}
                 textColor={theme.colors.black}
                 hoverColor="#E67A00"
