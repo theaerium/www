@@ -9,21 +9,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aerium | Shop with your closet",
-  description: "Turn your unused items into instant buying power. It's like getting everything for free.",
-  keywords: ["trading", "buying", "selling", "cash", "items", "marketplace"],
+  title: "Aerium | Procurement intelligence",
+  description:
+    "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+  keywords: [
+    "procurement",
+    "supply chain",
+    "savings",
+    "buying",
+    "manufacturing"
+    "items",
+  ],
   authors: [{ name: "Aerium" }],
   openGraph: {
-    title: "Aerium | Shop with your closet",
-    description: "Turn your unused items into instant buying power. It's like getting everything for free.",
-    url: "https://joinaerium.com",
+    title: "Aerium | Procurement intelligence",
+    description:
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+    url: "https://aeriumhq.com",
     siteName: "Aerium",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aerium | Shop with your closet",
+        alt: "Aerium | Procurement intelligence",
       },
     ],
     locale: "en_US",
@@ -31,8 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aerium | Shop with your closet",
-    description: "Turn your unused items into instant buying power. It's like getting everything for free.",
+    title: "Aerium | Procurement intelligence",
+    description:
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
     images: ["/og-image.png"],
     creator: "@aerium",
   },
@@ -53,13 +63,23 @@ export default function RootLayout({
         {/* Additional meta tags for better link previews */}
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta name="twitter:image:alt" content="Aerium - Buy now, pay never" />
+        <meta name="twitter:image:alt" content="Aerium - Procurement intelligence" />
       </head>
-      <body
-        className={`${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistMono.variable} antialiased`}>
         {children}
         <Analytics />
+        <Script
+          id="apollo-tracking"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+              o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+              o.onload=function(){window.trackingFunctions.onLoad({appId:"69166b03ca04170021c99b53"})},
+              document.head.appendChild(o)}initApollo();
+            `,
+          }}
+        />
       </body>
     </html>
   );
