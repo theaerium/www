@@ -25,7 +25,7 @@ const faqData = [
     id: 4,
     question: "What industries do you work with?",
     answer:
-      "Our platform is build for manufacturers across many industries including automotive, aerospace, chemicals, electronics and more",
+      "Our platform is built for manufacturers across many industries including automotive, aerospace, chemicals, industrial machinery and more",
   },
 ];
 
