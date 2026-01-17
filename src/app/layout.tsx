@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     "supply chain",
     "savings",
     "buying",
-    "manufacturing"
+    "manufacturing",
     "items",
   ],
   authors: [{ name: "Aerium" }],
@@ -63,7 +64,10 @@ export default function RootLayout({
         {/* Additional meta tags for better link previews */}
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta name="twitter:image:alt" content="Aerium - Procurement intelligence" />
+        <meta
+          name="twitter:image:alt"
+          content="Aerium - Procurement intelligence"
+        />
       </head>
       <body className={`${geistMono.variable} antialiased`}>
         {children}

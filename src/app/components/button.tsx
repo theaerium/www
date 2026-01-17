@@ -10,22 +10,22 @@ interface ButtonProps {
   padding?: string;
 }
 
-export default function Button({ 
-  text, 
-  icon, 
-  backgroundColor = '#667EEA', 
-  textColor = 'white',
-  fontSize = 'medium',
-  onClick, 
+export default function Button({
+  text,
+  icon,
+  backgroundColor = "#667EEA",
+  textColor = "white",
+  fontSize = "medium",
+  onClick,
   className = "",
   hoverColor,
-  padding = "px-6 py-4"
+  padding = "px-6 py-4",
 }: ButtonProps) {
   const fontSizeClasses = {
-    'small': 'text-sm',
-    'medium': 'text-base',
-    'large': 'text-lg',
-    'xl': 'text-xl'
+    small: "text-sm",
+    medium: "text-base",
+    large: "text-lg",
+    xl: "text-xl",
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -39,12 +39,12 @@ export default function Button({
   };
 
   return (
-    <button 
+    <button
       onClick={onClick}
-      className={`${padding} rounded-full font-medium transition-colors duration-200 flex items-center ${text && !className.includes('justify-between') ? 'space-x-2' : ''} ${fontSizeClasses[fontSize as keyof typeof fontSizeClasses]} ${className} group relative overflow-hidden`}
-      style={{ 
+      className={`${padding} rounded-lg font-medium transition-colors duration-200 flex items-center ${text && !className.includes("justify-between") ? "space-x-2" : ""} ${fontSizeClasses[fontSize as keyof typeof fontSizeClasses]} ${className} group relative overflow-hidden`}
+      style={{
         backgroundColor: backgroundColor,
-        color: textColor
+        color: textColor,
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -61,5 +61,5 @@ export default function Button({
       )}
       {icon}
     </button>
-  )
+  );
 }

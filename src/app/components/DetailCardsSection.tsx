@@ -1,50 +1,48 @@
-'use client';
+"use client";
 
-import theme from '../config/theme';
-import DetailCard from './detail-cards/DetailCard';
+import theme from "../config/theme";
+import DetailCard from "./detail-cards/DetailCard";
+import SecurityCard from "./detail-cards/SecurityCard";
+import ROICalculator from "./ROICalculator";
 
 export default function DetailCardsSection() {
   const detailCards = [
     {
-      title: 'Deposit',
-      description: 'Deposit clothes, jewelry, and other items you no longer use and get instant access to cash',
-      subText: 'We currently accept: Women\'s, Men\'s, and Children\'s clothing, Shoes, Accessories, and jewelry',
-      imageSrc: '/details/deposit.png',
-      imageAlt: 'Deposit items',
+      title: "Data Ingestion & Cleaning", // TODO: reframe
+      description:
+        "Our data extraction pipelines take data from multiple sources and different data types and create a single source of truth representing the data foundation of your business",
+      subText:
+        "We currently support Excel, CSV, Word, PDFs, standard text files, SQL / database exports and common ERPs such as Epicor Kinetic or Netsuite",
+      imageSrc: "/details/ingestion.png", // TODO: Get a cooler picture
+      imageAlt: "Ingest data",
       isReversed: false,
       backgroundColor: theme.colors.gray,
-      showArrow: false
+      showArrow: false,
     },
     {
-      title: 'Spend',
-      description: 'Instantly cash out to a Visa debit card* which can be used anywhere Visa is accepted',
-      subText: '*Pre-paid debit cards issued by People\'s Trust',
-      imageSrc: '/details/cards.png',
-      imageAlt: 'Visa debit cards',
+      title: "Purchasing & RFQ Orchestration",
+      description:
+        "Aerium calculates what you need to purchase, when, and how much, taking into consideration everything from safety stock requirements, lead times, sales forecasts, and supplier scorecards",
+      subText:
+        "Give your procurement team superpowers and ensure that missing parts never cause the production line to go down",
+      imageSrc: "/details/rfq.png",
+      imageAlt: "Orchestration",
       isReversed: true,
-      backgroundColor: theme.colors.cream,
-      showArrow: false
-    },
-    {
-      title: 'Send',
-      description: 'We handle listing, negotiation and coordinate the sale. You just need to print the label and drop off the package',
-      subText: 'Packages can be dropped off at your nearest post office or picked up within the GTA',
-      imageSrc: '/details/shipping_label.png',
-      imageAlt: 'Shipping label',
-      isReversed: false,
       backgroundColor: theme.colors.orange,
-      showArrow: false
+      showArrow: false,
     },
     {
-      title: 'Security',
-      description: 'We set up and handle the sale because your security is our priority',
-      subText: 'No need to worry about listing, negotiating with buyers, or sketchy meetups',
-      imageSrc: '/details/lock.png',
-      imageAlt: 'Sell',
-      isReversed: true,
-      backgroundColor: theme.colors.black,
-      showArrow: false
-    }
+      title: "Cost Intelligence",
+      description:
+        "Continuous monitoring of prices acroess all SKUs and landed cost & tariff visibility to ensure you always know you are paying the right price for your components",
+      subText:
+        "Identify can capture savings opportunities automatically to drive bottom line growth",
+      imageSrc: "/details/cost_intelligence_2.png",
+      imageAlt: "Cost Intelligence",
+      isReversed: false,
+      backgroundColor: theme.colors.gray,
+      showArrow: false,
+    },
   ];
 
   return (
@@ -59,12 +57,14 @@ export default function DetailCardsSection() {
             imageAlt={card.imageAlt}
             isReversed={card.isReversed}
             backgroundColor={card.backgroundColor}
-            className={index === 0 ? 'pt-0' : ''}
+            className={index === 0 ? "pt-0" : ""}
             showArrow={card.showArrow}
             imageTouchesBottom={index === 0}
           />
         </div>
       ))}
+      <SecurityCard />
+      <ROICalculator />
     </section>
   );
 }

@@ -1,10 +1,10 @@
-import Header from './components/header';
-import Footer from './components/footer';
-import Hero from './components/hero';
-import CarouselSection from './components/CarouselSection';
-import DetailCardsSection from './components/DetailCardsSection';
-import TestimonialSection from './components/TestimonialSection';
-import FAQSection from './components/FAQSection';
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Hero from "./components/hero";
+import CarouselSection from "./components/CarouselSection";
+import DetailCardsSection from "./components/DetailCardsSection";
+import TestimonialSection from "./components/TestimonialSection";
+import FAQSection from "./components/FAQSection";
 
 export default function NewVersionPage() {
   return (
@@ -14,7 +14,7 @@ export default function NewVersionPage() {
         <Hero />
         <CarouselSection />
         <DetailCardsSection />
-        <TestimonialSection />
+        {/*<TestimonialSection />*/}
         <FAQSection />
       </main>
       <Footer />

@@ -1,72 +1,85 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
+import Link from "next/link";
+import theme from "../config/theme";
+import Button from "./button";
+import { arrowIcon } from "./header";
 
 export default function Hero() {
-
-
-
-  const cardDimensions = (cardWidth: number) => {
-    const width = 453;
-    const height = 485;
-    const aspectRatio = width / height;
-    const newWidth = cardWidth;
-    const newHeight = newWidth / aspectRatio;
-    return { width: newWidth, height: newHeight };
-  };
-  const phoneDimensions = (phoneWidth: number) => {
-    const width = 252.52;
-    const height = 536;
-    const aspectRatio = width / height;
-    const newWidth = phoneWidth;
-    const newHeight = newWidth / aspectRatio;
-    return { width: newWidth, height: newHeight };
+  const scrollToDetails = () => {
+    const detailSection = document.getElementById("detail-cards-section");
+    if (detailSection) {
+      detailSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Main Content */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-4">
-        {/* Top Section - Main Headline */}
-        <div className="pt-16 pb-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black leading-tight">
-            Your closet, your cash
-          </h1>
+    <div className="relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-orange from-5% to-cream to-100%" />
+
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 pt-24 sZm:pt-32 lg:pt-40 pb-24 sm:pb-36 lg:pb-48">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Left side - Text content */}
+            <div className="flex-1 space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black leading-tight">
+                The operating system for procurement teams
+              </h1>
+              <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-xl">
+                Easy to use data-cleaning, RFQ orchestration and cost analysis
+                tools to turn procurement into your advantage
+              </p>
+
+              {/* Buttons */}
+              <div className="flex flex-col items-start gap-4 pt-4">
+                <Link href="/demo" target="_blank">
+                  <Button
+                    text="Request a demo"
+                    fontSize="large"
+                    backgroundColor={theme.colors.orange}
+                    textColor={theme.colors.black}
+                    hoverColor="#E67A00"
+                    icon={arrowIcon()}
+                  />
+                </Link>
+
+                <button
+                  onClick={scrollToDetails}
+                  className="inline-flex items-center gap-2 text-gray-600 hover:text-black transition-colors text-base font-medium"
+                >
+                  Explore product
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
               </div>
-              
-          <div className="relative">
-            <div className="bg-gradient-to-b from-cream to-orange rounded-xl sm:rounded-[1rem] lg:rounded-[1rem] pt-10 sm:pt-14 lg:pt-18 px-10 sm:px-14 lg:px-18 pb-6 sm:pb-8 lg:pb-10 min-h-[60vh] sm:min-h-[65vh] md:min-h-[65vh] lg:min-h-[75vh] xl:min-h-[80vh] max-h-[90vh]">
-              <div className="h-full flex flex-col min-h-[50vh] relative">
-                  <div className="flex justify-center items-center -mt-8 sm:-mt-4 lg:-mt-2 flex-shrink-0 flex-grow">
-                    <div className="relative">
-                      <Image
-                        src="/mocks/phone_main.png"
-                        alt="Aerium App on Phone"
-                        width={phoneDimensions(280).width}
-                        height={phoneDimensions(280).height}
-                        className="object-contain translate-x-8 w-[160px] sm:w-[180px] md:w-[160px] lg:w-[200px] xl:w-[280px] 2xl:w-[320px]"
-                        draggable={false}
-                      />
-                      <Image
-                        src="/cards/aerium_card.png"
-                        alt="Aerium Visa Card"
-                        width={cardDimensions(220).width}
-                        height={cardDimensions(220).height}
-                        className="object-contain absolute bottom-0 left-1/2 -translate-x-24 sm:-translate-x-32 md:-translate-x-28 lg:-translate-x-36 xl:-translate-x-48 2xl:-translate-x-64 z-10 w-[120px] sm:w-[130px] md:w-[120px] lg:w-[140px] xl:w-[200px] 2xl:w-[240px]"
-                        draggable={false}
-                      />
-                </div>
-                  </div>
-                
-                <div className="sticky bottom-0 left-0 right-0 z-20">
-                  <div className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-12 xl:pb-16 2xl:pb-20">
-                    <p className="text-sm sm:text-lg lg:text-xl lg:mt-20 text-white leading-relaxed max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
-                      A spending account that improves your relationship with money. Turn your closet into cash and spend without purchase anxiety
-                    </p>
-                  </div>
-                </div>
             </div>
+
+            {/* Right side - Image */}
+            <div className="flex-1 lg:flex-[1.5] ml-12">
+              <Image
+                src="/hero/hero_img.png"
+                alt="Aerium procurement platform"
+                width={1500}
+                height={1125}
+                className="object-contain w-full h-auto scale-125 lg:scale-150"
+                draggable={false}
+                priority
+              />
             </div>
+          </div>
         </div>
       </div>
     </div>

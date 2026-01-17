@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 interface FAQItemProps {
   question: string;
@@ -9,7 +9,12 @@ interface FAQItemProps {
   onToggle?: () => void;
 }
 
-export default function FAQItem({ question, answer, isOpen = false, onToggle }: FAQItemProps) {
+export default function FAQItem({
+  question,
+  answer,
+  isOpen = false,
+  onToggle,
+}: FAQItemProps) {
   const [isExpanded, setIsExpanded] = useState(isOpen);
 
   const handleToggle = () => {
@@ -29,7 +34,7 @@ export default function FAQItem({ question, answer, isOpen = false, onToggle }: 
         <div className="flex-shrink-0">
           <svg
             className={`w-6 h-6 text-gray-500 transition-transform duration-200 ${
-              isExpanded ? 'rotate-45' : ''
+              isExpanded ? "rotate-45" : ""
             }`}
             fill="none"
             stroke="currentColor"
@@ -44,7 +49,7 @@ export default function FAQItem({ question, answer, isOpen = false, onToggle }: 
           </svg>
         </div>
       </button>
-      
+
       {isExpanded && (
         <div className="pb-6 px-4 sm:px-6 lg:px-8 pr-12">
           <p className="text-gray-600 leading-relaxed text-lg sm:text-xl lg:text-2xl">

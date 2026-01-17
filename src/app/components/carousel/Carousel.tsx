@@ -1,26 +1,37 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
-import CarouselCard from './CarouselCard';
+import {
+  useState,
+  useEffect,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  ReactNode,
+} from "react";
+import CarouselCard from "./CarouselCard";
 
 interface CarouselProps {
   cards: Array<{
     id: string;
     backgroundColor: string;
-    imageSrc: string;
-    imageAlt: string;
-    imagePosition?: 'center' | 'top' | 'bottom' | 'left' | 'right';
+    imageSrc?: string;
+    imageAlt?: string;
+    imagePosition?: "center" | "top" | "bottom" | "left" | "right";
+    imageSize?: "small" | "medium" | "large" | "full";
     text?: string;
     textColor?: string;
     bottomText?: string;
     bottomTextColor?: string;
     onClick?: () => void;
+    customContent?: ReactNode;
   }>;
   className?: string;
 }
 
-const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, CarouselProps>(
-  ({ cards, className = '' }, ref) => {
+const Carousel = forwardRef<
+  { goToNext: () => void; goToPrevious: () => void },
+  CarouselProps
+>(({ cards, className = "" }, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,16 +53,16 @@ const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, 
     };
 
     calculateCardWidth();
-    window.addEventListener('resize', calculateCardWidth);
+    window.addEventListener("resize", calculateCardWidth);
 
     return () => {
-      window.removeEventListener('resize', calculateCardWidth);
+      window.removeEventListener("resize", calculateCardWidth);
     };
   }, [cards]);
 
   useImperativeHandle(ref, () => ({
     goToNext,
-    goToPrevious
+    goToPrevious,
   }));
 
   const goToNext = () => {
@@ -59,14 +70,14 @@ const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, 
     setIsTransitioning(true);
     setCurrentIndex((prev) => {
       const newIndex = prev + 1;
-    //   if (newIndex >= totalCards) {
-    //     // Reset to beginning after transition
-    //     setTimeout(() => {
-    //       setCurrentIndex(0);
-    //       setIsTransitioning(false);
-    //     }, 300);
-    //     return newIndex;
-    //   }
+      //   if (newIndex >= totalCards) {
+      //     // Reset to beginning after transition
+      //     setTimeout(() => {
+      //       setCurrentIndex(0);
+      //       setIsTransitioning(false);
+      //     }, 300);
+      //     return newIndex;
+      //   }
       setTimeout(() => setIsTransitioning(false), 300);
       return newIndex;
     });
@@ -104,7 +115,7 @@ const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, 
   const handleTouchEnd = () => {
     if (!isDragging.current) return;
     isDragging.current = false;
-    
+
     const diff = startX.current - currentX.current;
     const threshold = 50;
 
@@ -131,7 +142,7 @@ const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, 
   const handleMouseUp = () => {
     if (!isDragging.current) return;
     isDragging.current = false;
-    
+
     const diff = startX.current - currentX.current;
     const threshold = 50;
 
@@ -151,7 +162,7 @@ const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, 
   return (
     <div className={`relative ${className}`}>
       {/* Carousel Container */}
-      <div 
+      <div
         ref={containerRef}
         className="overflow-hidden flex items-end"
         onTouchStart={handleTouchStart}
@@ -162,25 +173,31 @@ const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, 
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
       >
-        <div 
+        <div
           className="flex transition-transform duration-300 ease-out"
           style={{
             transform: `translateX(-${(currentIndex + totalCards) * dynamicCardWidth}px)`,
-            width: `${duplicatedCards.length * dynamicCardWidth}px`
+            width: `${duplicatedCards.length * dynamicCardWidth}px`,
           }}
         >
           {duplicatedCards.map((card, index) => (
-            <div key={`${card.id}-${index}`} className="flex-shrink-0 mr-4" ref={index === 0 ? firstCardWrapperRef : null}>
+            <div
+              key={`${card.id}-${index}`}
+              className="flex-shrink-0 mr-4"
+              ref={index === 0 ? firstCardWrapperRef : null}
+            >
               <CarouselCard
                 backgroundColor={card.backgroundColor}
                 imageSrc={card.imageSrc}
                 imageAlt={card.imageAlt}
                 imagePosition={card.imagePosition}
+                imageSize={card.imageSize}
                 text={card.text}
                 textColor={card.textColor}
                 bottomText={card.bottomText}
                 bottomTextColor={card.bottomTextColor}
                 onClick={card.onClick}
+                customContent={card.customContent}
               />
             </div>
           ))}
@@ -190,6 +207,6 @@ const Carousel = forwardRef<{ goToNext: () => void; goToPrevious: () => void }, 
   );
 });
 
-Carousel.displayName = 'Carousel';
+Carousel.displayName = "Carousel";
 
 export default Carousel;
