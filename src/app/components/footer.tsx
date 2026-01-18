@@ -55,7 +55,7 @@ export default function Footer() {
 
             {/* Legal and Stay in touch - two columns */}
             <div className="grid grid-cols-2 gap-8">
-              <div>
+              {/*<div>
                 <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
                   Legal
                 </h3>
@@ -77,7 +77,7 @@ export default function Footer() {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div>*/}
 
               <div>
                 <h3 className="text-lg font-bold mb-4">Stay in touch</h3>
@@ -128,9 +128,9 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="col-span-2">
+              {/*<div className="col-span-2">
                 <SubstackSubscribeEmbed className="mt-6 w-full" />
-              </div>
+              </div>*/}
             </div>
           </div>
 

@@ -67,6 +67,17 @@ export default function CarouselSection() {
       bottomTextColor: "black",
       onClick: () => scrollToDetailSection(3),
     },
+    {
+      id: "embedded",
+      backgroundColor: theme.colors.orange,
+      imageSrc: "/carousel/embedded.png",
+      imageAlt: "Embedded",
+      imagePosition: "center" as const,
+      imageSize: "large" as const,
+      bottomText: "Built for your team",
+      bottomTextColor: "black",
+      onClick: () => scrollToDetailSection(3),
+    },
   ];
 
   return (

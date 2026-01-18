@@ -43,6 +43,18 @@ export default function DetailCardsSection() {
       backgroundColor: theme.colors.gray,
       showArrow: false,
     },
+    {
+      title: "Built with your team, for your team",
+      description:
+        "We embed ourselves directly within your team to complete the last-mile of development, which is always bespoke to you",
+      subText:
+        "After initial implementation, we provide ongoing support to ensure you realize value",
+      imageSrc: "/details/embedded.png",
+      imageAlt: "Cost Intelligence",
+      isReversed: true,
+      backgroundColor: theme.colors.orange,
+      showArrow: false,
+    },
   ];
 
   return (
