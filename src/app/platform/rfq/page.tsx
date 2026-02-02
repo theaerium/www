@@ -37,7 +37,7 @@ export default function RFQPage() {
   const benefits = [
     {
       stat: "1000+ hours",
-      label: "Saved on procurement tasks (based on previous experience)",
+      label: "Saved on supply chain tasks (based on previous experience)",
     },
     {
       stat: "60%",
@@ -68,8 +68,8 @@ export default function RFQPage() {
                   scorecards.
                 </p>
                 <p className="text-lg text-gray-600">
-                  Give your procurement team superpowers and ensure that missing
-                  parts never cause the production line to go down.
+                  Give your supply chain team superpowers and ensure that
+                  missing parts never cause the production line to go down.
                 </p>
               </div>
               <div className="flex-1">

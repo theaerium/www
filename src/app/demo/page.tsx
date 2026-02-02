@@ -30,7 +30,7 @@ export default function DemoPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black mb-10">
-              Giving procurement teams superpowers
+              Giving supply chain teams superpowers
             </h1>
 
             <div className="text-left max-w-2xl mx-auto space-y-4 mb-8">

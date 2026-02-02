@@ -8,7 +8,7 @@
 
 ## About the Role
 
-Being a part of the Forward Deployed Engineering Team, you'll be a core part of building out and augmenting our customers procurement functions. 
+Being a part of the Forward Deployed Engineering Team, you'll be a core part of building out and augmenting our customers supply chain functions. 
 
 ## What You'll Do
 - Work closely with customers during their intial 3-6 weeks of setup to ensure smooth onboarding and tailor the product to their specific circumstances (e.g. integrating ICIS data for chemical manufacturers)

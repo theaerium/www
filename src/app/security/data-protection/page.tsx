@@ -5,7 +5,7 @@ import Footer from "../../components/footer";
 export const metadata: Metadata = {
   title: "Data Protection & Encryption | Aerium Security",
   description:
-    "Your procurement data is protected with industry-leading encryption, secure infrastructure, and comprehensive data protection policies.",
+    "Your data is protected with industry-leading encryption, secure infrastructure, and comprehensive data protection policies.",
 };
 
 export default function DataProtectionPage() {
@@ -59,7 +59,7 @@ export default function DataProtectionPage() {
     {
       title: "Role-Based Access Control",
       description:
-        "Define granular permissions based on job functions. Control who can view, edit, or approve procurement data at every level.",
+        "Define granular permissions based on job functions. Control who can view, edit, or approve data at every level.",
     },
     {
       title: "Custom Permission Sets",
@@ -96,8 +96,8 @@ export default function DataProtectionPage() {
               Data Protection & Encryption
             </h1>
             <p className="text-xl sm:text-2xl text-gray-700 leading-relaxed">
-              Your procurement data is protected with industry-leading
-              encryption and comprehensive data protection policies.
+              Your data is protected with industry-leading encryption and
+              comprehensive data protection policies.
             </p>
           </div>
         </section>

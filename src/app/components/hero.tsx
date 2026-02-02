@@ -25,11 +25,11 @@ export default function Hero() {
             {/* Left side - Text content */}
             <div className="flex-1 space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black leading-tight">
-                The operating system for procurement teams
+                The operating system for supply chain teams
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-xl">
                 Easy to use data-cleaning, RFQ orchestration and cost analysis
-                tools to turn procurement into your advantage
+                tools to turn supply chain into your advantage
               </p>
 
               {/* Buttons */}
@@ -71,7 +71,7 @@ export default function Hero() {
             <div className="flex-1 lg:flex-[1.5] ml-12">
               <Image
                 src="/hero/hero_img.png"
-                alt="Aerium procurement platform"
+                alt="Aerium supply chain platform"
                 width={1500}
                 height={1125}
                 className="object-contain w-full h-auto scale-125 lg:scale-150"

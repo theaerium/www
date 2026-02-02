@@ -5,7 +5,7 @@ import Footer from "../../components/footer";
 export const metadata: Metadata = {
   title: "Authentication & Access Controls | Aerium Security",
   description:
-    "Enterprise-grade authentication and access control features to keep your procurement data secure. SSO, MFA, role-based access, and more.",
+    "Enterprise-grade authentication and access control features to keep your data secure. SSO, MFA, role-based access, and more.",
 };
 
 export default function AuthenticationPage() {
@@ -23,7 +23,7 @@ export default function AuthenticationPage() {
     {
       title: "Role-Based Access Control",
       description:
-        "Define granular permissions based on roles. Control who can view, edit, or approve procurement data and transactions.",
+        "Define granular permissions based on roles. Control who can view, edit, or approve data and transactions.",
     },
     {
       title: "Session Management",
@@ -37,7 +37,7 @@ export default function AuthenticationPage() {
       title: "Granular Permissions",
       items: [
         "View-only access for stakeholders",
-        "Edit permissions for procurement teams",
+        "Edit permissions for supply chain teams",
         "Approval workflows for managers",
         "Admin controls for IT teams",
       ],
@@ -65,7 +65,7 @@ export default function AuthenticationPage() {
             </h1>
             <p className="text-xl sm:text-2xl text-gray-700 leading-relaxed">
               Enterprise-grade security features to ensure only authorized users
-              can access your procurement data.
+              can access your data.
             </p>
           </div>
         </section>

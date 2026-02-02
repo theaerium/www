@@ -24,7 +24,7 @@ export default function DetailCardsSection() {
       description:
         "Aerium calculates what you need to purchase, when, and how much, taking into consideration everything from safety stock requirements, lead times, sales forecasts, and supplier scorecards",
       subText:
-        "Give your procurement team superpowers and ensure that missing parts never cause the production line to go down",
+        "Give your supply chain team superpowers and ensure that missing parts never cause the production line to go down",
       imageSrc: "/details/rfq.png",
       imageAlt: "Orchestration",
       isReversed: true,

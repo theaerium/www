@@ -15,7 +15,7 @@ export default function IngestionPage() {
     {
       title: "Multi-source data extraction",
       description:
-        "Connect to multiple data sources including ERPs, spreadsheets, databases, and legacy systems to consolidate all your procurement data.",
+        "Connect to multiple data sources including ERPs, spreadsheets, databases, and legacy systems to consolidate all your supply chain data.",
     },
     {
       title: "Intelligent data cleaning",
@@ -25,7 +25,7 @@ export default function IngestionPage() {
     {
       title: "Single source of truth",
       description:
-        "Create a unified data foundation that serves as the backbone for all your procurement operations and analytics.",
+        "Create a unified data foundation that serves as the backbone for all your supply chain operations and analytics.",
     },
     {
       title: "Real-time synchronization",

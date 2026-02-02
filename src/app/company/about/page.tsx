@@ -5,7 +5,7 @@ import Footer from "../../components/footer";
 export const metadata: Metadata = {
   title: "About Us | Aerium",
   description:
-    "Our mission is to free procurement teams from daily firefighting and allow them to drive growth.",
+    "Our mission is to free supply chain teams from daily firefighting and allow them to drive growth.",
 };
 
 export default function AboutPage() {
@@ -24,9 +24,9 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We believe procurement teams should spend time sourcing and
+                We believe supply chain teams should spend time sourcing and
                 managing supplier relationships, not fighting fires. Our mission
-                is to free procurement professionals from the daily fight to
+                is to free supply chain professionals from the daily fight to
                 keep the line up by giving them the tools to focus on what
                 really matters: strategic initiatives that move the business
                 forward.
@@ -39,12 +39,11 @@ export default function AboutPage() {
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Before Aerium, we spent years at McKinsey building software to
-                automate inventory management, pricing optimization, and
-                procurement workflows for some of the largest manufacturers in
-                the world. We saw firsthand how much time and money was being
-                lost to manual processes and disconnected systems. We started
-                Aerium to bring that same level of automation to every
-                manufacturer.
+                automate inventory management, pricing optimization, and supply
+                chain workflows for some of the largest manufacturers in the
+                world. We saw firsthand how much time and money was being lost
+                to manual processes and disconnected systems. We started Aerium
+                to bring that same level of automation to every manufacturer.
               </p>
             </section>
 

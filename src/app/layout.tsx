@@ -10,9 +10,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aerium | Procurement intelligence",
+  title: "Aerium | Supply chain intelligence",
   description:
-    "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+    "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
   keywords: [
     "procurement",
     "supply chain",
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Aerium" }],
   openGraph: {
-    title: "Aerium | Procurement intelligence",
+    title: "Aerium | Supply chain intelligence",
     description:
-      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
     url: "https://aeriumhq.com",
     siteName: "Aerium",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aerium | Procurement intelligence",
+        alt: "Aerium | Supply chain intelligence",
       },
     ],
     locale: "en_US",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aerium | Procurement intelligence",
+    title: "Aerium | Supply chain intelligence",
     description:
-      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
     images: ["/og-image.png"],
     creator: "@aerium",
   },
@@ -66,7 +66,7 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta
           name="twitter:image:alt"
-          content="Aerium - Procurement intelligence"
+          content="Aerium - Supply chain intelligence"
         />
       </head>
       <body className={`${geistMono.variable} antialiased`}>

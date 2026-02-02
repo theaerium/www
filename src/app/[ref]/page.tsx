@@ -11,9 +11,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { ref } = await params;
 
   return {
-    title: "Aerium | Procurement intelligence",
+    title: "Aerium | Supply Chain intelligence",
     description:
-      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
     keywords: [
       "procurement",
       "supply chain",
@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     authors: [{ name: "Aerium" }],
     openGraph: {
-      title: "Aerium | Procurement intelligence",
+      title: "Aerium | Supply chain intelligence",
       description:
-        "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+        "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
       url: `https://aeriumhq.com/${ref}`,
       siteName: "Aerium",
       images: [
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Aerium | Procurement intelligence",
+          alt: "Aerium | Supply chain intelligence",
         },
       ],
       locale: "en_US",
@@ -42,9 +42,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Aerium | Procurement intelligence",
+      title: "Aerium | Supply chain intelligence",
       description:
-        "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level procurement optimization 24/7 with no additional headcount.",
+        "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
       images: ["/og-image.png"],
       creator: "@aerium",
     },
