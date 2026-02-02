@@ -98,7 +98,7 @@ export default async function CareersPage() {
   const careers = await getCareers();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main className="pt-32 pb-16 flex-1">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

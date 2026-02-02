@@ -6,72 +6,61 @@ export interface NavSubItem {
 
 export interface NavItem {
   label: string;
-  href: string;
+  heading: string;
   subItems: NavSubItem[];
 }
 
 export const navigationConfig: NavItem[] = [
   {
     label: "Platform",
-    href: "",
+    heading: "AI supply chain analyst",
     subItems: [
       {
-        label: "Ingestion",
-        href: "/platform/ingestion",
-        description: "Connect all your data into a single source of truth",
+        label: "Sentinel",
+        href: "/",
+        description:
+          "Understand the real costs of your business. Advanced forecasting of feedstock and import costs to provide unparalleled insight into landed costs and identifying savings opportunities.",
       },
       {
-        label: "RFQ Orchestration",
-        href: "/platform/rfq",
-        description: "Streamline rfqs across suppliers",
+        label: "Orchestrator",
+        href: "/",
+        description:
+          "Get your inputs when you need them. Automate sourcing, purchasing, and RFQs to ensure the line never goes down. Ingest any document format and conduct analysis to identify savings opportunities.",
       },
       {
-        label: "Cost Intelligence",
-        href: "/platform/cost",
-        description: "Data-driven pricing insights and market analytics",
+        label: "Concierge",
+        href: "/",
+        description:
+          "Manage supplier relationships from your inbox. Ask questions, start tasks, and run your supply chain the same way you do today - via email or teams.",
       },
     ],
   },
   {
     label: "Security",
-    href: "/security/data-protection",
+    heading: "Stay in control of your data",
     subItems: [
       {
-        label: "Data Protection",
+        label: "Security",
         href: "/security/data-protection",
-        description: "Enterprise-grade encryption and privacy controls",
+        description:
+          "Enterprise-grade encryption and privacy controls. Deployments can be done on-prem to ensure data never leaves your servers.",
       },
-      // {
-      //   label: "Compliance",
-      //   href: "/security/compliance",
-      //   description: "SOC 2, GDPR, and industry-standard certifications",
-      // },
-      // {
-      //   label: "Authentication",
-      //   href: "/security/authentication",
-      //   description: "Multi-factor auth and secure access management",
-      // },
     ],
   },
   {
     label: "Company",
-    href: "/company",
+    heading: "Manufacturing advantage",
     subItems: [
       {
         label: "About Us",
         href: "/company",
-        description: "Our mission to accelerate manufcaturing",
+        description: "Our mission to accelerate manufacturing",
       },
       {
         label: "Careers",
         href: "/company/careers",
         description: "Join our team and shape the future of manufacturing",
       },
-      // {
-      //   label: "Blog",
-      //   href: "/blog",
-      //   description: "Insights, updates, and industry perspectives",
-      // },
     ],
   },
 ];

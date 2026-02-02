@@ -3,7 +3,6 @@
 import { useState, useRef, createContext, useContext } from "react";
 import Link from "next/link";
 import { NavItem } from "../config/navigation";
-import theme from "../config/theme";
 
 interface NavContextType {
   activeDropdown: string | null;
@@ -26,9 +25,18 @@ export function NavDropdownGroup({ children }: NavDropdownGroupProps) {
     <NavContext.Provider
       value={{ activeDropdown, setActiveDropdown, closeTimeoutRef }}
     >
-      <div className="flex items-center space-x-2">{children}</div>
+      {children}
     </NavContext.Provider>
   );
+}
+
+export function useNavContext() {
+  return useContext(NavContext);
+}
+
+export function useDropdownOpen() {
+  const context = useContext(NavContext);
+  return !!context?.activeDropdown;
 }
 
 interface NavDropdownProps {
@@ -36,10 +44,7 @@ interface NavDropdownProps {
   scrolled?: boolean;
 }
 
-export default function NavDropdown({
-  item,
-  scrolled = true,
-}: NavDropdownProps) {
+export default function NavDropdown({ item }: NavDropdownProps) {
   const context = useContext(NavContext);
 
   const [localIsOpen, setLocalIsOpen] = useState(false);
@@ -66,11 +71,11 @@ export default function NavDropdown({
     if (context) {
       context.closeTimeoutRef.current = setTimeout(() => {
         context.setActiveDropdown(null);
-      }, 100);
+      }, 200);
     } else {
       localTimeoutRef.current = setTimeout(() => {
         setLocalIsOpen(false);
-      }, 150);
+      }, 200);
     }
   };
 
@@ -80,14 +85,7 @@ export default function NavDropdown({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link
-        href={item.href}
-        className={`flex items-center gap-1 px-4 py-2 font-medium text-lg transition-colors duration-300 ${
-          scrolled
-            ? "text-black hover:text-gray-600"
-            : "text-white hover:text-gray-200"
-        }`}
-      >
+      <button className="flex items-center gap-1 px-4 py-2 font-medium text-lg transition-colors duration-300 text-black hover:text-gray-600 cursor-pointer">
         {item.label}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -105,45 +103,77 @@ export default function NavDropdown({
             d="m19.5 8.25-7.5 7.5-7.5-7.5"
           />
         </svg>
-      </Link>
+      </button>
+    </div>
+  );
+}
 
-      <div
-        className={`absolute top-full left-0 pt-2 z-50 transition-all duration-150 ${
-          isOpen
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-1 pointer-events-none"
-        }`}
-        style={{ minWidth: "280px" }}
-      >
-        <div
-          className="rounded-lg shadow-lg border overflow-hidden pl-2 pr-10 py-2"
-          style={{
-            backgroundColor: theme.colors.white,
-            borderColor: theme.colors.gray,
-          }}
-        >
-          {item.subItems.map((subItem, index) => (
-            <Link
-              key={subItem.href}
-              href={subItem.href}
-              className={`block pl-2 pr-10 py-3 transition-colors hover:${theme.colors.cream} ${
-                index !== item.subItems.length - 1 ? "border-b" : ""
-              }`}
-              style={{
-                borderColor: theme.colors.gray,
-              }}
-            >
-              <span
-                className="block font-medium text-base"
-                style={{ color: theme.colors.black }}
-              >
-                {subItem.label}
-              </span>
-              <span className="block text-sm text-gray-500 mt-0.5">
-                {subItem.description}
-              </span>
-            </Link>
-          ))}
+interface NavDropdownPanelProps {
+  items: NavItem[];
+}
+
+export function NavDropdownPanel({ items }: NavDropdownPanelProps) {
+  const context = useContext(NavContext);
+  const activeItem = items.find(
+    (item) => item.label === context?.activeDropdown,
+  );
+  const isOpen = !!activeItem;
+
+  const handleMouseEnter = () => {
+    if (context?.closeTimeoutRef.current) {
+      clearTimeout(context.closeTimeoutRef.current);
+      context.closeTimeoutRef.current = null;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (context) {
+      context.closeTimeoutRef.current = setTimeout(() => {
+        context.setActiveDropdown(null);
+      }, 200);
+    }
+  };
+
+  return (
+    <div
+      className={`absolute top-full left-0 right-0 z-40 transition-all duration-300 ease-in-out overflow-hidden ${
+        isOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+      }`}
+      style={{
+        maxHeight: isOpen ? "75vh" : "0",
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="w-full bg-white">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div
+            key={activeItem?.label}
+            className="max-w-7xl mx-auto py-12 sm:py-16 lg:py-20 pl-8 sm:pl-16 lg:pl-32 xl:pl-48"
+          >
+            <h3 className="text-3xl sm:text-4xl font-normal text-black mb-10">
+              {activeItem?.heading}
+            </h3>
+            <div className="max-w-lg space-y-10">
+              {activeItem?.subItems.map((subItem) => (
+                <Link
+                  key={subItem.label}
+                  href={subItem.href}
+                  className="block group"
+                  onClick={() => context?.setActiveDropdown(null)}
+                >
+                  <span className="block font-semibold text-xl text-black group-hover:text-gray-500 transition-colors">
+                    {subItem.label}
+                  </span>
+                  <span className="block text-base text-gray-400 mt-2 leading-relaxed">
+                    {subItem.description}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

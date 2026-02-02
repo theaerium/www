@@ -23,17 +23,17 @@ export default function FAQItem({
   };
 
   return (
-    <div className="border-b border-gray-300 last:border-b-0">
+    <div>
       <button
         onClick={handleToggle}
-        className="w-full py-6 px-4 sm:px-6 lg:px-8 text-left flex items-center justify-between transition-colors duration-200"
+        className="w-full py-6 text-left flex items-center justify-between transition-colors duration-200"
       >
-        <span className="text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-700 pr-4">
+        <span className="text-xl sm:text-2xl lg:text-3xl font-normal text-black pr-4">
           {question}
         </span>
         <div className="flex-shrink-0">
           <svg
-            className={`w-6 h-6 text-gray-500 transition-transform duration-200 ${
+            className={`w-5 h-5 text-black transition-transform duration-200 ${
               isExpanded ? "rotate-45" : ""
             }`}
             fill="none"
@@ -43,7 +43,7 @@ export default function FAQItem({
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              strokeWidth={1.5}
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             />
           </svg>
@@ -51,7 +51,7 @@ export default function FAQItem({
       </button>
 
       {isExpanded && (
-        <div className="pb-6 px-4 sm:px-6 lg:px-8 pr-12">
+        <div className="pb-6 pr-12">
           <p className="text-gray-600 leading-relaxed text-lg sm:text-xl lg:text-2xl">
             {answer}
           </p>

@@ -11,7 +11,7 @@ const faqData = [
   },
   {
     id: 2,
-    question: "Will you help us integrate the platform?", // TODO: Reframe the question
+    question: "Will you help us integrate the platform?",
     answer:
       "Yes. We spend the first 2-6 weeks meeting with the team on-site to integrate data sources and get the product running",
   },
@@ -25,21 +25,19 @@ const faqData = [
     id: 4,
     question: "What industries do you work with?",
     answer:
-      "Our platform is built for manufacturers across many industries including automotive, aerospace, chemicals, industrial machinery and more",
+      "Our platform is built for chemical and automotive manufacturers with more industries planned",
   },
 ];
 
 export default function FAQSection() {
   return (
-    <section className="py-16 ">
-      <div className="w-full">
-        <div className="px-4 sm:px-6 lg:px-8 mb-6 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-black text-left">
-            Common questions
-          </h2>
-        </div>
+    <section className="bg-white px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-normal text-black mb-12">
+          Common questions
+        </h2>
 
-        <div className="w-full">
+        <div className="divide-y divide-gray-200">
           {faqData.map((faq) => (
             <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
           ))}
