@@ -7,25 +7,25 @@ const faqData = [
     id: 1,
     question: "Can Aerium integrate with all my different systems?",
     answer:
-      "Yes. The platform connects to Excel, CSVs (either uploaded or through sharepoint), most ERPs (Epicor, SAP, Oracle), and supports custom integrations",
+      "Yes, Aeri can connect to all of your existing data systems. This includes your Excel/CSV files, ERP, MDM, MES, other AI systems, and custom integrations.",
   },
   {
     id: 2,
     question: "Will you help us integrate the platform?",
     answer:
-      "Yes. We spend the first 2-6 weeks meeting with the team on-site to integrate data sources and get the product running",
+      "Yes, we spend the first 2-6 weeks on-site to integrate data sources and get Aeri running. We deploy securely in your environment and do not require any IT internal builds.",
   },
   {
     id: 3,
     question: "How long until we see ROI / EBITDA impact?",
     answer:
-      "Typically we expect impacts to hit the P&L after about 6 months after the integration is complete",
+      "Typically we expect to hit positive ROI 6 months after integrations are complete.",
   },
   {
     id: 4,
     question: "What industries do you work with?",
     answer:
-      "Our platform is built for chemical and automotive manufacturers with more industries planned",
+      "Aeri is built for industrial manufacturers which includes chemicals, automotive, machinery, oil & gas, aerospace, electronics, and more.",
   },
 ];
 
