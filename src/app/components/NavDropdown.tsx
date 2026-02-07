@@ -85,7 +85,7 @@ export default function NavDropdown({ item }: NavDropdownProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button className="flex items-center gap-1 px-4 py-2 font-medium text-lg transition-colors duration-300 text-black hover:text-gray-600 cursor-pointer">
+      <Link href={item.href} className="flex items-center gap-1 px-4 py-2 font-medium text-lg transition-colors duration-300 text-black hover:text-gray-600 cursor-pointer">
         {item.label}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ export default function NavDropdown({ item }: NavDropdownProps) {
             d="m19.5 8.25-7.5 7.5-7.5-7.5"
           />
         </svg>
-      </button>
+      </Link>
     </div>
   );
 }

@@ -53,10 +53,9 @@ export default function AboutPage() {
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
                 We believe the best products are built together. We bring the
-                platform and spend time with your team to tailor the product to
-                your company&apos;s specific needs. Every business is different,
-                and cookie-cutter solutions don&apos;t cut it. That&apos;s why
-                we work closely with our customers to understand their unique
+                platform and spend time with our customers to tailor the product to
+                their company&apos;s specific needs. Every business is different,
+                and cookie-cutter solutions don&apos;t cut it. We understand their unique
                 challenges and build solutions that actually work.
               </p>
             </section>

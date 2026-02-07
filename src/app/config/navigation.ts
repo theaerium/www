@@ -6,6 +6,7 @@ export interface NavSubItem {
 
 export interface NavItem {
   label: string;
+  href: string;
   heading: string;
   subItems: NavSubItem[];
 }
@@ -13,6 +14,7 @@ export interface NavItem {
 export const navigationConfig: NavItem[] = [
   {
     label: "Platform",
+    href: "/",
     heading: "AI supply chain analyst",
     subItems: [
       {
@@ -37,6 +39,7 @@ export const navigationConfig: NavItem[] = [
   },
   {
     label: "Security",
+    href: "/security/data-protection",
     heading: "Stay in control of your data",
     subItems: [
       {
@@ -49,6 +52,7 @@ export const navigationConfig: NavItem[] = [
   },
   {
     label: "Company",
+    href: "/company",
     heading: "Manufacturing advantage",
     subItems: [
       {
@@ -60,6 +64,19 @@ export const navigationConfig: NavItem[] = [
         label: "Careers",
         href: "/company/careers",
         description: "Join our team and shape the future of manufacturing",
+      },
+    ],
+  },
+  {
+    label: "ROI Calculator",
+    href: "/roi-calculator",
+    heading: "Drive real enterprise value",
+    subItems: [
+      {
+        label: "ROI Calculator",
+        href: "/roi-calculator",
+        description:
+          "Estimate your potential savings with Aerium.",
       },
     ],
   },
