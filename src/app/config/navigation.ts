@@ -63,4 +63,16 @@ export const navigationConfig: NavItem[] = [
       },
     ],
   },
+  {
+    label: "ROI Calculator",
+    heading: "Drive real enterprise value",
+    subItems: [
+      {
+        label: "ROI Calculator",
+        href: "/roi-calculator",
+        description:
+          "Estimate your potential savings with Aerium.",
+      },
+    ],
+  },
 ];

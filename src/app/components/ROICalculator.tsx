@@ -86,7 +86,7 @@ export default function ROICalculator() {
     const teamSize = teamSizeOptions[teamSizeIndex].value;
     const skuMultiplier = 1 + totalSKUs / 1000 / 10;
     const hoursPerYear = HOURS_PER_DAY * WORKDAYS_PER_WEEK * WORKWEEKS_PER_YEAR;
-    const corrective = 0.2;
+    const corrective = 0.1;
 
     const timeSavings =
       HOURS_WORKED_PER_YEAR *
@@ -111,13 +111,26 @@ export default function ROICalculator() {
   }, [totalSKUs, revenueTierIndex, teamSizeIndex]);
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-cream">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-black mb-12 text-center">
-          Driving real enterprise value
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-black mb-4 text-center">
+          Learn what Aeri can save you
         </h2>
+        <p className="text-lg sm:text-xl text-gray-500 text-center mb-12">
+          Estimates based on previous deployments
+        </p>
 
-        <div className="bg-white rounded-2xl overflow-hidden">
+        <div
+          className="rounded-2xl relative p-6 sm:p-8 lg:p-10"
+          style={{
+            backgroundColor: "#FCE5CD",
+            backgroundImage: "url(/brand/logo-thin.svg)",
+            backgroundSize: "150%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="relative bg-white rounded-lg overflow-hidden">
           <div className="flex flex-col lg:flex-row">
             {/* Left side - Inputs */}
             <div className="flex-1 p-8 sm:p-10 lg:p-12 space-y-8">
@@ -131,7 +144,7 @@ export default function ROICalculator() {
                   <label className="text-base font-medium text-black">
                     Total # of SKUs
                   </label>
-                  <span className="px-3 py-1 bg-gray-100 rounded-md text-sm font-semibold text-black">
+                  <span className="px-3 py-1 rounded-md text-sm font-semibold text-black" style={{ backgroundColor: "#F0F0F0" }}>
                     {totalSKUs.toLocaleString()}
                   </span>
                 </div>
@@ -143,9 +156,9 @@ export default function ROICalculator() {
                     step="100"
                     value={totalSKUs}
                     onChange={(e) => setTotalSKUs(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-black [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
                     style={{
-                      background: `linear-gradient(to right, ${theme.colors.orange} 0%, ${theme.colors.orange} ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb 100%)`,
+                      background: `linear-gradient(to right, #FCE5CD 0%, #FCE5CD ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb 100%)`,
                     }}
                   />
                 </div>
@@ -183,7 +196,7 @@ export default function ROICalculator() {
             {/* Right side - Results */}
             <div
               className="flex-1 lg:max-w-md p-8 sm:p-10 lg:p-12 flex flex-col"
-              style={{ backgroundColor: theme.colors.gray }}
+              style={{ backgroundColor: "#F0F0F0" }}
             >
               {/* Total Savings - Prominent */}
               <div className="mb-8">
@@ -225,23 +238,24 @@ export default function ROICalculator() {
 
               <div className="mt-auto">
                 <p className="text-xs text-gray-500 mb-4">
-                  The calculation is only directional. We will offer more
-                  accurate estimates once we have a better understanding of your
-                  current situation
+                  This is only directional. We offer more
+                  accurate estimates once we better understanding of your specific situation.
                 </p>
-                <Link href="/demo" target="_blank">
+                <Link href="/demo">
                   <Button
-                    text="Request a demo"
-                    fontSize="medium"
-                    backgroundColor={theme.colors.orange}
-                    textColor={theme.colors.black}
-                    hoverColor="#E67A00"
-                    icon={arrowIcon()}
+                    text="Book a demo"
+                    fontSize="large"
+                    backgroundColor="#000000"
+                    textColor="#FFFFFF"
+                    hoverColor="#333333"
+                    padding="px-10 py-3"
+                    icon={arrowIcon("white")}
                   />
                 </Link>
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
