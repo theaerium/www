@@ -50,6 +50,12 @@ export default function Footer() {
               >
                 LinkedIn
               </a>
+              <a
+                href="mailto:founders@aeriumhq.com"
+                className="text-lg text-black hover:text-gray-600 transition-colors block mt-2"
+              >
+                Email
+              </a>
             </div>
           </div>
 
