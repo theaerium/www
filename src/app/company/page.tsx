@@ -24,12 +24,10 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We believe supply chain teams should spend time sourcing and
-                managing supplier relationships, not fighting fires. Our mission
-                is to free supply chain professionals from the daily fight to
-                keep the line up by giving them the tools to focus on what
-                really matters: strategic initiatives that move the business
-                forward.
+                We believe supply chain teams should spend their time focusing
+                on strategic initiatives that move the business forward, not
+                fighting fires to keep production moving. We give them the tools
+                to focus on what really matters.
               </p>
             </section>
 
@@ -53,10 +51,11 @@ export default function AboutPage() {
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
                 We believe the best products are built together. We bring the
-                platform and spend time with our customers to tailor the product to
-                their company&apos;s specific needs. Every business is different,
-                and cookie-cutter solutions don&apos;t cut it. We understand their unique
-                challenges and build solutions that actually work.
+                platform and spend time with our customers to tailor the product
+                to their company&apos;s specific needs. Every business is
+                different, and cookie-cutter solutions don&apos;t cut it. We
+                understand their unique challenges and build solutions that
+                actually work.
               </p>
             </section>
           </div>

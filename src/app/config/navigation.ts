@@ -58,12 +58,12 @@ export const navigationConfig: NavItem[] = [
       {
         label: "About Us",
         href: "/company",
-        description: "Our mission to accelerate manufacturing",
+        description: "Our mission to accelerate manufacturing.",
       },
       {
         label: "Careers",
         href: "/company/careers",
-        description: "Join our team and shape the future of manufacturing",
+        description: "Join our team and shape the future of manufacturing.",
       },
     ],
   },
@@ -75,8 +75,7 @@ export const navigationConfig: NavItem[] = [
       {
         label: "ROI Calculator",
         href: "/roi-calculator",
-        description:
-          "Estimate your potential savings with Aerium.",
+        description: "Estimate your potential savings with Aerium.",
       },
     ],
   },
