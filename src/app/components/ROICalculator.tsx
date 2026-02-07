@@ -21,11 +21,12 @@ const WORKDAYS_PER_WEEK = 5;
 const WORKWEEKS_PER_YEAR = 48;
 
 const revenueTiers = [
-  { label: "<$10M", value: 5000000 },
-  { label: "$10-50M", value: 30000000 },
-  { label: "$50-150M", value: 100000000 },
-  { label: "$150-500M", value: 325000000 },
-  { label: "$500M+", value: 750000000 },
+  { label: "<$25M", value: 12500000 },
+  { label: "$25-100M", value: 62500000 },
+  { label: "$100-250M", value: 175000000 },
+  { label: "$250M-1B", value: 625000000 },
+  { label: "$1-5B", value: 3000000000 },
+  { label: "$5B+", value: 7500000000 },
 ];
 
 const teamSizeOptions = [
@@ -33,7 +34,8 @@ const teamSizeOptions = [
   { label: "5-10", value: 7 },
   { label: "10-25", value: 17 },
   { label: "25-50", value: 37 },
-  { label: "50+", value: 60 },
+  { label: "50-100", value: 75 },
+  { label: "100+", value: 150 },
 ];
 
 function formatCurrency(value: number): string {
@@ -77,9 +79,9 @@ function BubbleSelector({
 }
 
 export default function ROICalculator() {
-  const [totalSKUs, setTotalSKUs] = useState(1000);
-  const [revenueTierIndex, setRevenueTierIndex] = useState(1);
-  const [teamSizeIndex, setTeamSizeIndex] = useState(2);
+  const [totalSKUs, setTotalSKUs] = useState(5000);
+  const [revenueTierIndex, setRevenueTierIndex] = useState(3);
+  const [teamSizeIndex, setTeamSizeIndex] = useState(3);
 
   const calculations = useMemo(() => {
     const annualRevenue = revenueTiers[revenueTierIndex].value;
@@ -131,131 +133,134 @@ export default function ROICalculator() {
           }}
         >
           <div className="relative bg-white rounded-lg overflow-hidden">
-          <div className="flex flex-col lg:flex-row">
-            {/* Left side - Inputs */}
-            <div className="flex-1 p-8 sm:p-10 lg:p-12 space-y-8">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Company Details
-              </p>
+            <div className="flex flex-col lg:flex-row">
+              {/* Left side - Inputs */}
+              <div className="flex-1 p-8 sm:p-10 lg:p-12 space-y-8">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                  Company Details
+                </p>
 
-              {/* SKUs Slider */}
-              <div>
-                <div className="flex justify-between items-center mb-4">
-                  <label className="text-base font-medium text-black">
-                    Total # of SKUs
+                {/* SKUs Slider */}
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <label className="text-base font-medium text-black">
+                      Total # of SKUs
+                    </label>
+                    <span
+                      className="px-3 py-1 rounded-md text-sm font-semibold text-black"
+                      style={{ backgroundColor: "#F0F0F0" }}
+                    >
+                      {totalSKUs.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="relative">
+                    <input
+                      type="range"
+                      min="100"
+                      max="10000"
+                      step="100"
+                      value={totalSKUs}
+                      onChange={(e) => setTotalSKUs(Number(e.target.value))}
+                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-black [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
+                      style={{
+                        background: `linear-gradient(to right, #FCE5CD 0%, #FCE5CD ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb 100%)`,
+                      }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-400 mt-2">
+                    <span>100</span>
+                    <span>10,000</span>
+                  </div>
+                </div>
+
+                {/* Revenue Tier Bubbles */}
+                <div>
+                  <label className="block text-base font-medium text-black mb-4">
+                    Total annual revenue
                   </label>
-                  <span className="px-3 py-1 rounded-md text-sm font-semibold text-black" style={{ backgroundColor: "#F0F0F0" }}>
-                    {totalSKUs.toLocaleString()}
-                  </span>
-                </div>
-                <div className="relative">
-                  <input
-                    type="range"
-                    min="100"
-                    max="10000"
-                    step="100"
-                    value={totalSKUs}
-                    onChange={(e) => setTotalSKUs(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-black [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
-                    style={{
-                      background: `linear-gradient(to right, #FCE5CD 0%, #FCE5CD ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb ${((totalSKUs - 100) / (10000 - 100)) * 100}%, #e5e7eb 100%)`,
-                    }}
+                  <BubbleSelector
+                    options={revenueTiers}
+                    selectedIndex={revenueTierIndex}
+                    onSelect={setRevenueTierIndex}
                   />
                 </div>
-                <div className="flex justify-between text-xs text-gray-400 mt-2">
-                  <span>100</span>
-                  <span>10,000</span>
-                </div>
-              </div>
 
-              {/* Revenue Tier Bubbles */}
-              <div>
-                <label className="block text-base font-medium text-black mb-4">
-                  Total annual revenue
-                </label>
-                <BubbleSelector
-                  options={revenueTiers}
-                  selectedIndex={revenueTierIndex}
-                  onSelect={setRevenueTierIndex}
-                />
-              </div>
-
-              {/* Team Size Bubbles */}
-              <div>
-                <label className="block text-base font-medium text-black mb-4">
-                  Size of procurement team
-                </label>
-                <BubbleSelector
-                  options={teamSizeOptions}
-                  selectedIndex={teamSizeIndex}
-                  onSelect={setTeamSizeIndex}
-                />
-              </div>
-            </div>
-
-            {/* Right side - Results */}
-            <div
-              className="flex-1 lg:max-w-md p-8 sm:p-10 lg:p-12 flex flex-col"
-              style={{ backgroundColor: "#F0F0F0" }}
-            >
-              {/* Total Savings - Prominent */}
-              <div className="mb-8">
-                <p className="text-sm text-gray-500 mb-2">
-                  Estimated annual savings
-                </p>
-                <p
-                  className="text-5xl sm:text-6xl font-semibold"
-                  style={{ color: theme.colors.black }}
-                >
-                  {formatCurrency(calculations.totalSavings)}
-                </p>
-              </div>
-
-              {/* Breakdown - Side by side */}
-              <div className="flex gap-8 mb-8">
+                {/* Team Size Bubbles */}
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Time savings</p>
-                  <p className="text-lg font-semibold text-black">
-                    {formatCurrency(calculations.timeSavings)}
-                    <span className="text-sm font-normal text-gray-400 ml-1">
-                      /year
-                    </span>
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-xs text-gray-500 mb-1">
-                    Procurement savings
-                  </p>
-                  <p className="text-lg font-semibold text-black">
-                    {formatCurrency(calculations.procurementSavings)}
-                    <span className="text-sm font-normal text-gray-400 ml-1">
-                      /year
-                    </span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-auto">
-                <p className="text-xs text-gray-500 mb-4">
-                  This is only directional. We offer more
-                  accurate estimates once we better understanding of your specific situation.
-                </p>
-                <Link href="/demo">
-                  <Button
-                    text="Book a demo"
-                    fontSize="large"
-                    backgroundColor="#000000"
-                    textColor="#FFFFFF"
-                    hoverColor="#333333"
-                    padding="px-10 py-3"
-                    icon={arrowIcon("white")}
+                  <label className="block text-base font-medium text-black mb-4">
+                    Size of procurement team
+                  </label>
+                  <BubbleSelector
+                    options={teamSizeOptions}
+                    selectedIndex={teamSizeIndex}
+                    onSelect={setTeamSizeIndex}
                   />
-                </Link>
+                </div>
+              </div>
+
+              {/* Right side - Results */}
+              <div
+                className="flex-1 lg:max-w-md p-8 sm:p-10 lg:p-12 flex flex-col"
+                style={{ backgroundColor: "#F0F0F0" }}
+              >
+                {/* Total Savings - Prominent */}
+                <div className="mb-8">
+                  <p className="text-sm text-gray-500 mb-2">
+                    Estimated annual savings
+                  </p>
+                  <p
+                    className="text-5xl sm:text-6xl font-semibold"
+                    style={{ color: theme.colors.black }}
+                  >
+                    {formatCurrency(calculations.totalSavings)}
+                  </p>
+                </div>
+
+                {/* Breakdown - Side by side */}
+                <div className="flex gap-8 mb-8">
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1">Time savings</p>
+                    <p className="text-lg font-semibold text-black">
+                      {formatCurrency(calculations.timeSavings)}
+                      <span className="text-sm font-normal text-gray-400 ml-1">
+                        /year
+                      </span>
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1">
+                      Procurement savings
+                    </p>
+                    <p className="text-lg font-semibold text-black">
+                      {formatCurrency(calculations.procurementSavings)}
+                      <span className="text-sm font-normal text-gray-400 ml-1">
+                        /year
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-auto">
+                  <p className="text-xs text-gray-500 mb-4">
+                    This is only directional. We offer more accurate estimates
+                    once we better understanding of your specific situation.
+                  </p>
+                  <Link href="/demo">
+                    <Button
+                      text="Book a demo"
+                      fontSize="large"
+                      backgroundColor="#000000"
+                      textColor="#FFFFFF"
+                      hoverColor="#333333"
+                      padding="px-10 py-3"
+                      icon={arrowIcon("white")}
+                    />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </section>
