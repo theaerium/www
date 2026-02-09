@@ -15,7 +15,7 @@ export default function Footer() {
               Upgrade your supply chain
             </h2>
             <p className="mt-6 text-xl sm:text-2xl lg:text-3xl text-black leading-snug max-w-xl">
-              Focus on moving metal rather than following parts.
+              Focus on moving production instead of chasing parts and materials.
             </p>
             <div className="mt-8">
               <Link href="/demo">
