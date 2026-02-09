@@ -18,8 +18,7 @@ const faqData = [
   {
     id: 3,
     question: "How long until we see ROI / EBITDA impact?",
-    answer:
-      "Typically we expect to hit positive ROI 6 months after integrations are complete.",
+    answer: "Typically we expect to hit positive ROI in 6 months or less.",
   },
   {
     id: 4,
