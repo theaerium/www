@@ -40,8 +40,8 @@ export default function DeploymentSection() {
                   className="text-lg sm:text-xl leading-relaxed"
                   style={{ color: "#4A1018" }}
                 >
-                  Aeri can be deployed fully on-prem, giving you complete control
-                  over your data
+                  Aeri can be deployed fully on-prem, giving you complete
+                  control over your data
                 </p>
               </div>
               <div
@@ -86,17 +86,25 @@ export default function DeploymentSection() {
                   className="p-4 sm:p-6"
                   style={{
                     border: "2px inset #E0C4B8",
-                    margin: "1rem",
-                    background: "#fff",
+                    margin: "0rem",
+                    background: "#FFF8F5",
                   }}
                 >
-                  <Image
-                    src="/ui/plane.png"
-                    alt="Airplane in flight representing global deployment"
-                    width={552}
-                    height={728}
-                    className="w-full h-auto"
-                  />
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/ui/plane.png"
+                      alt="Airplane in flight representing global deployment"
+                      width={552}
+                      height={728}
+                      className="w-full h-auto"
+                      style={{ filter: "blur(2px)" }}
+                    />
+                    {/* Warm tint overlay */}
+                    <div
+                      className="absolute inset-0"
+                      style={{ backgroundColor: "rgba(250, 238, 232, 0.3)" }}
+                    />
+                  </div>
                 </div>
                 {/* FDE badge overlay */}
                 <div

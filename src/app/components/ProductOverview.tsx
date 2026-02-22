@@ -58,7 +58,7 @@ export default function ProductOverview() {
               style={{
                 border: "2px inset #E0C4B8",
                 background: "#fff",
-                padding: "0.5rem",
+                padding: "0.0rem",
               }}
             >
               <Image

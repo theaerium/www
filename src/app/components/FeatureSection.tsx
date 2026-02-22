@@ -78,12 +78,12 @@ export default function FeatureSection({
                 </span>
               </div>
               {/* Image content */}
-              <div className="p-4 sm:p-6" style={{ background: "#FAEEE8" }}>
+              <div className="p-4 sm:p-6" style={{ background: "#FFF8F5" }}>
                 <div
                   className="overflow-hidden"
                   style={{
                     border: "2px inset #E0C4B8",
-                    background: "#fff",
+                    background: "#FAEEE8",
                     padding: "0.5rem",
                   }}
                 >
