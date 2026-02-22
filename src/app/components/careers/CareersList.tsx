@@ -30,17 +30,39 @@ export default function CareersList({ careers }: CareersListProps) {
   };
 
   return (
-    <div className="border-t border-gray-300">
-      {careers.map((career) => (
-        <CareerItem
-          key={career.slug}
-          title={career.title}
-          content={career.content}
-          meta={career.meta}
-          isOpen={openSlug === career.slug}
-          onToggle={() => handleToggle(career.slug)}
-        />
-      ))}
+    <div
+      style={{
+        border: "2px solid #FD870B",
+        boxShadow: "4px 4px 0px #FD870B",
+      }}
+    >
+      <div
+        style={{
+          background: "#390007",
+          padding: "0.75rem 1.5rem",
+          borderBottom: "2px solid #FD870B",
+        }}
+      >
+        <span
+          className="text-xs uppercase tracking-widest font-bold"
+          style={{ color: "#FD870B" }}
+        >
+          Open Positions
+        </span>
+      </div>
+      <div style={{ background: "#FFF8F5" }}>
+        {careers.map((career, i) => (
+          <CareerItem
+            key={career.slug}
+            title={career.title}
+            content={career.content}
+            meta={career.meta}
+            isOpen={openSlug === career.slug}
+            onToggle={() => handleToggle(career.slug)}
+            isLast={i === careers.length - 1}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -7,12 +7,19 @@ interface EmailBoxProps {
 export default function EmailBox({ placeholder, value, onChange }: EmailBoxProps) {
   return (
     <div className="relative w-full">
-      <input 
+      <input
         type="email"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
-        className="w-full px-3 sm:px-4 py-2 rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] focus:outline-none transition-all duration-300 bg-white text-sm sm:text-base"
+        className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base focus:outline-none"
+        style={{
+          background: "#FFF8F5",
+          color: "#390007",
+          border: "2px solid #FD870B",
+          boxShadow: "3px 3px 0px #FD870B",
+          fontFamily: "var(--font-body)",
+        }}
       />
     </div>
   )

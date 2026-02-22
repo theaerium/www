@@ -8,6 +8,74 @@ export const metadata: Metadata = {
     "Your data is protected with industry-leading encryption, secure infrastructure, and comprehensive data protection policies.",
 };
 
+function SectionCard({
+  label,
+  title,
+  items,
+}: {
+  label: string;
+  title: string;
+  items: { title: string; description: string }[];
+}) {
+  return (
+    <div
+      style={{
+        border: "2px solid #FD870B",
+        boxShadow: "4px 4px 0px #FD870B",
+        marginBottom: "2rem",
+      }}
+    >
+      <div
+        style={{
+          background: "#390007",
+          padding: "0.75rem 1.5rem",
+          borderBottom: "2px solid #FD870B",
+        }}
+      >
+        <span
+          className="text-xs uppercase tracking-widest font-bold"
+          style={{ color: "#FD870B" }}
+        >
+          {label}
+        </span>
+      </div>
+      <div className="p-8 sm:p-10" style={{ background: "#FFF8F5" }}>
+        <h2
+          className="text-3xl sm:text-4xl mb-8"
+          style={{
+            fontFamily: "var(--font-display)",
+            color: "#390007",
+          }}
+        >
+          {title}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {items.map((item) => (
+            <div
+              key={item.title}
+              className="bevel-box"
+              style={{ borderLeft: "3px solid #FD870B" }}
+            >
+              <h3
+                className="text-lg font-semibold mb-2"
+                style={{ color: "#390007" }}
+              >
+                {item.title}
+              </h3>
+              <p
+                className="leading-relaxed"
+                style={{ color: "#6B3030" }}
+              >
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function DataProtectionPage() {
   const encryptionFeatures = [
     {
@@ -78,115 +146,59 @@ export default function DataProtectionPage() {
     },
   ];
 
-  const certifications = [
-    "SOC 2 Type II",
-    "ISO 27001",
-    "GDPR Compliant",
-    "CCPA Compliant",
-  ];
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: "#FFF8F5" }}>
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+        <section className="pt-8 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black mb-6">
+            <p
+              className="text-xs uppercase tracking-widest font-bold mb-4"
+              style={{ color: "#FD870B" }}
+            >
+              Security
+            </p>
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl mb-6"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "#390007",
+              }}
+            >
               Data Protection & Encryption
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-700 leading-relaxed">
+            <p
+              className="text-xl sm:text-2xl leading-relaxed"
+              style={{ color: "#6B3030" }}
+            >
               Your data is protected with industry-leading encryption and
               comprehensive data protection policies.
             </p>
+            <hr className="fancy mx-auto mt-8" style={{ maxWidth: "200px" }} />
           </div>
         </section>
 
-        {/* Encryption Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
+        {/* Sections */}
+        <div className="px-4 sm:px-6 lg:px-8 pb-16">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-medium text-black mb-12 text-center">
-              Encryption standards
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {encryptionFeatures.map((feature) => (
-                <div key={feature.title} className="p-8 rounded-xl">
-                  <h3 className="text-xl font-medium text-black mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <SectionCard
+              label="Encryption"
+              title="Encryption standards"
+              items={encryptionFeatures}
+            />
+            <SectionCard
+              label="Data Protection"
+              title="Data protection policies"
+              items={protectionPolicies}
+            />
+            <SectionCard
+              label="Access Controls"
+              title="Access controls"
+              items={accessControls}
+            />
           </div>
-        </section>
-
-        {/* Protection Policies Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-medium text-black mb-12 text-center">
-              Data protection policies
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {protectionPolicies.map((policy) => (
-                <div key={policy.title} className="p-8 rounded-xl">
-                  <h3 className="text-xl font-medium text-black mb-3">
-                    {policy.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {policy.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Access Controls Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-medium text-black mb-12 text-center">
-              Access controls
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {accessControls.map((control) => (
-                <div key={control.title} className="p-8 rounded-xl">
-                  <h3 className="text-xl font-medium text-black mb-3">
-                    {control.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {control.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Certifications Section - one day! */}
-        {/*<section className="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-medium mb-8">
-              Certifications & Compliance
-            </h2>
-            <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
-              We maintain industry-recognized certifications to demonstrate our
-              commitment to security and compliance.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {certifications.map((cert) => (
-                <span
-                  key={cert}
-                  className="px-6 py-3 bg-white/10 rounded-full text-white font-medium"
-                >
-                  {cert}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>*/}
+        </div>
       </main>
       <Footer />
     </div>

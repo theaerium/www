@@ -85,7 +85,21 @@ export default function NavDropdown({ item }: NavDropdownProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href={item.href} className="flex items-center gap-1 px-4 py-2 font-medium text-lg transition-colors duration-300 text-black hover:text-gray-600 cursor-pointer">
+      <Link
+        href={item.href}
+        className="flex items-center gap-1 px-4 py-2 text-sm uppercase tracking-wider cursor-pointer font-bold"
+        style={{
+          color: isOpen ? "#FD870B" : "#FFFFFF",
+          fontFamily: "var(--font-display)",
+          transition: "color 0.1s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = "#FD870B";
+        }}
+        onMouseLeave={(e) => {
+          if (!isOpen) e.currentTarget.style.color = "#FFFFFF";
+        }}
+      >
         {item.label}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +107,7 @@ export default function NavDropdown({ item }: NavDropdownProps) {
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className={`w-4 h-4 transition-transform duration-200 ${
+          className={`w-3 h-3 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         >
@@ -147,16 +161,27 @@ export function NavDropdownPanel({ items }: NavDropdownPanelProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="w-full bg-white">
+      <div
+        style={{
+          background: "#FFF8F5",
+          borderBottom: "2px solid #FD870B",
+        }}
+      >
         <div className="px-4 sm:px-6 lg:px-8">
           <div
             key={activeItem?.label}
-            className="max-w-7xl mx-auto py-12 sm:py-16 lg:py-20 pl-8 sm:pl-16 lg:pl-32 xl:pl-48"
+            className="max-w-7xl mx-auto py-10 sm:py-14 lg:py-16 pl-8 sm:pl-16 lg:pl-32 xl:pl-48"
           >
-            <h3 className="text-3xl sm:text-4xl font-normal text-black mb-10">
+            <h3
+              className="text-2xl sm:text-3xl mb-8"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "#390007",
+              }}
+            >
               {activeItem?.heading}
             </h3>
-            <div className="max-w-lg space-y-10">
+            <div className="max-w-lg space-y-8">
               {activeItem?.subItems.map((subItem) => (
                 <Link
                   key={subItem.label}
@@ -164,10 +189,19 @@ export function NavDropdownPanel({ items }: NavDropdownPanelProps) {
                   className="block group"
                   onClick={() => context?.setActiveDropdown(null)}
                 >
-                  <span className="block font-semibold text-xl text-black group-hover:text-gray-500 transition-colors">
+                  <span
+                    className="block font-semibold text-lg uppercase tracking-wider group-hover:text-[#FD870B] transition-colors duration-100"
+                    style={{
+                      color: "#390007",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
                     {subItem.label}
                   </span>
-                  <span className="block text-base text-gray-400 mt-2 leading-relaxed">
+                  <span
+                    className="block text-sm mt-2 leading-relaxed"
+                    style={{ color: "#8C5A50" }}
+                  >
                     {subItem.description}
                   </span>
                 </Link>

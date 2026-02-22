@@ -98,20 +98,56 @@ export default async function CareersPage() {
   const careers = await getCareers();
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col" style={{ background: "#FFF8F5" }}>
       <Header />
-      <main className="pt-32 pb-16 flex-1">
+      <main className="pt-8 pb-16 flex-1">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-12">
-            Interested in doing your best work? Join us!
-          </h1>
+          {/* Page title card */}
+          <div
+            style={{
+              border: "2px solid #FD870B",
+              boxShadow: "4px 4px 0px #FD870B",
+              marginBottom: "2rem",
+            }}
+          >
+            <div
+              style={{
+                background: "#390007",
+                padding: "0.75rem 1.5rem",
+                borderBottom: "2px solid #FD870B",
+              }}
+            >
+              <span
+                className="text-xs uppercase tracking-widest font-bold"
+                style={{ color: "#FD870B" }}
+              >
+                Careers
+              </span>
+            </div>
+            <div className="p-8 sm:p-10" style={{ background: "#FFF8F5" }}>
+              <h1
+                className="text-3xl sm:text-4xl lg:text-5xl"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  color: "#390007",
+                }}
+              >
+                Interested in doing your best work? Join us!
+              </h1>
+            </div>
+          </div>
 
           {careers.length > 0 ? (
             <CareersList careers={careers} />
           ) : (
-            <p className="text-gray-600 text-lg">
-              No open positions at this time. Check back soon!
-            </p>
+            <div className="bevel-box">
+              <p
+                className="text-lg"
+                style={{ color: "#6B3030" }}
+              >
+                No open positions at this time. Check back soon!
+              </p>
+            </div>
           )}
         </div>
       </main>

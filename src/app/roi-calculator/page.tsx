@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function ROICalculatorPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col" style={{ background: "#FFF8F5" }}>
       <Header />
-      <main className="pt-32 pb-16 flex-1">
+      <main className="pt-8 pb-16 flex-1">
         <ROICalculator />
       </main>
       <Footer />

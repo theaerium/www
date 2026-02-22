@@ -8,7 +8,8 @@ import FAQSection from "./components/FAQSection";
 
 const featureSections = [
   {
-    label: "Sentinel",
+    id: "cost-intelligence",
+    label: "Cost Intelligence",
     headline: "Understand the real costs of your business",
     bullets: [
       "Monitor upstream price movements from feedstock and other raw materials",
@@ -19,7 +20,8 @@ const featureSections = [
     imageAlt: "Cost intelligence dashboard",
   },
   {
-    label: "Orchestrator",
+    id: "procurement-automation",
+    label: "Procurement Automation",
     headline: "Get your inputs when you need them",
     bullets: [
       "Connect to your ERP, Excel files, and other documents to understand your business needs",
@@ -30,7 +32,8 @@ const featureSections = [
     imageAlt: "Orchestration dashboard",
   },
   {
-    label: "Concierge",
+    id: "reporting",
+    label: "Reporting",
     headline: "Updates and insights an email away",
     bullets: [
       "Aeri lives where you and your suppliers work.  Interact via email or teams, no new interfaces to learn",
