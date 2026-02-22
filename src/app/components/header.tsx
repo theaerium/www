@@ -38,19 +38,43 @@ export default function Header() {
 function HeaderInner() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollAnchor, setScrollAnchor] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY;
+
+      // Banner logic
       if (y <= 0) setShowBanner(true);
       else if (y > 50) setShowBanner(false);
+
+      // Hide/show header on scroll direction with threshold
+      if (y > lastScrollY && y > 500) {
+        // Scrolling down — hide and reset anchor
+        setHeaderVisible(false);
+        setScrollAnchor(y);
+      } else if (scrollAnchor - y > 500) {
+        // Scrolling up — only show after 50px of upward scroll
+        setHeaderVisible(true);
+      }
+
+      if (y <= 0) setHeaderVisible(true);
+      setLastScrollY(y);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY, scrollAnchor]);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header
+      className="sticky top-0 z-50"
+      style={{
+        transform: headerVisible ? "translateY(0)" : "translateY(-100%)",
+        transition: "transform 0.5s ease",
+      }}
+    >
       {/* Marquee banner */}
       <div
         className="marquee-banner"
@@ -59,7 +83,8 @@ function HeaderInner() {
           padding: showBanner ? "6px 0" : "0",
           borderBottomWidth: showBanner ? "2px" : "0",
           overflow: "hidden",
-          transition: "max-height 0.3s ease, padding 0.3s ease, border-bottom-width 0.3s ease",
+          transition:
+            "max-height 0.3s ease, padding 0.3s ease, border-bottom-width 0.3s ease",
         }}
       >
         <span>
