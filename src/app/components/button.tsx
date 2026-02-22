@@ -54,6 +54,7 @@ export default function Button({
         fontFamily: "var(--font-body)",
         letterSpacing: "0.1em",
         transition: "all 0.1s ease",
+        cursor: "pointer",
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

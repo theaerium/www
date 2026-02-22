@@ -100,7 +100,7 @@ export default function HeroSection() {
                       className="text-xs uppercase tracking-wider"
                       style={{ color: "#FD870B" }}
                     >
-                      Productivity Increase
+                      Team Productivity Increase
                     </div>
                   </div>
                   <div className="bevel-box">
@@ -117,7 +117,7 @@ export default function HeroSection() {
                       className="text-xs uppercase tracking-wider"
                       style={{ color: "#FD870B" }}
                     >
-                      Time to ROI
+                      To positive ROI
                     </div>
                   </div>
                 </div>
@@ -129,9 +129,9 @@ export default function HeroSection() {
                       fontSize="medium"
                       padding="px-6 py-3"
                       backgroundColor="#390007"
-                      textColor="#E8CCC4"
+                      textColor="#FFFFFF"
                       hoverColor="#4A0A12"
-                      icon={arrowIcon("#E8CCC4")}
+                      icon={arrowIcon("#FFFFFF")}
                     />
                   </Link>
                   <Link href="/roi-calculator">
@@ -139,9 +139,9 @@ export default function HeroSection() {
                       text=">> Calculate ROI"
                       fontSize="medium"
                       padding="px-6 py-3"
-                      backgroundColor="#FD870B"
-                      textColor="#fff"
-                      hoverColor="#FFA040"
+                      backgroundColor="transparent"
+                      textColor="#390007"
+                      hoverColor="#FAEEE8"
                     />
                   </Link>
                 </div>

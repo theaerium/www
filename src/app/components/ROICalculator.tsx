@@ -69,7 +69,7 @@ function BubbleSelector({
             selectedIndex === index
               ? {
                   background: "#390007",
-                  color: "#FFF5F0",
+                  color: "#FFFFFF",
                   border: "2px solid #FD870B",
                   boxShadow: "1px 1px 0px #FD870B",
                 }
@@ -137,10 +137,7 @@ export default function ROICalculator() {
         >
           Learn What Aeri Can Save You
         </h2>
-        <p
-          className="text-lg text-center mb-12"
-          style={{ color: "#8C5A50" }}
-        >
+        <p className="text-lg text-center mb-12" style={{ color: "#8C5A50" }}>
           Estimates based on previous deployments
         </p>
 
@@ -167,7 +164,10 @@ export default function ROICalculator() {
             </span>
           </div>
 
-          <div className="flex flex-col lg:flex-row" style={{ background: "#FFF8F5" }}>
+          <div
+            className="flex flex-col lg:flex-row"
+            style={{ background: "#FFF8F5" }}
+          >
             {/* Left side - Inputs */}
             <div className="flex-1 p-8 sm:p-10 lg:p-12 space-y-8">
               <p
@@ -313,7 +313,7 @@ export default function ROICalculator() {
                     className="text-xs uppercase tracking-wider font-bold mb-1"
                     style={{ color: "#FD870B" }}
                   >
-                    Procurement savings
+                    Spend savings
                   </p>
                   <p
                     className="text-lg font-bold"
@@ -343,10 +343,10 @@ export default function ROICalculator() {
                     text=">> Book a Demo"
                     fontSize="large"
                     backgroundColor="#390007"
-                    textColor="#FFF5F0"
+                    textColor="#FFFFFF"
                     hoverColor="#4A0A12"
                     padding="px-10 py-3"
-                    icon={arrowIcon("#FFF5F0")}
+                    icon={arrowIcon("#FFFFFF")}
                   />
                 </Link>
               </div>

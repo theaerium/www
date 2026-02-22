@@ -54,7 +54,7 @@ export default function FAQSection() {
               className="text-xl sm:text-2xl lg:text-3xl uppercase tracking-wider"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "#E8CCC4",
+                color: "#FFFFFF",
               }}
             >
               Common Questions

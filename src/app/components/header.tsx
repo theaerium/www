@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import AeriumLogoSvg from "@/components/AeriumLogo_no_background.svg";
@@ -37,11 +37,31 @@ export default function Header() {
 
 function HeaderInner() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY;
+      if (y <= 0) setShowBanner(true);
+      else if (y > 50) setShowBanner(false);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50">
       {/* Marquee banner */}
-      <div className="marquee-banner">
+      <div
+        className="marquee-banner"
+        style={{
+          maxHeight: showBanner ? "2.5rem" : "0",
+          padding: showBanner ? "6px 0" : "0",
+          borderBottomWidth: showBanner ? "2px" : "0",
+          overflow: "hidden",
+          transition: "max-height 0.3s ease, padding 0.3s ease, border-bottom-width 0.3s ease",
+        }}
+      >
         <span>
           *** Aerium &mdash; AI Supply Chain Intelligence for Manufacturers
           &mdash; Monitor Prices &bull; Automate Purchasing &bull; Identify

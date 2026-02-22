@@ -1,17 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "./button";
 import { arrowIcon } from "./header";
 
 export default function Footer() {
-  const [hitCount, setHitCount] = useState(0);
-
-  useEffect(() => {
-    setHitCount(14832 + Math.floor(Math.random() * 200));
-  }, []);
-
   return (
     <footer style={{ background: "#390007" }}>
       {/* CTA Section */}
@@ -26,7 +19,7 @@ export default function Footer() {
               className="text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider"
               style={{
                 fontFamily: "var(--font-display)",
-                color: "#E8CCC4",
+                color: "#FFFFFF",
               }}
             >
               Upgrade Your Supply Chain
@@ -41,7 +34,7 @@ export default function Footer() {
             className="text-lg sm:text-xl text-center max-w-xl mx-auto mb-8 leading-relaxed"
             style={{ color: "#D4A89C" }}
           >
-            Focus on moving production instead of chasing parts and materials.
+            Focus on pushing production instead of chasing parts and materials.
           </p>
 
           <div className="flex justify-center">
@@ -49,11 +42,11 @@ export default function Footer() {
               <Button
                 text=">> Book a Demo"
                 fontSize="large"
-                backgroundColor="#FD870B"
-                textColor="#fff"
-                hoverColor="#FFA040"
+                backgroundColor="#FFF8F5"
+                textColor="#390007"
+                hoverColor="#FAEEE8"
                 padding="px-8 py-3"
-                icon={arrowIcon("white")}
+                icon={arrowIcon("#390007")}
               />
             </Link>
           </div>
@@ -75,7 +68,7 @@ export default function Footer() {
               >
                 <h4
                   className="font-bold uppercase tracking-wider text-sm mb-3"
-                  style={{ color: "#E8CCC4" }}
+                  style={{ color: "#FFFFFF" }}
                 >
                   About Aerium
                 </h4>
@@ -99,7 +92,7 @@ export default function Footer() {
               >
                 <h4
                   className="font-bold uppercase tracking-wider text-sm mb-3"
-                  style={{ color: "#E8CCC4" }}
+                  style={{ color: "#FFFFFF" }}
                 >
                   Contact Us
                 </h4>
@@ -125,21 +118,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar with hit counter */}
+      {/* Bottom bar */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-          <div
-            className="text-center md:text-left"
-            style={{ color: "#7A2832" }}
-          >
-            &copy; 2026 Senchi Technologies Inc.. All Rights Reserved.
-          </div>
-          <div className="flex items-center gap-4" style={{ color: "#7A2832" }}>
-            <span>Visitors:</span>
-            <span className="hit-counter">{hitCount.toLocaleString()}</span>
-            <span style={{ color: "#5C141E" }}>|</span>
-            <span>Best viewed at 1024x768</span>
-          </div>
+        <div className="text-center text-xs" style={{ color: "#D4A89C" }}>
+          &copy; 2026 Senchi Technologies Inc. All Rights Reserved.
         </div>
       </div>
     </footer>
