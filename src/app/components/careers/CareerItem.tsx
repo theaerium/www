@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import theme from "@/app/config/theme";
 
 interface CareerMeta {
   location?: string;
@@ -18,6 +17,7 @@ interface CareerItemProps {
   meta?: CareerMeta;
   isOpen?: boolean;
   onToggle?: () => void;
+  isLast?: boolean;
 }
 
 // Process content to convert plain email addresses to mailto links with subject
@@ -38,6 +38,7 @@ export default function CareerItem({
   meta,
   isOpen = false,
   onToggle,
+  isLast = false,
 }: CareerItemProps) {
   const [height, setHeight] = useState<number | undefined>(undefined);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -56,44 +57,57 @@ export default function CareerItem({
   };
 
   return (
-    <div className="border-b border-gray-300 last:border-b-0">
+    <div
+      style={{
+        borderBottom: isLast ? "none" : "2px solid #F0DDD4",
+      }}
+    >
       <button
         onClick={handleToggle}
-        className="w-full py-6 px-4 sm:px-6 lg:px-8 text-left flex items-center justify-between transition-colors duration-200"
+        className="w-full py-5 px-6 text-left flex items-center justify-between"
+        style={{
+          background: isOpen ? "#FAEEE8" : "transparent",
+          transition: "background 0.1s ease",
+        }}
       >
         <div className="pr-4">
-          <span className="text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-700 block">
+          <span
+            className="text-xl sm:text-2xl lg:text-3xl block"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "#390007",
+            }}
+          >
             {title}
           </span>
           {meta && (
-            <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-sm text-gray-500">
+            <div
+              className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-sm"
+              style={{ color: "#8C5A50" }}
+            >
               {meta.location && <span>{meta.location}</span>}
               {meta.department && <span>{meta.department}</span>}
               {meta.employmentType && <span>{meta.employmentType}</span>}
               {meta.compensation && (
-                <span className="font-medium text-gray-600">
+                <span style={{ color: "#FD870B", fontWeight: 600 }}>
                   {meta.compensation}
                 </span>
               )}
             </div>
           )}
         </div>
-        <div className="flex-shrink-0">
-          <svg
-            className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${
-              isOpen ? "rotate-45" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
+        <div
+          className="flex-shrink-0 w-6 h-6 flex items-center justify-center"
+          style={{
+            border: "1px solid #D4B0A0",
+            background: isOpen ? "#FD870B" : "#FAEEE8",
+            color: isOpen ? "#fff" : "#390007",
+            fontFamily: "var(--font-mono)",
+            fontSize: "14px",
+            fontWeight: 700,
+          }}
+        >
+          {isOpen ? "\u2212" : "+"}
         </div>
       </button>
 
@@ -101,38 +115,53 @@ export default function CareerItem({
         className="overflow-hidden transition-all duration-300 ease-in-out"
         style={{ height: height ?? 0 }}
       >
-        <div ref={contentRef} className="pb-6 px-4 sm:px-6 lg:px-8 pr-12">
-          <article className="text-gray-600 leading-relaxed space-y-4">
+        <div ref={contentRef} className="pb-6 px-6 pr-12" style={{ background: "#FAEEE8" }}>
+          <article className="leading-relaxed space-y-4">
             <ReactMarkdown
               components={{
                 h2: ({ children }) => (
-                  <h2 className="text-xl font-semibold text-gray-900 mt-4">
+                  <h2
+                    className="text-xl mt-4"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#390007",
+                      fontWeight: 600,
+                    }}
+                  >
                     {children}
                   </h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-lg font-semibold text-gray-800 mt-3">
+                  <h3
+                    className="text-lg mt-3"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#390007",
+                      fontWeight: 600,
+                    }}
+                  >
                     {children}
                   </h3>
                 ),
                 p: ({ children }) => (
-                  <p className="text-gray-600">{children}</p>
+                  <p style={{ color: "#6B3030" }}>{children}</p>
                 ),
                 ul: ({ children }) => (
                   <ul className="list-disc pl-6 space-y-1.5">{children}</ul>
                 ),
                 li: ({ children }) => (
-                  <li className="text-gray-600 pl-1">{children}</li>
+                  <li style={{ color: "#6B3030" }} className="pl-1">{children}</li>
                 ),
                 strong: ({ children }) => (
-                  <strong className="font-semibold text-gray-700">
+                  <strong style={{ color: "#390007", fontWeight: 600 }}>
                     {children}
                   </strong>
                 ),
                 a: ({ href, children }) => (
                   <a
                     href={href}
-                    className={`text-${theme.colors.orange} underline hover:text-${theme.colors.orange}/90`}
+                    className="underline"
+                    style={{ color: "#FD870B" }}
                   >
                     {children}
                   </a>

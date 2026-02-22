@@ -36,7 +36,10 @@ export function createPolicyPage(slug: string) {
     const file = await readFile(filePath, "utf8");
 
     return (
-      <main className="mx-auto w-full max-w-6xl px-4 py-16 lg:px-10">
+      <main
+        className="mx-auto w-full max-w-6xl px-4 py-16 lg:px-10"
+        style={{ background: "#FFF8F5" }}
+      >
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
           <div className="md:w-64">
             <div className="mb-6">
@@ -45,9 +48,25 @@ export function createPolicyPage(slug: string) {
             <PolicyNavigation currentSlug={slug} />
           </div>
           <div className="flex-1">
-            <header className="mb-10 space-y-2">
-              <p className="text-sm font-semibold uppercase tracking-widest text-[#FD870B]">Legal</p>
-              <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">{policy.title}</h1>
+            <header
+              className="mb-10 space-y-2 pb-6"
+              style={{ borderBottom: "2px solid #F0DDD4" }}
+            >
+              <p
+                className="text-xs font-bold uppercase tracking-widest"
+                style={{ color: "#FD870B" }}
+              >
+                Legal
+              </p>
+              <h1
+                className="text-3xl md:text-4xl"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  color: "#390007",
+                }}
+              >
+                {policy.title}
+              </h1>
             </header>
             <article className="legal-content">
               <ReactMarkdown>{file}</ReactMarkdown>

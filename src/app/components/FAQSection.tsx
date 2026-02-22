@@ -24,22 +24,53 @@ const faqData = [
     id: 4,
     question: "What industries do you work with?",
     answer:
-      "Aeri is built for industrial manufacturers which includes chemicals, automotive, machinery, oil & gas, aerospace, electronics, and more.",
+      "Aeri is built for industrial manufacturers, including chemicals, automotive, machinery, oil & gas, aerospace, electronics, and more.",
   },
 ];
 
 export default function FAQSection() {
   return (
-    <section className="bg-white px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+    <section
+      className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
+      style={{ background: "#FAEEE8" }}
+    >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-normal text-black mb-12">
-          Common questions
-        </h2>
+        {/* Section header */}
+        <div
+          style={{
+            border: "2px solid #FD870B",
+            boxShadow: "4px 4px 0px #FD870B",
+            marginBottom: "2rem",
+          }}
+        >
+          <div
+            style={{
+              background: "#390007",
+              padding: "0.75rem 1.5rem",
+              borderBottom: "2px solid #FD870B",
+            }}
+          >
+            <h2
+              className="text-xl sm:text-2xl lg:text-3xl uppercase tracking-wider"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "#FFFFFF",
+              }}
+            >
+              Common Questions
+            </h2>
+          </div>
 
-        <div className="divide-y divide-gray-200">
-          {faqData.map((faq) => (
-            <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
-          ))}
+          <div style={{ background: "#FFF8F5" }}>
+            {faqData.map((faq, i) => (
+              <FAQItem
+                key={faq.id}
+                question={faq.question}
+                answer={faq.answer}
+                isLast={i === faqData.length - 1}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

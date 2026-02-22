@@ -7,6 +7,7 @@ interface FAQItemProps {
   answer: string;
   isOpen?: boolean;
   onToggle?: () => void;
+  isLast?: boolean;
 }
 
 export default function FAQItem({
@@ -14,6 +15,7 @@ export default function FAQItem({
   answer,
   isOpen = false,
   onToggle,
+  isLast = false,
 }: FAQItemProps) {
   const [isExpanded, setIsExpanded] = useState(isOpen);
 
@@ -23,36 +25,52 @@ export default function FAQItem({
   };
 
   return (
-    <div>
+    <div
+      style={{
+        borderBottom: isLast ? "none" : "2px solid #F0DDD4",
+      }}
+    >
       <button
         onClick={handleToggle}
-        className="w-full py-6 text-left flex items-center justify-between transition-colors duration-200"
+        className="w-full py-5 px-6 text-left flex items-center justify-between"
+        style={{
+          background: isExpanded ? "#FAEEE8" : "transparent",
+          transition: "background 0.1s ease",
+        }}
       >
-        <span className="text-xl sm:text-2xl lg:text-3xl font-normal text-black pr-4">
+        <span
+          className="text-lg sm:text-xl lg:text-2xl pr-4"
+          style={{
+            fontFamily: "var(--font-display)",
+            color: "#390007",
+          }}
+        >
           {question}
         </span>
-        <div className="flex-shrink-0">
-          <svg
-            className={`w-5 h-5 text-black transition-transform duration-200 ${
-              isExpanded ? "rotate-45" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
+        <div
+          className="flex-shrink-0 w-6 h-6 flex items-center justify-center"
+          style={{
+            border: "1px solid #D4B0A0",
+            background: isExpanded ? "#FD870B" : "#FAEEE8",
+            color: isExpanded ? "#fff" : "#390007",
+            fontFamily: "var(--font-mono)",
+            fontSize: "14px",
+            fontWeight: 700,
+          }}
+        >
+          {isExpanded ? "−" : "+"}
         </div>
       </button>
 
       {isExpanded && (
-        <div className="pb-6 pr-12">
-          <p className="text-gray-600 leading-relaxed text-lg sm:text-xl lg:text-2xl">
+        <div
+          className="pb-6 px-6 pr-16"
+          style={{ background: "#FAEEE8" }}
+        >
+          <p
+            className="leading-relaxed text-base sm:text-lg"
+            style={{ color: "#6B3030" }}
+          >
             {answer}
           </p>
         </div>

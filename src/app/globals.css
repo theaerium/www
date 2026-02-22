@@ -1,90 +1,79 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: "General Sans";
-    src:
-        url("/fonts/GeneralSans-Regular.woff2") format("woff2"),
-        url("/fonts/GeneralSans-Regular.woff") format("woff"),
-        url("/fonts/GeneralSans-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src:
-        url("/fonts/GeneralSans-Medium.woff2") format("woff2"),
-        url("/fonts/GeneralSans-Medium.woff") format("woff"),
-        url("/fonts/GeneralSans-Medium.ttf") format("truetype");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src:
-        url("/fonts/GeneralSans-Semibold.woff2") format("woff2"),
-        url("/fonts/GeneralSans-Semibold.woff") format("woff"),
-        url("/fonts/GeneralSans-Semibold.ttf") format("truetype");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src:
-        url("/fonts/GeneralSans-Bold.woff2") format("woff2"),
-        url("/fonts/GeneralSans-Bold.woff") format("woff"),
-        url("/fonts/GeneralSans-Bold.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src:
-        url("/fonts/GeneralSans-Light.woff2") format("woff2"),
-        url("/fonts/GeneralSans-Light.woff") format("woff"),
-        url("/fonts/GeneralSans-Light.ttf") format("truetype");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "General Sans";
-    src:
-        url("/fonts/GeneralSans-Extralight.woff2") format("woff2"),
-        url("/fonts/GeneralSans-Extralight.woff") format("woff"),
-        url("/fonts/GeneralSans-Extralight.ttf") format("truetype");
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
+/* ═══════════════════════════════════════════════════════════
+   AERI RETRO DESIGN SYSTEM
+   Editorial palette + 90s retro styling
+   ═══════════════════════════════════════════════════════════ */
 
 :root {
-    --background: #F0F0F0;
-    --foreground: #000000;
-    --aether-primary: #fd870b;
-    --aether-secondary: #00b8d9;
-    --font-general-sans:
-        "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        sans-serif;
+    /* Aeri Editorial (Light) Palette */
+    --aeri-bg0: #FFF8F5;
+    --aeri-bg1: #FAEEE8;
+    --aeri-bg2: #F0DDD4;
+    --aeri-bg3: #E0C4B8;
+    --aeri-border: #D4B0A0;
+    --aeri-border-light: #C09888;
+    --aeri-text0: #390007;
+    --aeri-text1: #4A1018;
+    --aeri-text2: #6B3030;
+    --aeri-text3: #8C5A50;
+    --aeri-text4: #B08074;
+
+    /* Accent colors */
+    --aeri-accent: #FD870B;
+    --aeri-accent-light: #FFA040;
+    --aeri-accent-muted: #8C4A06;
+    --aeri-accent-subtle: rgba(253, 135, 11, 0.09);
+    --aeri-crimson: #FF3B4A;
+    --aeri-saffron: #FFD02A;
+    --aeri-magenta: #E0368C;
+
+    /* Semantic */
+    --aeri-negative: #FF3B4A;
+    --aeri-positive: #FFD02A;
+    --aeri-warning: #FD870B;
+    --aeri-info: #E0368C;
+
+    /* Dark bar (for header, nav, footer contrast) */
+    --aeri-dark: #390007;
+    --aeri-dark-surface: #4A0A12;
+    --aeri-dark-elevated: #5C141E;
+    --aeri-dark-text: #FFF5F0;
+    --aeri-dark-text-muted: #E8CCC4;
+    --aeri-dark-text-dim: #D4A89C;
+    --aeri-dark-border: #7A2832;
+
+    /* Typography */
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --background: var(--aeri-bg0);
+    --foreground: var(--aeri-text0);
 }
 
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --font-sans: var(--font-general-sans);
-    --font-mono: var(--font-geist-mono);
-    --color-aether-primary: var(--aether-primary);
-    --color-aether-secondary: var(--aether-secondary);
-    --color-cream: #fefff4;
-    --color-orange: #fd870b;
+    --font-sans: var(--font-body);
+    --font-mono: var(--font-mono);
+    --color-aeri-bg0: var(--aeri-bg0);
+    --color-aeri-bg1: var(--aeri-bg1);
+    --color-aeri-bg2: var(--aeri-bg2);
+    --color-aeri-bg3: var(--aeri-bg3);
+    --color-aeri-border: var(--aeri-border);
+    --color-aeri-text0: var(--aeri-text0);
+    --color-aeri-text1: var(--aeri-text1);
+    --color-aeri-text2: var(--aeri-text2);
+    --color-aeri-text3: var(--aeri-text3);
+    --color-aeri-text4: var(--aeri-text4);
+    --color-aeri-accent: var(--aeri-accent);
+    --color-aeri-dark: var(--aeri-dark);
+    --color-aeri-dark-surface: var(--aeri-dark-surface);
+    --color-aeri-dark-text: var(--aeri-dark-text);
+    --color-aeri-dark-border: var(--aeri-dark-border);
+    --color-cream: var(--aeri-bg1);
+    --color-orange: var(--aeri-accent);
 }
 
 * {
@@ -97,36 +86,249 @@
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-general-sans);
+    font-family: var(--font-body);
 }
 
-/* Text selection styling */
-/*::selection {
-    background-color: var(--aether-primary);
-    color: var(--foreground);
-}*/
+/* ─── TEXT SELECTION ─── */
+::selection {
+    background-color: var(--aeri-accent);
+    color: #fff;
+}
 
 ::-moz-selection {
-    background-color: var(--aether-primary);
-    color: var(--foreground);
+    background-color: var(--aeri-accent);
+    color: #fff;
 }
 
+/* ─── TYPOGRAPHY BASE ─── */
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--aeri-text0);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RETRO UTILITY CLASSES
+   Ported from Senchi, re-skinned with Aeri palette
+   ═══════════════════════════════════════════════════════════ */
+
+/* Borders & Shadows */
+.oldschool-border {
+    border: 2px solid var(--aeri-accent);
+}
+
+.oldschool-shadow {
+    box-shadow: 3px 3px 0px var(--aeri-accent);
+}
+
+.oldschool-shadow-lg {
+    box-shadow: 4px 4px 0px var(--aeri-accent);
+}
+
+.oldschool-divider {
+    border-top: 3px double var(--aeri-dark);
+}
+
+hr.fancy {
+    border: none;
+    border-top: 3px double var(--aeri-dark);
+    margin: 2rem 0;
+}
+
+/* Beveled Boxes */
+.bevel-box {
+    border: 2px outset var(--aeri-bg3);
+    background: var(--aeri-bg1);
+    padding: 1rem;
+}
+
+.inset-box {
+    border: 2px inset var(--aeri-bg3);
+    background: #fff;
+    padding: 1rem;
+}
+
+/* Dark header bar pattern */
+.dark-header-bar {
+    background: var(--aeri-dark);
+    color: var(--aeri-dark-text);
+    padding: 0.5rem 1.5rem;
+    border-bottom: 2px solid var(--aeri-accent);
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ─── MARQUEE BANNER ─── */
+.marquee-banner {
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--aeri-dark);
+    color: var(--aeri-dark-text-muted);
+    padding: 6px 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    border-bottom: 2px solid var(--aeri-accent);
+}
+
+.marquee-banner span {
+    display: inline-block;
+    animation: marquee 35s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* ─── HIT COUNTER ─── */
+.hit-counter {
+    font-family: var(--font-mono);
+    background: var(--aeri-dark);
+    color: var(--aeri-accent);
+    padding: 2px 10px;
+    border: 2px inset var(--aeri-dark-border);
+    font-size: 0.8rem;
+    display: inline-block;
+    letter-spacing: 0.1em;
+}
+
+/* ─── RETRO TABLE ─── */
+table.oldschool {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--font-body);
+}
+
+table.oldschool th {
+    background: var(--aeri-dark);
+    color: var(--aeri-dark-text-muted);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid var(--aeri-accent);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+table.oldschool td {
+    padding: 6px 12px;
+    border: 1px solid var(--aeri-border);
+    font-size: 0.85rem;
+    color: var(--aeri-text1);
+}
+
+table.oldschool tr:nth-child(even) {
+    background: var(--aeri-bg1);
+}
+
+table.oldschool tr:hover {
+    background: var(--aeri-bg2);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.section-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.section-transition.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ─── 3D CARD SCROLL (kept for compatibility) ─── */
 .hovering-cards:hover {
-    /* transform: rotateX(0); */
     animation-play-state: paused;
     animation: scroll-cards 100s infinite;
 }
 
 .hovering-cards {
     cursor: pointer;
-    /* transform: rotateX(-50deg) rotateY(0deg) rotateZ(-30deg); */
     transform-origin: 15% 200%;
     animation: scroll-cards 100s infinite;
 }
 
 @keyframes scroll-cards {
     0% {
-        /* TODO: Adjust the z angle, initially it is -30deg for both 0 and 100% */
         transform: rotateX(-50deg) rotateY(-15deg) rotateZ(-30deg)
             translateX(0%);
     }
@@ -136,20 +338,26 @@ body {
     }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   LEGAL CONTENT
+   ═══════════════════════════════════════════════════════════ */
+
 .legal-content {
-    color: #1f2937;
+    color: var(--aeri-text1);
     font-size: 1rem;
     line-height: 1.7;
     display: grid;
     gap: 1.25rem;
+    font-family: var(--font-body);
 }
 
 .legal-content h1,
 .legal-content h2,
 .legal-content h3,
 .legal-content h4 {
-    color: #111827;
+    color: var(--aeri-text0);
     font-weight: 700;
+    font-family: var(--font-display);
 }
 
 .legal-content h1 {
@@ -183,12 +391,12 @@ body {
 }
 
 .legal-content a {
-    color: #fd870b;
+    color: var(--aeri-accent);
     text-decoration: underline;
 }
 
 .legal-content hr {
     border: 0;
-    border-top: 1px solid #e5e7eb;
+    border-top: 3px double var(--aeri-dark);
     margin: 2rem 0;
 }

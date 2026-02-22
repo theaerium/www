@@ -1,15 +1,30 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aeriumhq.com"),
   title: "Aerium | Supply chain intelligence",
   description:
     "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
@@ -69,7 +84,12 @@ export default function RootLayout({
           content="Aerium - Supply chain intelligence"
         />
       </head>
-      <body className={`${geistMono.variable} antialiased`}>
+      <body
+        className={`${dmSans.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased`}
+        style={{
+          fontFamily: "'DM Sans', sans-serif",
+        }}
+      >
         {children}
         <Analytics />
         <Script

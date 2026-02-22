@@ -13,25 +13,25 @@ export interface NavItem {
 
 export const navigationConfig: NavItem[] = [
   {
-    label: "Platform",
+    label: "Aeri",
     href: "/",
     heading: "AI supply chain analyst",
     subItems: [
       {
-        label: "Sentinel",
-        href: "/",
+        label: "Cost Intelligence",
+        href: "/#cost-intelligence",
         description:
           "Understand the real costs of your business. Advanced forecasting of feedstock and import costs to provide unparalleled insight into landed costs and identifying savings opportunities.",
       },
       {
-        label: "Orchestrator",
-        href: "/",
+        label: "Procurement Automation",
+        href: "/#procurement-automation",
         description:
           "Get your inputs when you need them. Automate sourcing, purchasing, and RFQs to ensure the line never goes down. Ingest any document format and conduct analysis to identify savings opportunities.",
       },
       {
-        label: "Concierge",
-        href: "/",
+        label: "Reporting",
+        href: "/#reporting",
         description:
           "Manage supplier relationships from your inbox. Ask questions, start tasks, and run your supply chain the same way you do today - via email or teams.",
       },

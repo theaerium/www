@@ -13,13 +13,13 @@ interface ButtonProps {
 export default function Button({
   text,
   icon,
-  backgroundColor = "#667EEA",
-  textColor = "white",
+  backgroundColor = "#390007",
+  textColor = "#FFF5F0",
   fontSize = "medium",
   onClick,
   className = "",
   hoverColor,
-  padding = "px-6 py-4",
+  padding = "px-6 py-3",
 }: ButtonProps) {
   const fontSizeClasses = {
     small: "text-sm",
@@ -32,33 +32,34 @@ export default function Button({
     if (hoverColor) {
       e.currentTarget.style.backgroundColor = hoverColor;
     }
+    e.currentTarget.style.boxShadow = "1px 1px 0px #FD870B";
+    e.currentTarget.style.transform = "translate(2px, 2px)";
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.style.backgroundColor = backgroundColor;
+    e.currentTarget.style.boxShadow = "3px 3px 0px #FD870B";
+    e.currentTarget.style.transform = "translate(0, 0)";
   };
 
   return (
     <button
       onClick={onClick}
-      className={`${padding} rounded-lg font-medium transition-colors duration-200 flex items-center ${text && !className.includes("justify-between") ? "space-x-2" : ""} ${fontSizeClasses[fontSize as keyof typeof fontSizeClasses]} ${className} group relative overflow-hidden`}
+      className={`${padding} font-semibold uppercase tracking-wider flex items-center ${text ? "gap-2" : ""} ${fontSizeClasses[fontSize as keyof typeof fontSizeClasses]} ${className}`}
       style={{
         backgroundColor: backgroundColor,
         color: textColor,
+        border: "2px solid #FD870B",
+        boxShadow: "3px 3px 0px #FD870B",
+        fontFamily: "var(--font-body)",
+        letterSpacing: "0.1em",
+        transition: "all 0.1s ease",
+        cursor: "pointer",
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {text && (
-        <div className="relative h-full flex items-center overflow-hidden">
-          <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
-            {text}
-          </span>
-          <span className="block absolute top-0 left-0 transition-transform duration-300 ease-out group-hover:translate-y-0 translate-y-full h-full flex items-center">
-            {text}
-          </span>
-        </div>
-      )}
+      {text && <span>{text}</span>}
       {icon}
     </button>
   );
