@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import AeriumLogoSvg from "@/components/AeriumLogo_no_background.svg";
@@ -39,8 +39,8 @@ function HeaderInner() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const [headerVisible, setHeaderVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrollAnchor, setScrollAnchor] = useState(0);
+  const lastScrollYRef = useRef(0);
+  const scrollAnchorRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,21 +51,21 @@ function HeaderInner() {
       else if (y > 50) setShowBanner(false);
 
       // Hide/show header on scroll direction with threshold
-      if (y > lastScrollY && y > 500) {
+      if (y > lastScrollYRef.current && y > 500) {
         // Scrolling down — hide and reset anchor
         setHeaderVisible(false);
-        setScrollAnchor(y);
-      } else if (scrollAnchor - y > 500) {
-        // Scrolling up — only show after 50px of upward scroll
+        scrollAnchorRef.current = y;
+      } else if (scrollAnchorRef.current - y > 500) {
+        // Scrolling up — only show after 500px of upward scroll
         setHeaderVisible(true);
       }
 
       if (y <= 0) setHeaderVisible(true);
-      setLastScrollY(y);
+      lastScrollYRef.current = y;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, scrollAnchor]);
+  }, []);
 
   return (
     <header
