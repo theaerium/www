@@ -83,7 +83,7 @@ export default function HeroSection() {
                       className="text-xs uppercase tracking-wider"
                       style={{ color: "#FD870B" }}
                     >
-                      Spend Reduction
+                      Profitability Increase
                     </div>
                   </div>
                   <div className="bevel-box">
@@ -205,6 +205,24 @@ export default function HeroSection() {
                       <div style={{ color: "#390007" }}>
                         Move supplier conversations to transparent, data-backed
                         discussions rather than comparing quotes.
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        borderBottom: "1px solid #F0DDD4",
+                        paddingBottom: "0.75rem",
+                      }}
+                    >
+                      <div
+                        className="text-sm font-bold"
+                        style={{ color: "#FD870B" }}
+                      >
+                        Sales Pricing Optimization
+                      </div>
+                      <div style={{ color: "#390007" }}>
+                        Cluster historical sales data and real-time market
+                        signals to quote quicker with optimal pricing that
+                        maximizes your margins.
                       </div>
                     </div>
                     <div>
