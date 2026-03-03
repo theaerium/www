@@ -10,7 +10,10 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "#FFF8F5" }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ background: "#FFF8F5" }}
+    >
       <Header />
       <main className="pt-8 pb-16 flex-1">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +53,10 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-8">
-            <div className="bevel-box" style={{ borderLeft: "3px solid #FD870B" }}>
+            <div
+              className="bevel-box"
+              style={{ borderLeft: "3px solid #FD870B" }}
+            >
               <h2
                 className="text-2xl mb-4"
                 style={{
@@ -71,7 +77,10 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="bevel-box" style={{ borderLeft: "3px solid #FD870B" }}>
+            <div
+              className="bevel-box"
+              style={{ borderLeft: "3px solid #FD870B" }}
+            >
               <h2
                 className="text-2xl mb-4"
                 style={{
@@ -87,14 +96,18 @@ export default function AboutPage() {
               >
                 Before Aerium, we spent years at McKinsey building software to
                 automate inventory management, pricing optimization, and supply
-                chain workflows for some of the largest manufacturers in the
-                world. We saw firsthand how much time and money was being lost
-                to manual processes and disconnected systems. We started Aerium
-                to bring that same level of automation to every manufacturer.
+                chain workflows for some of the largest manufacturers and
+                distributors in the world. We saw firsthand how much time and
+                money was being lost to manual processes and disconnected
+                systems. We started Aerium to bring that same level of
+                automation to every manufacturer.
               </p>
             </div>
 
-            <div className="bevel-box" style={{ borderLeft: "3px solid #FD870B" }}>
+            <div
+              className="bevel-box"
+              style={{ borderLeft: "3px solid #FD870B" }}
+            >
               <h2
                 className="text-2xl mb-4"
                 style={{

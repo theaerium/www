@@ -34,7 +34,8 @@ export default function Footer() {
             className="text-lg sm:text-xl text-center max-w-xl mx-auto mb-8 leading-relaxed"
             style={{ color: "#D4A89C" }}
           >
-            Focus on pushing production instead of chasing parts and materials.
+            Aerium will help you get ahead, like your best employees help you
+            do.
           </p>
 
           <div className="flex justify-center">
@@ -76,7 +77,8 @@ export default function Footer() {
                   className="text-sm leading-relaxed"
                   style={{ color: "#D4A89C" }}
                 >
-                  The AI supply chain analyst, built for manufacturers.
+                  The AI supply chain analyst, built for manufacturers and
+                  distributors.
                 </p>
               </div>
             </div>

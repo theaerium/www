@@ -88,10 +88,10 @@ function HeaderInner() {
         }}
       >
         <span>
-          *** Aerium &mdash; AI Supply Chain Intelligence for Manufacturers
-          &mdash; Monitor Prices &bull; Automate Purchasing &bull; Identify
-          Savings &mdash; Book a Demo Today &mdash; Trusted by Industrial
-          Manufacturers Across North America ***
+          *** Aerium &mdash; AI Supply Chain Intelligence for Manufacturers and
+          Distributors &mdash; Monitor Prices &bull; Automate Purchasing &bull;
+          Identify Savings &mdash; Book a Demo Today &mdash; Trusted by
+          Industrial Manufacturers Across North America ***
         </span>
       </div>
 

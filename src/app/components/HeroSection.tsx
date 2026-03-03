@@ -54,7 +54,7 @@ export default function HeroSection() {
                   >
                     The AI Supply Chain Analyst,
                     <br />
-                    Built for Manufacturers.
+                    Built for Manufacturers and Distributors.
                   </h1>
                   <p
                     className="leading-relaxed text-lg font-medium"

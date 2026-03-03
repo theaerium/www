@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://aeriumhq.com"),
   title: "Aerium | Supply chain intelligence",
   description:
-    "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
+    "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers and Distributors can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
   keywords: [
     "procurement",
     "supply chain",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Aerium | Supply chain intelligence",
     description:
-      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers and Distributors can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
     url: "https://aeriumhq.com",
     siteName: "Aerium",
     images: [
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aerium | Supply chain intelligence",
     description:
-      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
+      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers and Distributors can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
     images: ["/og-image.png"],
     creator: "@aerium",
   },
