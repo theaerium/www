@@ -24,7 +24,7 @@ const faqData = [
     id: 4,
     question: "What industries do you work with?",
     answer:
-      "Aeri is built for industrial manufacturers and distributors, including chemicals, automotive, machinery, oil & gas, aerospace, electrical, electronics and more.",
+      "Aeri is built for industrial manufacturers and distributors, including chemicals, automotive, machinery, oil & gas, aerospace, electrical, electronics, and more.",
   },
 ];
 
