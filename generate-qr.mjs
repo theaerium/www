@@ -10,11 +10,24 @@ if (!url) {
   process.exit(1);
 }
 
-const svg = await QRCode.toString(url, {
-  type: "svg",
-  color: { light: "#00000000", dark: "#000000" },
-  margin: 0,
-});
+const qr = QRCode.create(url, { errorCorrectionLevel: "M" });
+const size = qr.modules.size;
+const data = qr.modules.data;
+const scale = 10;
+const svgSize = size * scale;
+
+let rects = "";
+for (let y = 0; y < size; y++) {
+  for (let x = 0; x < size; x++) {
+    if (data[y * size + x]) {
+      rects += `<rect x="${x * scale}" y="${y * scale}" width="${scale}" height="${scale}"/>`;
+    }
+  }
+}
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgSize} ${svgSize}" width="${svgSize}" height="${svgSize}">
+<g fill="#000">${rects}</g>
+</svg>`;
 
 writeFileSync(output, svg);
 console.log(`QR code saved to ${output}`);
