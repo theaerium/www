@@ -1,3 +1,10 @@
+import { redirect } from "next/navigation";
+
+export default function SOCMAPage() {
+  redirect("https://calendar.app.google/21k4z9MSgxhgZHZU8");
+}
+
+/*
 "use client";
 
 import { useEffect } from "react";
@@ -130,3 +137,4 @@ export default function DemoPage() {
     </div>
   );
 }
+*/
