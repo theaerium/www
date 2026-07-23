@@ -12,7 +12,7 @@ export default function BookADemoPage() {
   return (
     <SiteShell>
       {/* Hero */}
-      <section style={{ background: "var(--site-cream)", padding: "80px 32px 64px", borderBottom: "1px solid var(--site-hairline)" }}>
+      <section style={{ padding: "80px 32px 64px", borderBottom: "1px solid var(--site-hairline)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", textAlign: "center" }}>
           <Eyebrow style={{ display: "block", marginBottom: 20 }}>BOOK A DEMO</Eyebrow>
           <h1

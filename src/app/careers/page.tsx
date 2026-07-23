@@ -111,7 +111,7 @@ export default function CareersPage() {
       </Section>
 
       {/* Why join */}
-      <section style={{ background: "var(--site-cream)", padding: "96px 32px", borderTop: "1px solid var(--site-hairline)" }}>
+      <section style={{ padding: "96px 32px", borderTop: "1px solid var(--site-hairline)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div className="site-grid-3">
             {WHY.map((w) => (

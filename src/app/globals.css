@@ -125,6 +125,31 @@
     background: var(--site-cream);
     color: var(--site-body);
     -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+/* Stripe-style vertical rails marking the edges of the centered content
+   column. They sit behind the content (z-index 0) so they show through the
+   light/transparent sections and disappear behind the full-bleed dark and
+   amber bands. Same 1px hairline as the horizontal section dividers. */
+.site-rails {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1240px;
+    border-left: 1px solid var(--site-hairline);
+    border-right: 1px solid var(--site-hairline);
+    pointer-events: none;
+    z-index: 0;
+    display: none;
+}
+.site > main { position: relative; z-index: 1; }
+.site > .site-footer { position: relative; z-index: 1; }
+/* Only show once the viewport is wide enough to leave an outer margin. */
+@media (min-width: 1288px) {
+    .site-rails { display: block; }
 }
 .site h1, .site h2, .site h3, .site h4, .site h5, .site h6 {
     font-family: var(--font-archivo);

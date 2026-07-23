@@ -33,7 +33,7 @@ export default function MediaEventsPage() {
   return (
     <SiteShell>
       {/* Hero */}
-      <section style={{ background: "var(--site-cream)", padding: "96px 32px 72px", borderBottom: "1px solid var(--site-hairline)" }}>
+      <section style={{ padding: "96px 32px 72px", borderBottom: "1px solid var(--site-hairline)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", textAlign: "center" }}>
           <Eyebrow style={{ display: "block", marginBottom: 20 }}>MEDIA &amp; EVENTS</Eyebrow>
           <h1
@@ -97,7 +97,7 @@ export default function MediaEventsPage() {
       </Section>
 
       {/* Press */}
-      <section style={{ background: "var(--site-cream)", padding: "72px 32px", borderTop: "1px solid var(--site-hairline)" }}>
+      <section style={{ padding: "72px 32px", borderTop: "1px solid var(--site-hairline)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ margin: "0 0 10px", fontSize: 26, fontWeight: 700, letterSpacing: "-0.01em" }}>Press and media</h2>
           <p style={{ margin: 0, color: "var(--site-body)", fontSize: 15.5 }}>

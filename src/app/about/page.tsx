@@ -37,7 +37,7 @@ export default function AboutPage() {
   return (
     <SiteShell>
       {/* Hero — wordmark treatment */}
-      <section style={{ background: "var(--site-cream)", padding: "96px 32px 72px", borderBottom: "1px solid var(--site-hairline)" }}>
+      <section style={{ padding: "96px 32px 72px", borderBottom: "1px solid var(--site-hairline)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", textAlign: "center" }}>
           <Eyebrow style={{ display: "block", marginBottom: 28 }}>ABOUT AERIUM</Eyebrow>
           <h1
