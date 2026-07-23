@@ -72,7 +72,7 @@ export default function SolutionTemplate({ data }: { data: SolutionData }) {
 
       {/* Workflow cards */}
       <Section>
-        <div style={{ maxWidth: 760, margin: "0 auto 56px", textAlign: "center" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto 56px", textAlign: "center" }}>
           <Eyebrow style={{ display: "block", marginBottom: 18 }}>EXAMPLE USE CASES</Eyebrow>
           <h2 style={{ fontSize: "clamp(30px, 4.4vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
             {data.workflowHeading}

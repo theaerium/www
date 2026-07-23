@@ -38,14 +38,13 @@ export default function CareersPage() {
   return (
     <SiteShell>
       {/* Hero */}
-      <section className="railed rail-dark" style={{ background: "#17110D", padding: "96px 32px 80px" }}>
-        <div className="rail-lines" aria-hidden="true" />
+      <section style={{ padding: "96px 32px 80px", borderBottom: "1px solid var(--site-hairline)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", textAlign: "center" }}>
-          <Eyebrow style={{ color: "var(--site-amber)", display: "block", marginBottom: 20 }}>CAREERS</Eyebrow>
+          <Eyebrow style={{ display: "block", marginBottom: 20 }}>CAREERS</Eyebrow>
           <h1
             style={{
               margin: "0 auto",
-              color: "#FFFFFF",
+              color: "var(--site-ink)",
               fontSize: "clamp(34px, 6vw, 54px)",
               fontWeight: 700,
               letterSpacing: "-0.02em",
@@ -56,7 +55,7 @@ export default function CareersPage() {
           >
             Do the best work of your career, where the work is real
           </h1>
-          <p style={{ margin: "26px auto 0", color: "rgba(255,255,255,0.82)", fontSize: 18, lineHeight: 1.65, maxWidth: 760 }}>
+          <p style={{ margin: "26px auto 0", color: "var(--site-body)", fontSize: 18, lineHeight: 1.65, maxWidth: 760 }}>
             Small team, high ownership, forward-deployed. You will ship AI onto real factory floors and watch it change
             how a business runs, in weeks, not roadmaps.
           </p>

@@ -15,7 +15,7 @@ export const equipment: SolutionData = {
   heroPoster: POSTER.equipment,
   stats: [
     { value: "5-10%", caption: "procurement spend recovered" },
-    { value: "20 hrs", caption: "per planner, per week, back" },
+    { value: "4 p.p.", caption: "of bottom line expansion" },
     { value: "<6 mo", caption: "to positive ROI" },
   ],
   workflowHeading: "Built for the work of building equipment",
@@ -82,7 +82,7 @@ export const chemicals: SolutionData = {
   stats: [
     { value: "1000s", caption: "of feedstocks priced against live market data" },
     { value: "5-10%", caption: "margin protected from price swings" },
-    { value: "24/7", caption: "continuous market monitoring" },
+    { value: "<6 mo", caption: "to positive ROI" },
   ],
   workflowHeading: "Built for the chemistry of margin",
   workflowCols: 2,
@@ -141,9 +141,9 @@ export const metal: SolutionData = {
     "An AI workforce that quotes with current metal prices, keeps the shop schedule honest, and handles the tariff paperwork nobody has time for.",
   heroPoster: POSTER.metal,
   stats: [
-    { value: "Minutes", caption: "from RFQ to draft quote" },
-    { value: "15 hrs", caption: "per estimator, per week, back" },
-    { value: "100%", caption: "of duty and tariff filings on time" },
+    { value: "Minutes", caption: "from RFQ to drafted quote" },
+    { value: "15 hrs", caption: "saved per estimator, per week" },
+    { value: "<6 mo", caption: "to positive ROI" },
   ],
   workflowHeading: "Built for the shop floor, not the showroom",
   workflowCols: 3,
