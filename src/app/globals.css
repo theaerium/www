@@ -126,19 +126,22 @@
     color: var(--site-body);
     -webkit-font-smoothing: antialiased;
     position: relative;
+    /* Rail column is wider than the 1240 content so content never touches it. */
+    --rail-w: 1320px;
 }
 
-/* Stripe-style vertical rails marking the edges of the centered content
-   column. They sit behind the content (z-index 0) so they show through the
-   light/transparent sections and disappear behind the full-bleed dark and
-   amber bands. Same 1px hairline as the horizontal section dividers. */
+/* Stripe-style vertical rails marking the edges of the content column, running
+   the full page height. The global pair (below) sits behind the content and
+   shows through light/transparent sections in the hairline colour. Dark and
+   amber bands draw their own rails on top (see .railed) so the colour can adapt
+   to the background; hero video/photo sections are left rail-free. */
 .site-rails {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 1240px;
+    width: var(--rail-w);
     border-left: 1px solid var(--site-hairline);
     border-right: 1px solid var(--site-hairline);
     pointer-events: none;
@@ -147,9 +150,31 @@
 }
 .site > main { position: relative; z-index: 1; }
 .site > .site-footer { position: relative; z-index: 1; }
+
+/* Per-band rails: an isolated stacking context lets the rail lines paint above
+   the band's own background (z-index -1) but below its content, so a dark or
+   amber band shows rails in a colour that reads on it. */
+.railed { position: relative; isolation: isolate; }
+.rail-lines {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--rail-w);
+    border-left: 1px solid var(--rail-c, var(--site-hairline));
+    border-right: 1px solid var(--rail-c, var(--site-hairline));
+    pointer-events: none;
+    z-index: -1;
+    display: none;
+}
+.rail-dark { --rail-c: rgba(255, 255, 255, 0.16); }
+.rail-amber { --rail-c: rgba(34, 26, 21, 0.22); }
+
 /* Only show once the viewport is wide enough to leave an outer margin. */
-@media (min-width: 1288px) {
-    .site-rails { display: block; }
+@media (min-width: 1360px) {
+    .site-rails,
+    .rail-lines { display: block; }
 }
 .site h1, .site h2, .site h3, .site h4, .site h5, .site h6 {
     font-family: var(--font-archivo);
@@ -294,10 +319,13 @@
 
 /* ─── Footer ─── */
 .site-footer { background: var(--site-dark); font-family: var(--font-archivo); border-top: 3px solid var(--site-amber); }
-.site-footer-inner { max-width: 1240px; margin: 0 auto; padding: 72px 32px 40px; }
+.site-footer-inner { max-width: 1240px; margin: 0 auto; padding: 72px 32px 56px; }
+.site-footer-inner-bottom { padding: 28px 32px 40px; }
+/* Full-bleed divider so the footer line runs edge to edge like the section
+   dividers (a direct child of the full-width footer, outside the 1240 inner). */
+.site-footer-rule { border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .site-footer-grid {
     display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px;
-    padding-bottom: 56px; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .site-footer-col { display: flex; flex-direction: column; gap: 12px; }
 .site-footer-label {
@@ -306,14 +334,15 @@
 }
 .site-footer-link { color: rgba(255, 255, 255, 0.78); font-size: 14px; text-decoration: none; transition: color 0.15s ease; }
 .site-footer-link:hover { color: var(--site-amber); }
-.site-footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; }
+.site-footer-bottom { display: flex; align-items: center; justify-content: space-between; }
 
 @media (max-width: 860px) {
     .site-footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 @media (max-width: 520px) {
     .site-footer-grid { grid-template-columns: 1fr; }
-    .site-footer-inner { padding: 56px 22px 32px; }
+    .site-footer-inner { padding: 56px 22px 40px; }
+    .site-footer-inner-bottom { padding: 24px 22px 32px; }
 }
 
 /* ─── Home hero ─── */

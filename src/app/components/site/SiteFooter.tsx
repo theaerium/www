@@ -3,7 +3,8 @@ import { routes, CONTACT_EMAIL } from "./routes";
 
 export default function SiteFooter() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer railed rail-dark">
+      <div className="rail-lines" aria-hidden="true" />
       <div className="site-footer-inner">
         <div className="site-footer-grid">
           <div>
@@ -78,7 +79,9 @@ export default function SiteFooter() {
             </Link>
           </div>
         </div>
-
+      </div>
+      <div className="site-footer-rule" aria-hidden="true" />
+      <div className="site-footer-inner site-footer-inner-bottom">
         <div className="site-footer-bottom">
           <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 13 }}>
             © 2026 Aerium. All rights reserved.

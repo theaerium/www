@@ -52,7 +52,8 @@ export default function StackSection() {
   const ringMode = sel === 3;
 
   return (
-    <section style={{ background: "var(--site-dark)", padding: "96px 32px" }}>
+    <section className="railed rail-dark" style={{ background: "var(--site-dark)", padding: "96px 32px" }}>
+      <div className="rail-lines" aria-hidden="true" />
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <div style={{ maxWidth: 940, margin: "0 auto 72px", textAlign: "center" }}>
           <span className="site-eyebrow" style={{ color: "var(--site-amber)", display: "block", marginBottom: 18 }}>

@@ -140,7 +140,8 @@ export default function AboutPage() {
       </Section>
 
       {/* Careers teaser */}
-      <section style={{ background: "var(--site-dark)", padding: "96px 32px" }}>
+      <section className="railed rail-dark" style={{ background: "var(--site-dark)", padding: "96px 32px" }}>
+        <div className="rail-lines" aria-hidden="true" />
         <div className="cta-home site-container" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 64, alignItems: "center" }}>
           <div>
             <Eyebrow style={{ color: "var(--site-amber)", display: "block", marginBottom: 16 }}>CAREERS</Eyebrow>

@@ -38,7 +38,8 @@ export default function CareersPage() {
   return (
     <SiteShell>
       {/* Hero */}
-      <section style={{ background: "#17110D", padding: "96px 32px 80px" }}>
+      <section className="railed rail-dark" style={{ background: "#17110D", padding: "96px 32px 80px" }}>
+        <div className="rail-lines" aria-hidden="true" />
         <div style={{ maxWidth: 1240, margin: "0 auto", textAlign: "center" }}>
           <Eyebrow style={{ color: "var(--site-amber)", display: "block", marginBottom: 20 }}>CAREERS</Eyebrow>
           <h1

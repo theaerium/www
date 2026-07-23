@@ -53,6 +53,7 @@ export default function SiteNav() {
     <>
       <div className="site-nav-spacer" />
       <header className="site-nav">
+        <div className="rail-lines" aria-hidden="true" />
         <div className="site-nav-inner">
           <Link
             href={routes.home}

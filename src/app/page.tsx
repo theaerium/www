@@ -385,7 +385,8 @@ export default function HomePage() {
       </Section>
 
       {/* CTA band */}
-      <section style={{ background: "var(--site-amber)", padding: "96px 32px" }}>
+      <section className="railed rail-amber" style={{ background: "var(--site-amber)", padding: "96px 32px" }}>
+        <div className="rail-lines" aria-hidden="true" />
         <div
           className="site-container cta-home"
           style={{
