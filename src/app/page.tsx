@@ -134,16 +134,28 @@ export default function HomePage() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              gap: 80,
+              gap: 72,
               flexWrap: "wrap",
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site/images/logo-hammond.png" alt="Hammond Power Solutions" style={{ height: 58, width: "auto" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site/images/logo-stak.png" alt="STAK Industries Inc." style={{ height: 46, width: "auto" }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/site/images/logo-ward.png" alt="Ward Industrials" style={{ height: 40, width: "auto" }} />
+            {[
+              { src: "/site/images/logo-hammond.png", alt: "Hammond Power Solutions" },
+              { src: "/site/images/logo-stak.png", alt: "STAK Industries Inc." },
+              { src: "/site/images/logo-ward.png", alt: "Ward Industrials" },
+            ].map((logo) => (
+              // Uniform bounding box so logos of different aspect ratios read as the same size.
+              <div
+                key={logo.src}
+                style={{ width: 220, height: 84, display: "flex", alignItems: "center", justifyContent: "center" }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  style={{ maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain" }}
+                />
+              </div>
+            ))}
           </div>
           <div
             style={{
