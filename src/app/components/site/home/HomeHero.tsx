@@ -4,44 +4,46 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { routes } from "../routes";
 
-/**
- * Hero background clips. These are TEMPORARY stock placeholders (mixkit) matching
- * the design prototype, so the carousel is fully functional today. Replace `video`
- * with final hosted files (e.g. /site/videos/equipment.mp4) when they land; the
- * `poster` still renders while a clip loads or if video is unavailable.
- */
-const INDUSTRIES = [
+/** Hero background clips (final assets, served from /public/site/videos). */
+const INDUSTRIES: {
+  key: string;
+  num: string;
+  label: string;
+  desc: string;
+  video: string;
+  poster?: string;
+}[] = [
   {
     key: "equipment",
     num: "01",
     label: "Equipment Manufacturers",
     desc: "Quote faster, buy smarter, improve OEE.",
-    video: "https://assets.mixkit.co/videos/14785/14785-720.mp4",
-    poster: "https://assets.mixkit.co/videos/14785/14785-thumb-720-0.jpg",
+    video: "/site/videos/equipment.mp4",
+    poster: "/site/images/equipment.jpg",
   },
   {
     key: "chemicals",
     num: "02",
     label: "Specialty Chemicals",
     desc: "Feedstock, yield, and compliance in one picture.",
-    video: "https://assets.mixkit.co/videos/4380/4380-720.mp4",
-    poster: "https://assets.mixkit.co/videos/4380/4380-thumb-720-0.jpg",
+    video: "/site/videos/specialty-chemicals.mp4",
+    poster: "/site/images/specialty-chemicals.jpg",
   },
   {
     key: "metal",
     num: "03",
     label: "Metal Fabricators",
     desc: "RFQ to shipped part, nothing lost between.",
-    video: "https://assets.mixkit.co/videos/45349/45349-720.mp4",
-    poster: "https://assets.mixkit.co/videos/45349/45349-thumb-720-0.jpg",
+    video: "/site/videos/metal-fabrication.mp4",
+    poster: "/site/images/metal-fabrication.jpg",
   },
   {
     key: "distribution",
     num: "04",
     label: "Distributors",
     desc: "Right stock, right branch, right price.",
-    video: "https://assets.mixkit.co/videos/23011/23011-720.mp4",
-    poster: "https://assets.mixkit.co/videos/23011/23011-thumb-720-0.jpg",
+    video: "/site/videos/distribution.mp4",
+    poster: "/site/images/distribution.jpg",
   },
 ];
 
@@ -104,15 +106,17 @@ export default function HomeHero() {
             pointerEvents: "none",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              backgroundImage: `url(${s.poster})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
+          {s.poster && (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: `url(${s.poster})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          )}
           {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
           <video
             ref={(el) => {
@@ -123,7 +127,7 @@ export default function HomeHero() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload={k === active ? "auto" : "none"}
             style={{
               position: "absolute",
               inset: 0,

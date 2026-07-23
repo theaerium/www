@@ -60,28 +60,28 @@ const INDUSTRY_CARDS = [
     title: "Equipment Manufacturing",
     blurb: "Quote faster, buy smarter, improve OEE.",
     href: routes.solutions.equipment,
-    img: "https://assets.mixkit.co/videos/14785/14785-thumb-720-0.jpg",
+    img: "/site/images/equipment.jpg",
     alt: "Equipment manufacturing floor",
   },
   {
     title: "Specialty Chemicals",
     blurb: "Feedstock, yield, and compliance in one live picture.",
     href: routes.solutions.chemicals,
-    img: "https://assets.mixkit.co/videos/4380/4380-thumb-720-0.jpg",
+    img: "/site/images/specialty-chemicals.jpg",
     alt: "Specialty chemicals plant",
   },
   {
     title: "Metal Fabrication",
     blurb: "From RFQ to shipped part, with nothing lost in between.",
     href: routes.solutions.metal,
-    img: "https://assets.mixkit.co/videos/45349/45349-thumb-720-0.jpg",
+    img: "/site/images/metal-fabrication.jpg",
     alt: "Metal fabrication welding",
   },
   {
     title: "Distribution",
     blurb: "Right stock, right branch, right price.",
     href: routes.solutions.distribution,
-    img: "https://assets.mixkit.co/videos/23011/23011-thumb-720-0.jpg",
+    img: "/site/images/distribution.jpg",
     alt: "Distribution warehouse",
   },
 ];
@@ -142,10 +142,8 @@ export default function HomePage() {
             <img src="/site/images/logo-hammond.png" alt="Hammond Power Solutions" style={{ height: 58, width: "auto" }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/site/images/logo-stak.png" alt="STAK Industries Inc." style={{ height: 46, width: "auto" }} />
-            {/* Ward logo asset pending (exceeds design API fetch limit) — wordmark fallback */}
-            <span style={{ fontSize: 26, fontWeight: 800, letterSpacing: "-0.01em", color: "var(--site-ink)" }}>
-              Ward
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/site/images/logo-ward.png" alt="Ward Industrials" style={{ height: 40, width: "auto" }} />
           </div>
           <div
             style={{

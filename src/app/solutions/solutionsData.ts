@@ -1,10 +1,10 @@
 import type { SolutionData } from "../components/site/SolutionTemplate";
 
 const POSTER = {
-  equipment: "https://assets.mixkit.co/videos/14785/14785-thumb-720-0.jpg",
-  chemicals: "https://assets.mixkit.co/videos/4380/4380-thumb-720-0.jpg",
-  metal: "https://assets.mixkit.co/videos/45349/45349-thumb-720-0.jpg",
-  distribution: "https://assets.mixkit.co/videos/23011/23011-thumb-720-0.jpg",
+  equipment: "/site/images/equipment.jpg",
+  chemicals: "/site/images/specialty-chemicals.jpg",
+  metal: "/site/images/metal-fabrication.jpg",
+  distribution: "/site/images/distribution.jpg",
 };
 
 export const equipment: SolutionData = {

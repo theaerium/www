@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export type HeroSlide = { video?: string; poster: string };
+export type HeroSlide = { video?: string; poster?: string };
 
 /**
  * Ambient crossfading background hero (no user controls). Used on Platform and,
@@ -60,15 +60,17 @@ export default function VideoHero({
       <div style={{ position: "absolute", inset: 0 }}>
         {slides.map((s, k) => (
           <div key={k} style={{ position: "absolute", inset: 0, opacity: k === active ? 1 : 0, transition: "opacity 1400ms ease" }}>
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                backgroundImage: `url(${s.poster})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
+            {s.poster && (
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  backgroundImage: `url(${s.poster})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
+            )}
             {s.video && (
               // eslint-disable-next-line jsx-a11y/media-has-caption
               <video
@@ -80,7 +82,7 @@ export default function VideoHero({
                 muted
                 loop
                 playsInline
-                preload={k === 0 ? "auto" : "metadata"}
+                preload={k === active ? "auto" : "none"}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
               />
             )}

@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const HERO_SLIDES = [
-  { video: "https://assets.mixkit.co/videos/14785/14785-720.mp4", poster: "https://assets.mixkit.co/videos/14785/14785-thumb-720-0.jpg" },
-  { video: "https://assets.mixkit.co/videos/4380/4380-720.mp4", poster: "https://assets.mixkit.co/videos/4380/4380-thumb-720-0.jpg" },
-  { video: "https://assets.mixkit.co/videos/45349/45349-720.mp4", poster: "https://assets.mixkit.co/videos/45349/45349-thumb-720-0.jpg" },
-  { video: "https://assets.mixkit.co/videos/23011/23011-720.mp4", poster: "https://assets.mixkit.co/videos/23011/23011-thumb-720-0.jpg" },
+  { video: "/site/videos/equipment.mp4", poster: "/site/images/equipment.jpg" },
+  { video: "/site/videos/specialty-chemicals.mp4", poster: "/site/images/specialty-chemicals.jpg" },
+  { video: "/site/videos/metal-fabrication.mp4", poster: "/site/images/metal-fabrication.jpg" },
+  { video: "/site/videos/distribution.mp4", poster: "/site/images/distribution.jpg" },
 ];
 
 const STACK = [
