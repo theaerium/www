@@ -134,27 +134,39 @@ export default function HomePage() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              gap: 72,
+              gap: 104,
               flexWrap: "wrap",
             }}
           >
             {[
-              { src: "/site/images/logo-hammond.png", alt: "Hammond Power Solutions" },
-              { src: "/site/images/logo-stak.png", alt: "STAK Industries Inc." },
-              { src: "/site/images/logo-ward.png", alt: "Ward Industrials" },
+              // Per-logo optical sizing: each logo has different internal whitespace,
+              // so equal box sizes read unequally. Heights tuned so the wordmarks
+              // appear the same size (Hammond floats in padding, so it needs the most).
+              {
+                src: "/site/images/logo-hammond.png",
+                alt: "Hammond Power Solutions",
+                h: 118,
+                href: "https://americas.hammondpowersolutions.com/",
+              },
+              {
+                src: "/site/images/logo-stak.png",
+                alt: "STAK Industries Inc.",
+                h: 96,
+                href: "https://www.stakindustries.com/",
+              },
+              { src: "/site/images/logo-ward.png", alt: "Ward Industrials", h: 58, href: "https://ward.ca/" },
             ].map((logo) => (
-              // Uniform bounding box so logos of different aspect ratios read as the same size.
-              <div
+              <a
                 key={logo.src}
-                style={{ width: 220, height: 84, display: "flex", alignItems: "center", justifyContent: "center" }}
+                href={logo.href}
+                target="_blank"
+                rel="noreferrer"
+                className="trusted-logo"
+                aria-label={logo.alt}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  style={{ maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain" }}
-                />
-              </div>
+                <img src={logo.src} alt={logo.alt} style={{ height: logo.h, width: "auto", display: "block" }} />
+              </a>
             ))}
           </div>
           <div

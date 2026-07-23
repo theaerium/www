@@ -194,6 +194,13 @@
     color: var(--site-eyebrow);
 }
 
+/* Trusted-by logos: clickable, subtle hover */
+.trusted-logo {
+    display: inline-flex;
+    transition: opacity 0.15s ease;
+}
+.trusted-logo:hover { opacity: 0.6; }
+
 /* Text-link hover: BB7E1B -> F6A623 */
 .site-link {
     color: var(--site-link);
