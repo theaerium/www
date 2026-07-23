@@ -50,13 +50,13 @@ export default function CareersPage() {
               fontWeight: 700,
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
-              maxWidth: "20ch",
+              maxWidth: "26ch",
               textWrap: "balance",
             }}
           >
             Do the best work of your career, where the work is real
           </h1>
-          <p style={{ margin: "26px auto 0", color: "rgba(255,255,255,0.82)", fontSize: 18, lineHeight: 1.65, maxWidth: 620 }}>
+          <p style={{ margin: "26px auto 0", color: "rgba(255,255,255,0.82)", fontSize: 18, lineHeight: 1.65, maxWidth: 760 }}>
             Small team, high ownership, forward-deployed. You will ship AI onto real factory floors and watch it change
             how a business runs, in weeks, not roadmaps.
           </p>

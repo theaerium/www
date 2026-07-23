@@ -73,7 +73,7 @@ export default function SolutionTemplate({ data }: { data: SolutionData }) {
       {/* Workflow cards */}
       <Section>
         <div style={{ maxWidth: 760, margin: "0 auto 56px", textAlign: "center" }}>
-          <Eyebrow style={{ display: "block", marginBottom: 18 }}>WHAT THE WORKFORCE TAKES ON</Eyebrow>
+          <Eyebrow style={{ display: "block", marginBottom: 18 }}>EXAMPLE USE CASES</Eyebrow>
           <h2 style={{ fontSize: "clamp(30px, 4.4vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
             {data.workflowHeading}
           </h2>
@@ -84,7 +84,7 @@ export default function SolutionTemplate({ data }: { data: SolutionData }) {
               <div className="mono" style={{ color: "var(--site-link)", fontSize: 13, marginBottom: 12 }}>
                 {c.num}
               </div>
-              <h3 style={{ margin: "0 0 10px", fontSize: 19, fontWeight: 700 }}>{c.title}</h3>
+              <h3 className="wf-title" style={{ margin: "0 0 10px", fontSize: 19, fontWeight: 700 }}>{c.title}</h3>
               <p style={{ margin: 0, color: "var(--site-body)", fontSize: 15, lineHeight: 1.6 }}>{c.body}</p>
             </div>
           ))}
