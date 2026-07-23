@@ -334,28 +334,32 @@ export default function HomePage() {
         </div>
         <div className="site-grid-4">
           {INDUSTRY_CARDS.map((c) => (
-            <div key={c.title} style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ aspectRatio: "16 / 11", position: "relative" }}>
+            <Link
+              key={c.title}
+              href={c.href}
+              className="industry-card"
+              style={{ display: "flex", flexDirection: "column", textDecoration: "none" }}
+            >
+              <div style={{ aspectRatio: "16 / 11", position: "relative", overflow: "hidden", borderRadius: 12 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={c.img}
                   alt={c.alt}
+                  className="industry-card-img"
                   style={{
                     position: "absolute",
                     inset: 0,
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    borderRadius: 12,
                   }}
                 />
               </div>
-              <h3 style={{ margin: "18px 0 6px", fontSize: 18, fontWeight: 700 }}>{c.title}</h3>
-              <p style={{ margin: "0 0 10px", color: "var(--site-body)", fontSize: 14.5, lineHeight: 1.55 }}>{c.blurb}</p>
-              <Link href={c.href} className="site-link" style={{ fontSize: 14.5, fontWeight: 600, marginTop: "auto" }}>
-                See solutions →
-              </Link>
-            </div>
+              <h3 className="industry-card-title" style={{ margin: "18px 0 6px", fontSize: 18, fontWeight: 700, color: "var(--site-ink)" }}>
+                {c.title}
+              </h3>
+              <p style={{ margin: 0, color: "var(--site-body)", fontSize: 14.5, lineHeight: 1.55 }}>{c.blurb}</p>
+            </Link>
           ))}
         </div>
         <div className="site-grid-2" style={{ marginTop: 64 }}>

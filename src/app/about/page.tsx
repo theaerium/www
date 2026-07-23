@@ -24,12 +24,12 @@ const VALUES = [
   {
     num: "03",
     title: "Real problems, real people",
-    body: "We build for planners, estimators, buyers, and the people running the floor. Not for slideware, and not for hype.",
+    body: "We build for hard problems and the teams working to solve them.",
   },
   {
     num: "04",
     title: "Pushing the limit",
-    body: "The frontier of AI belongs on the factory floor as much as anywhere. We take on the hard versions of problems, on site, where they live.",
+    body: "AI's frontier belongs in manufacturing and distribution as much as anywhere.",
   },
 ];
 
@@ -128,13 +128,12 @@ export default function AboutPage() {
           </h2>
           <p style={{ margin: "0 0 18px", color: "#3E362F", fontSize: 16.5, lineHeight: 1.7 }}>
             Aerium started with a simple observation: the businesses that make and move things run on hard-won knowledge
-            that lives in people, inboxes, and spreadsheets. The best AI in the world is useless to them if it does not
+            that lives in people's heads, inboxes, and spreadsheets. The best AI in the world is useless to them if it does not
             know their machines, their margins, and their customers.
           </p>
           <p style={{ margin: 0, color: "#3E362F", fontSize: 16.5, lineHeight: 1.7 }}>
             So we build the other way around. Our engineers embed on site, learn how the work actually flows, and deploy
-            an AI workforce grounded in each customer&rsquo;s own context. Aerium is not a chatbot on the sidelines, we
-            are a workforce helping every team win.
+            an AI workforce grounded in each customer&rsquo;s own context. Aerium is not a chatbot on the sidelines, it is an AI workforce helping teams win.
           </p>
         </div>
       </Section>
