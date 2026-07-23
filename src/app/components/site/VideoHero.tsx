@@ -14,7 +14,7 @@ export default function VideoHero({
   slides,
   intervalMs = 8000,
   gradient = "linear-gradient(180deg,rgba(23,17,13,0.82) 0%,rgba(23,17,13,0.7) 55%,rgba(23,17,13,0.88) 100%)",
-  minHeight = 440,
+  minHeight = 600,
   children,
 }: {
   slides: HeroSlide[];
