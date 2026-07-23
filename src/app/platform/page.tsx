@@ -175,7 +175,7 @@ export default function PlatformPage() {
         </div>
       </Section>
 
-      <CtaBand headline="See the platform on your own workflows, not a canned demo." />
+      <CtaBand headline="See our workforce on your own workflows." />
     </SiteShell>
   );
 }

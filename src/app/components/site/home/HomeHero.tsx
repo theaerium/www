@@ -47,7 +47,7 @@ const INDUSTRIES: {
   },
 ];
 
-const ROTATE_MS = 3000;
+const ROTATE_MS = 4500;
 
 export default function HomeHero() {
   const [active, setActive] = useState(0);

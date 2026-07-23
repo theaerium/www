@@ -127,7 +127,7 @@
     -webkit-font-smoothing: antialiased;
     position: relative;
     /* Rail column is wider than the 1240 content so content never touches it. */
-    --rail-w: 1320px;
+    --rail-w: 1500px;
 }
 
 /* Stripe-style vertical rails marking the edges of the content column, running
