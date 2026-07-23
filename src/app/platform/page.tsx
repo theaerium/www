@@ -8,7 +8,7 @@ import VideoHero from "../components/site/VideoHero";
 export const metadata: Metadata = {
   title: "Platform | Aerium",
   description:
-    "A workforce built on context, not prompts. AI agents that act, models tuned to your business, a live operational data foundation, and governance around all of it.",
+    "A workforce built on context. AI agents that act, models tuned to your business, a live operational data foundation, and governance around all of it.",
 };
 
 const HERO_SLIDES = [
@@ -79,7 +79,7 @@ export default function PlatformPage() {
             maxWidth: "17ch",
           }}
         >
-          A workforce built on context, not prompts
+          A workforce built on context
         </h1>
         <p style={{ margin: "24px 0 0", color: "rgba(255,255,255,0.82)", fontSize: 18, lineHeight: 1.65, maxWidth: 600 }}>
           Agents that act, models tuned to your business, a live data foundation underneath, and governance around all of it.

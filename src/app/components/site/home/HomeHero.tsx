@@ -52,19 +52,14 @@ const ROTATE_MS = 4500;
 export default function HomeHero() {
   const [active, setActive] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  useEffect(() => {
-    if (!autoRotate) return;
-    timer.current = setInterval(
-      () => setActive((i) => (i + 1) % INDUSTRIES.length),
-      ROTATE_MS
-    );
-    return () => {
-      if (timer.current) clearInterval(timer.current);
-    };
-  }, [autoRotate]);
+  // Advance to the next slide only when the active progress bar finishes its
+  // animation, so the bar always fills completely before the video switches
+  // (no drift between a separate timer and the CSS animation).
+  const advance = () => {
+    if (autoRotate) setActive((i) => (i + 1) % INDUSTRIES.length);
+  };
 
   // Play only the active video.
   useEffect(() => {
@@ -267,6 +262,9 @@ export default function HomeHero() {
               />
               <div
                 key={`${k}-${active}-${autoRotate}`}
+                onAnimationEnd={() => {
+                  if (k === active && autoRotate) advance();
+                }}
                 style={{
                   position: "absolute",
                   top: 0,
