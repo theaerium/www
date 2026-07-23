@@ -270,22 +270,13 @@ export default function HomePage() {
             </p>
           </div>
           <div className="site-split">
-            <div
-              style={{
-                aspectRatio: "4 / 3.4",
-                borderRadius: 14,
-                background: "linear-gradient(135deg,#2A211B 0%,#1C1512 100%)",
-                border: "1px solid var(--site-hairline-strong)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: 32,
-                textAlign: "center",
-              }}
-            >
-              <span style={{ color: "rgba(255,255,255,0.45)", fontSize: 14, lineHeight: 1.5 }}>
-                Photo pending: our engineers on a customer&rsquo;s floor
-              </span>
+            <div style={{ aspectRatio: "4 / 3.4", borderRadius: 14, overflow: "hidden", position: "relative" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/site/images/deploy.jpg"
+                alt="Supplies delivered by parachute against a clear sky"
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+              />
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               {DEPLOY_STEPS.map((s, i) => (
