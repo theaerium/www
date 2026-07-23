@@ -90,7 +90,8 @@ export default function VideoHero({
         ))}
       </div>
       <div style={{ position: "absolute", inset: 0, background: gradient }} />
-      <div style={{ position: "relative", maxWidth: 1240, margin: "0 auto", width: "100%" }}>{children}</div>
+      <div className="hero-rails" aria-hidden="true" />
+      <div style={{ position: "relative", zIndex: 2, maxWidth: 1240, margin: "0 auto", width: "100%" }}>{children}</div>
     </section>
   );
 }

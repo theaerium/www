@@ -14,12 +14,12 @@ const VALUES = [
   {
     num: "01",
     title: "Customer obsession",
-    body: "We measure ourselves on our customers' P&L, not our own demo. If it does not move their numbers, it does not ship.",
+    body: "We measure ourselves on the value we deliver.",
   },
   {
     num: "02",
-    title: "High standards and excellence",
-    body: "Good enough is not. We hold the bar on the work, the details, and each other, because our customers bet their operations on it.",
+    title: "Excellence",
+    body: "Our customers hold a high bar and we hold a higher one.",
   },
   {
     num: "03",

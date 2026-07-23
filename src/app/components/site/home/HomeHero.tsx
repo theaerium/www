@@ -154,6 +154,8 @@ export default function HomeHero() {
         }}
       />
 
+      <div className="hero-rails" aria-hidden="true" />
+
       {/* Content */}
       <div
         style={{

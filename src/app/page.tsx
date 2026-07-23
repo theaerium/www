@@ -369,7 +369,7 @@ export default function HomePage() {
                 marginBottom: 12,
               }}
             >
-              FOR LEADERSHIP
+              FOR LEADERSHIP & STRATEGY
             </div>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: "var(--site-ink)", fontWeight: 500 }}>
               <b>One live picture of the whole operation:</b> where the margin is, where it&rsquo;s leaking, and what the
@@ -386,7 +386,7 @@ export default function HomePage() {
                 marginBottom: 12,
               }}
             >
-              FOR THE FLOOR
+              FOR EXECUTION
             </div>
             <p style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: "var(--site-ink)", fontWeight: 500 }}>
               <b>Fast, trustworthy answers in the moment:</b> for those doing the day-to-day work, in the tools they

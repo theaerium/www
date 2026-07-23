@@ -171,10 +171,28 @@
 .rail-dark { --rail-c: rgba(255, 255, 255, 0.16); }
 .rail-amber { --rail-c: rgba(34, 26, 21, 0.22); }
 
+/* Hero rails: drawn on TOP of the video/photo (z-index 1, above the media and
+   gradient overlays but below the hero text/tabs), in a light colour so they
+   read over the footage. */
+.hero-rails {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--rail-w);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+    display: none;
+}
+
 /* Only show once the viewport is wide enough to leave an outer margin. */
 @media (min-width: 1360px) {
     .site-rails,
-    .rail-lines { display: block; }
+    .rail-lines,
+    .hero-rails { display: block; }
 }
 .site h1, .site h2, .site h3, .site h4, .site h5, .site h6 {
     font-family: var(--font-archivo);
