@@ -45,9 +45,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aeriumhq.com"),
-  title: "Aerium | Supply chain intelligence",
+  title: "Aerium | Industrial AI Workforce",
   description:
-    "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers and Distributors can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
+    "AI purpose-built for industrial manufacturers and distributors. An always-on workforce across supply chain, operations, commercial, and back office, deployed in your environment.",
   keywords: [
     "procurement",
     "supply chain",
@@ -58,9 +58,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Aerium" }],
   openGraph: {
-    title: "Aerium | Supply chain intelligence",
+    title: "Aerium | Industrial AI Workforce",
     description:
-      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers and Distributors can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
+      "AI purpose-built for industrial manufacturers and distributors. An always-on workforce across supply chain, operations, commercial, and back office, deployed in your environment.",
     url: "https://aeriumhq.com",
     siteName: "Aerium",
     images: [
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aerium | Supply chain intelligence",
+        alt: "Aerium | Industrial AI Workforce",
       },
     ],
     locale: "en_US",
@@ -76,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aerium | Supply chain intelligence",
+    title: "Aerium | Industrial AI Workforce",
     description:
-      "AI agents that monitor market prices across thousands of SKUs, automatically identify savings opportunities, and autonomously negotiate with suppliers. Manufacturers and Distributors can run McKinsey-level supply chain optimization 24/7 with no additional headcount.",
+      "AI purpose-built for industrial manufacturers and distributors. An always-on workforce across supply chain, operations, commercial, and back office, deployed in your environment.",
     images: ["/og-image.png"],
     creator: "@aerium",
   },
@@ -101,7 +101,7 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta
           name="twitter:image:alt"
-          content="Aerium - Supply chain intelligence"
+          content="Aerium - Industrial AI Workforce"
         />
       </head>
       <body
