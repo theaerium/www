@@ -51,15 +51,12 @@ const ROTATE_MS = 4500;
 
 export default function HomeHero() {
   const [active, setActive] = useState(0);
-  const [autoRotate, setAutoRotate] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Advance to the next slide only when the active progress bar finishes its
+  // Advance to the next slide when the active progress bar finishes its
   // animation, so the bar always fills completely before the video switches
   // (no drift between a separate timer and the CSS animation).
-  const advance = () => {
-    if (autoRotate) setActive((i) => (i + 1) % INDUSTRIES.length);
-  };
+  const advance = () => setActive((i) => (i + 1) % INDUSTRIES.length);
 
   // Play only the active video.
   useEffect(() => {
@@ -75,10 +72,9 @@ export default function HomeHero() {
     });
   }, [active]);
 
-  const pick = (k: number) => {
-    setActive(k);
-    setAutoRotate(false); // stop auto-rotation once the user takes control
-  };
+  // Clicking a tab jumps to that slide; its bar restarts from zero and the
+  // rotation continues from there.
+  const pick = (k: number) => setActive(k);
 
   return (
     <section
@@ -263,9 +259,9 @@ export default function HomeHero() {
                 }}
               />
               <div
-                key={`${k}-${active}-${autoRotate}`}
+                key={`${k}-${active}`}
                 onAnimationEnd={() => {
-                  if (k === active && autoRotate) advance();
+                  if (k === active) advance();
                 }}
                 style={{
                   position: "absolute",
@@ -273,11 +269,8 @@ export default function HomeHero() {
                   left: 0,
                   height: 2,
                   background: "var(--site-amber)",
-                  width: k === active && !autoRotate ? "100%" : k === active ? undefined : "0%",
-                  animation:
-                    k === active && autoRotate
-                      ? `heroProgress ${ROTATE_MS}ms linear forwards`
-                      : "none",
+                  width: k === active ? undefined : "0%",
+                  animation: k === active ? `heroProgress ${ROTATE_MS}ms linear forwards` : "none",
                 }}
               />
               <span
