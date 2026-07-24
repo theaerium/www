@@ -7,7 +7,7 @@ import { routes } from "../components/site/routes";
 export const metadata: Metadata = {
   title: "About | Aerium",
   description:
-    "Aerium is a place for people who want to help our physical economy run. Built with industrials, not for them from a distance.",
+    "Aerium is a place for people who want to help our physical economy run. Built with industrials.",
 };
 
 const VALUES = [
@@ -124,7 +124,7 @@ export default function AboutPage() {
         <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 32px" }}>
           <Eyebrow style={{ display: "block", marginBottom: 18 }}>OUR STORY</Eyebrow>
           <h2 style={{ margin: "0 0 24px", fontSize: "clamp(28px, 3.4vw, 36px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
-            Built with industrials, not for them from a distance
+            Built with industrials
           </h2>
           <p style={{ margin: "0 0 18px", color: "#3E362F", fontSize: 16.5, lineHeight: 1.7 }}>
             Aerium started with a simple observation: the businesses that make and move things run on hard-won knowledge
