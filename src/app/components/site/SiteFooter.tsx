@@ -84,7 +84,7 @@ export default function SiteFooter() {
       <div className="site-footer-inner site-footer-inner-bottom">
         <div className="site-footer-bottom">
           <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 13 }}>
-            © 2026 Aerium. All rights reserved.
+            © 2026 2026 Senchi Technologies Inc. All rights reserved.
           </span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/site/aerium-mark.svg" alt="" style={{ height: 28, width: "auto", opacity: 0.85 }} />
