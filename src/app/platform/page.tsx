@@ -11,14 +11,20 @@ export const metadata: Metadata = {
     "A workforce built on context. AI agents that act, models tuned to your business, a live operational data foundation, and governance around all of it.",
 };
 
-// Platform-specific hero clips (Home keeps its own set). Equipment doubles for
-// the metal-fabrication slot. Ambient crossfade at 10s per slide.
+// Platform-specific hero clips (Home keeps its own set). Three unique clips;
+// equipment is framed slightly lower (objectPosition).
 const HERO_SLIDES = [
-  { video: "/site/videos/platform-equipment.mp4", poster: "/site/images/equipment.jpg" },
-  { video: "/site/videos/platform-chemicals.mp4", poster: "/site/images/specialty-chemicals.jpg" },
-  { video: "/site/videos/platform-equipment.mp4", poster: "/site/images/metal-fabrication.jpg" },
-  { video: "/site/videos/platform-distribution.mp4", poster: "/site/images/distribution.jpg" },
+  { video: "/site/videos/platform-equipment.mp4", poster: "/site/images/equipment.jpg", objectPosition: "50% 62%", resume: true }, // 0
+  { video: "/site/videos/platform-chemicals.mp4", poster: "/site/images/specialty-chemicals.jpg" }, // 1
+  { video: "/site/videos/platform-distribution.mp4", poster: "/site/images/distribution.jpg" }, // 2
 ];
+
+// Rotation order: equipment, chemical, distribution, metal fab (= equipment).
+// The metal-fab step wraps straight into the top equipment step (same clip,
+// back to back, no crossfade), so equipment plays ~20s continuously across the
+// loop. The long equipment clip is one mounted element that resumes where it
+// left off. 10s per step.
+const HERO_SEQUENCE = [0, 1, 2, 0];
 
 const STACK = [
   {
@@ -68,7 +74,7 @@ const DEPLOY = [
 export default function PlatformPage() {
   return (
     <SiteShell>
-      <VideoHero slides={HERO_SLIDES} intervalMs={10000}>
+      <VideoHero slides={HERO_SLIDES} sequence={HERO_SEQUENCE} intervalMs={10000}>
         <Eyebrow style={{ color: "var(--site-amber)", display: "block", marginBottom: 20 }}>THE PLATFORM</Eyebrow>
         <h1
           style={{
