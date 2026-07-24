@@ -11,11 +11,13 @@ export const metadata: Metadata = {
     "A workforce built on context. AI agents that act, models tuned to your business, a live operational data foundation, and governance around all of it.",
 };
 
+// Platform-specific hero clips (Home keeps its own set). Equipment doubles for
+// the metal-fabrication slot. Ambient crossfade at 10s per slide.
 const HERO_SLIDES = [
-  { video: "/site/videos/equipment.mp4", poster: "/site/images/equipment.jpg" },
-  { video: "/site/videos/specialty-chemicals.mp4", poster: "/site/images/specialty-chemicals.jpg" },
-  { video: "/site/videos/metal-fabrication.mp4", poster: "/site/images/metal-fabrication.jpg" },
-  { video: "/site/videos/distribution.mp4", poster: "/site/images/distribution.jpg" },
+  { video: "/site/videos/platform-equipment.mp4", poster: "/site/images/equipment.jpg" },
+  { video: "/site/videos/platform-chemicals.mp4", poster: "/site/images/specialty-chemicals.jpg" },
+  { video: "/site/videos/platform-equipment.mp4", poster: "/site/images/metal-fabrication.jpg" },
+  { video: "/site/videos/platform-distribution.mp4", poster: "/site/images/distribution.jpg" },
 ];
 
 const STACK = [
@@ -66,7 +68,7 @@ const DEPLOY = [
 export default function PlatformPage() {
   return (
     <SiteShell>
-      <VideoHero slides={HERO_SLIDES}>
+      <VideoHero slides={HERO_SLIDES} intervalMs={10000}>
         <Eyebrow style={{ color: "var(--site-amber)", display: "block", marginBottom: 20 }}>THE PLATFORM</Eyebrow>
         <h1
           style={{
