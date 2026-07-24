@@ -78,6 +78,7 @@ export default function HomeHero() {
 
   return (
     <section
+      className="home-hero"
       style={{
         position: "relative",
         background: "#17110D",
@@ -154,6 +155,7 @@ export default function HomeHero() {
 
       {/* Content */}
       <div
+        className="home-hero-content"
         style={{
           position: "relative",
           zIndex: 2,
@@ -223,7 +225,7 @@ export default function HomeHero() {
       </div>
 
       {/* Thumbnail rail */}
-      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 3 }}>
+      <div className="home-hero-rail-wrap" style={{ position: "absolute", left: 0, right: 0, bottom: 0, zIndex: 3 }}>
         <div
           className="home-hero-rail"
           style={{

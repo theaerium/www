@@ -387,8 +387,21 @@
 .home-hero-h1 { font-size: clamp(34px, 6vw, 60px); }
 .home-hero-rail { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 720px) {
-    .home-hero-rail { grid-template-columns: repeat(2, 1fr); gap: 14px !important; }
-    .home-hero-rail .rail-desc { display: none; }
+    /* On mobile the vertically-centered text block and the absolutely
+       positioned thumbnail rail collide inside the fixed-height hero. Let the
+       hero grow to fit its content, top-align the text, and drop the rail into
+       normal flow beneath it so nothing overlaps. */
+    .home-hero { height: auto !important; min-height: 0 !important; }
+    .home-hero-content {
+        height: auto !important;
+        justify-content: flex-start !important;
+        padding-top: 48px !important;
+        padding-bottom: 36px !important;
+    }
+    .home-hero-rail-wrap { position: static !important; }
+    .home-hero-rail { grid-template-columns: repeat(2, 1fr); gap: 14px !important; padding-top: 4px; }
+    /* Inline display:block on the span outranks a bare class rule, so force it. */
+    .home-hero-rail .rail-desc { display: none !important; }
 }
 
 /* ─── Generic responsive grids for the marketing site ─── */
