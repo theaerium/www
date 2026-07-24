@@ -76,6 +76,355 @@
     --color-orange: var(--aeri-accent);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   AERIUM MARKETING SITE (theaerium/www redesign)
+   Tokens from the design handoff. Namespaced --site-* so they
+   never collide with the retro --aeri-* palette used elsewhere.
+   ═══════════════════════════════════════════════════════════ */
+:root {
+    --site-cream: #FFF8F5;          /* page background */
+    --site-hairline: #EAD9C8;       /* dividers / card borders */
+    --site-hairline-strong: #E4D2BE;/* stronger card border */
+    --site-dark: #1C1512;           /* footer, dark bands */
+    --site-dark-2: #17110D;         /* hero overlays */
+    --site-ink: #221A15;            /* primary text */
+    --site-body: #5C534C;           /* body text */
+    --site-muted: #8A7F77;          /* secondary/muted text */
+    --site-eyebrow: #9C6B1A;        /* eyebrow label on light bg */
+    --site-link: #BB7E1B;           /* links, "See solutions" */
+    --site-amber: #F6A623;          /* CTAs, accents, active */
+    --site-amber-hover: #E8940F;    /* CTA hover */
+    --site-amber-bright: #FFC65C;   /* link/icon hover on dark */
+    --site-dark-btn-hover: #3A2E26; /* dark button hover */
+    --font-archivo: 'Archivo', system-ui, sans-serif;
+    --font-plex: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+@theme inline {
+    --color-site-cream: var(--site-cream);
+    --color-site-hairline: var(--site-hairline);
+    --color-site-hairline-strong: var(--site-hairline-strong);
+    --color-site-dark: var(--site-dark);
+    --color-site-dark-2: var(--site-dark-2);
+    --color-site-ink: var(--site-ink);
+    --color-site-body: var(--site-body);
+    --color-site-muted: var(--site-muted);
+    --color-site-eyebrow: var(--site-eyebrow);
+    --color-site-link: var(--site-link);
+    --color-site-amber: var(--site-amber);
+    --color-site-amber-hover: var(--site-amber-hover);
+    --font-archivo: var(--font-archivo);
+    --font-plex: var(--font-plex);
+}
+
+/* Marketing site shell: applied to the root wrapper of every marketing page.
+   Sets Archivo as the default family + cream/ink base so the retro globals
+   (Instrument Serif headings etc.) don't leak into these pages. */
+.site {
+    font-family: var(--font-archivo);
+    background: var(--site-cream);
+    color: var(--site-body);
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    /* Rail column is wider than the 1240 content so content never touches it. */
+    --rail-w: 1500px;
+}
+
+/* Stripe-style vertical rails marking the edges of the content column, running
+   the full page height. The global pair (below) sits behind the content and
+   shows through light/transparent sections in the hairline colour. Dark and
+   amber bands draw their own rails on top (see .railed) so the colour can adapt
+   to the background; hero video/photo sections are left rail-free. */
+.site-rails {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--rail-w);
+    border-left: 1px solid var(--site-hairline);
+    border-right: 1px solid var(--site-hairline);
+    pointer-events: none;
+    z-index: 0;
+    display: none;
+}
+.site > main { position: relative; z-index: 1; }
+.site > .site-footer { position: relative; z-index: 1; }
+
+/* Per-band rails: an isolated stacking context lets the rail lines paint above
+   the band's own background (z-index -1) but below its content, so a dark or
+   amber band shows rails in a colour that reads on it. */
+.railed { position: relative; isolation: isolate; }
+.rail-lines {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--rail-w);
+    border-left: 1px solid var(--rail-c, var(--site-hairline));
+    border-right: 1px solid var(--rail-c, var(--site-hairline));
+    pointer-events: none;
+    z-index: -1;
+    display: none;
+}
+.rail-dark { --rail-c: rgba(255, 255, 255, 0.16); }
+.rail-amber { --rail-c: rgba(34, 26, 21, 0.22); }
+
+/* Hero rails: drawn on TOP of the video/photo (z-index 1, above the media and
+   gradient overlays but below the hero text/tabs), in a light colour so they
+   read over the footage. */
+.hero-rails {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--rail-w);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+    display: none;
+}
+
+/* Only show once the viewport is wide enough to leave an outer margin. */
+@media (min-width: 1360px) {
+    .site-rails,
+    .rail-lines,
+    .hero-rails { display: block; }
+}
+.site h1, .site h2, .site h3, .site h4, .site h5, .site h6 {
+    font-family: var(--font-archivo);
+    color: var(--site-ink);
+    margin: 0;
+}
+.site p { margin: 0; }
+.site .mono { font-family: var(--font-plex); }
+
+/* Eyebrow label — small caps-style section label ("WHAT WE BUILD") */
+.site-eyebrow {
+    font-family: var(--font-archivo);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--site-eyebrow);
+}
+
+/* Solution workflow-card titles: single line on desktop (where cards are wide
+   enough); allowed to wrap on narrow screens to avoid overflow. */
+@media (min-width: 1180px) {
+    .wf-title { white-space: nowrap; }
+}
+
+/* "Who it's for" industry cards: whole card is the link */
+.industry-card-img { transition: transform 0.4s ease; }
+.industry-card:hover .industry-card-img { transform: scale(1.045); }
+.industry-card-title { transition: color 0.15s ease; }
+.industry-card:hover .industry-card-title { color: var(--site-link); }
+
+/* Trusted-by logos: clickable, subtle hover */
+.trusted-logo {
+    display: inline-flex;
+    transition: opacity 0.15s ease;
+}
+.trusted-logo:hover { opacity: 0.6; }
+
+/* Text-link hover: BB7E1B -> F6A623 */
+.site-link {
+    color: var(--site-link);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+.site-link:hover { color: var(--site-amber); }
+
+/* ─── Buttons ─── */
+.site-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-archivo);
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 12px 22px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+.site-btn-amber { background: var(--site-amber); color: var(--site-ink); }
+.site-btn-amber:hover { background: var(--site-amber-hover); }
+.site-btn-dark { background: var(--site-ink); color: var(--site-cream); }
+.site-btn-dark:hover { background: var(--site-dark-btn-hover); }
+/* Outline on dark backgrounds (hero CTAs) */
+.site-btn-outline-light {
+    background: transparent;
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+.site-btn-outline-light:hover { border-color: #FFFFFF; background: rgba(255, 255, 255, 0.08); }
+/* Outline on light/amber backgrounds */
+.site-btn-outline-dark {
+    background: transparent;
+    color: var(--site-ink);
+    border-color: rgba(34, 26, 21, 0.35);
+}
+.site-btn-outline-dark:hover { border-color: var(--site-ink); background: rgba(34, 26, 21, 0.06); }
+
+/* ─── Section scaffolding ─── */
+.site-section { padding: 96px 32px; }
+.site-container { max-width: 1240px; margin: 0 auto; }
+
+@media (max-width: 768px) {
+    .site-section { padding: 64px 22px; }
+}
+
+/* ─── Nav ─── */
+.site-nav-spacer { height: 68px; }
+.site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+    background: rgba(255, 248, 245, 0.94);
+    backdrop-filter: blur(12px) saturate(1.3);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+    border-bottom: 1px solid var(--site-hairline-strong);
+    font-family: var(--font-archivo);
+}
+.site-nav-inner {
+    max-width: 1240px; margin: 0 auto; padding: 0 32px;
+    height: 68px; display: flex; align-items: center; gap: 44px;
+}
+.site-nav-links { display: flex; align-items: center; gap: 30px; flex: 1; }
+.site-nav-link {
+    text-decoration: none; color: var(--site-ink);
+    font-size: 14.5px; font-weight: 500; font-family: inherit;
+    background: none; border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    transition: color 0.15s ease;
+}
+.site-nav-link:hover { color: var(--site-link); }
+.site-nav-trigger { padding: 24px 0; }
+.site-nav-dd-wrap { position: relative; }
+.site-nav-dropdown {
+    position: absolute; top: 100%; left: -14px; margin-top: -8px;
+    background: #fff; border: 1px solid var(--site-hairline-strong);
+    border-radius: 12px; box-shadow: 0 16px 40px rgba(34, 26, 21, 0.14);
+    padding: 8px; z-index: 90;
+}
+.site-nav-dditem {
+    display: block; text-decoration: none;
+    padding: 11px 14px; border-radius: 8px; transition: background 0.12s ease;
+}
+.site-nav-dditem:hover { background: #F2E7DC; }
+.site-nav-dditem-title { display: block; color: var(--site-ink); font-size: 14.5px; font-weight: 600; }
+.site-nav-dditem-desc { display: block; color: var(--site-muted); font-size: 13px; margin-top: 2px; }
+.site-nav-cta { padding: 10px 20px; font-size: 14px; }
+.site-nav-burger {
+    display: none; margin-left: auto; background: none; border: none;
+    cursor: pointer; padding: 8px; color: var(--site-ink);
+}
+.site-nav-mobile { display: none; }
+
+@media (max-width: 900px) {
+    .site-nav-links, .site-nav-cta-desktop { display: none; }
+    .site-nav-burger { display: inline-flex; }
+    .site-nav-inner { gap: 0; }
+    .site-nav-mobile {
+        display: block; background: rgba(255, 248, 245, 0.98);
+        border-bottom: 1px solid var(--site-hairline-strong);
+        padding: 12px 22px 24px;
+    }
+    .site-nav-mobile a, .site-nav-mobile button {
+        display: block; width: 100%; text-align: left;
+        font-family: var(--font-archivo); text-decoration: none;
+        color: var(--site-ink); background: none; border: none;
+        font-size: 16px; font-weight: 600; padding: 12px 0; cursor: pointer;
+    }
+    .site-nav-mobile .sub a {
+        font-size: 14.5px; font-weight: 500; color: var(--site-body);
+        padding: 8px 0 8px 16px;
+    }
+    .site-nav-mobile .mgroup-label {
+        font-family: var(--font-plex); font-size: 11px; letter-spacing: 0.14em;
+        color: var(--site-muted); text-transform: uppercase; padding-top: 16px;
+    }
+}
+
+/* ─── Footer ─── */
+.site-footer { background: var(--site-dark); font-family: var(--font-archivo); border-top: 3px solid var(--site-amber); }
+.site-footer-inner { max-width: 1240px; margin: 0 auto; padding: 72px 32px 56px; }
+.site-footer-inner-bottom { padding: 28px 32px 40px; }
+/* Full-bleed divider so the footer line runs edge to edge like the section
+   dividers (a direct child of the full-width footer, outside the 1240 inner). */
+.site-footer-rule { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.site-footer-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px;
+}
+.site-footer-col { display: flex; flex-direction: column; gap: 12px; }
+.site-footer-label {
+    color: rgba(255, 255, 255, 0.4); font-family: var(--font-plex);
+    font-size: 11px; letter-spacing: 0.14em; margin-bottom: 6px;
+}
+.site-footer-link { color: rgba(255, 255, 255, 0.78); font-size: 14px; text-decoration: none; transition: color 0.15s ease; }
+.site-footer-link:hover { color: var(--site-amber); }
+.site-footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+
+@media (max-width: 860px) {
+    .site-footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 520px) {
+    .site-footer-grid { grid-template-columns: 1fr; }
+    .site-footer-inner { padding: 56px 22px 40px; }
+    .site-footer-inner-bottom { padding: 24px 22px 32px; }
+}
+
+/* ─── Home hero ─── */
+@keyframes heroProgress { from { width: 0%; } to { width: 100%; } }
+.home-hero-h1 { font-size: clamp(34px, 6vw, 60px); }
+.home-hero-rail { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 720px) {
+    .home-hero-rail { grid-template-columns: repeat(2, 1fr); gap: 14px !important; }
+    .home-hero-rail .rail-desc { display: none; }
+}
+
+/* ─── Generic responsive grids for the marketing site ─── */
+.site-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.site-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.site-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.site-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+@media (max-width: 900px) {
+    .site-split { grid-template-columns: 1fr; gap: 40px; }
+    .site-grid-4 { grid-template-columns: 1fr 1fr; }
+    .site-grid-3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+    .site-grid-2, .site-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* CTA bands stack on small screens */
+@media (max-width: 820px) {
+    .cta-home { grid-template-columns: 1fr !important; gap: 28px !important; }
+    .cta-home > div { justify-content: flex-start !important; }
+    .cta-band-inner { flex-direction: column; align-items: flex-start !important; }
+}
+
+/* Card hover used across marketing pages */
+.site-card {
+    background: var(--site-cream);
+    border: 1px solid var(--site-hairline);
+    border-radius: 14px;
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.site-card-hover:hover {
+    border-color: var(--site-amber);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(34, 26, 21, 0.08);
+}
+
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
