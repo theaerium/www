@@ -126,8 +126,12 @@
     color: var(--site-body);
     -webkit-font-smoothing: antialiased;
     position: relative;
-    /* Rail column is wider than the 1240 content so content never touches it. */
-    --rail-w: 1500px;
+    /* Rail column framing the 1240 content. Caps at 1500px on large monitors,
+       but pulls inward on laptop-width screens so the lines keep a visible
+       margin from the viewport edge instead of hugging it (e.g. a 14" MacBook
+       at ~1512px gets ~80px of inset rather than ~6px). The 1280px floor keeps
+       the lines just outside the 1240 content so they never cross into it. */
+    --rail-w: clamp(1280px, calc(100vw - 160px), 1500px);
 }
 
 /* Stripe-style vertical rails marking the edges of the content column, running
