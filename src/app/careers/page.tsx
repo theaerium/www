@@ -14,7 +14,7 @@ const ROLES = [
   {
     title: "Forward-Deployed Engineer",
     meta: "Full time · On site with customers across North America",
-    body: "Embed with industrial customers, map how their work actually flows, and deploy the AI workforce on their floor. You own the outcome, not a ticket queue.",
+    body: "Own customer outcomes by embedding alongside their team, mapping their workflows, and deploying Aerium's AI workforce across their organization.",
     subject: "Application: Forward-Deployed Engineer",
   },
 ];
