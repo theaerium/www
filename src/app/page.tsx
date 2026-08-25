@@ -145,7 +145,7 @@ export default function HomePage() {
               {
                 src: "/site/images/logo-stak.png",
                 alt: "STAK Industries Inc.",
-                h: 96,
+                h: 108,
                 href: "https://www.stakindustries.com/",
               },
               {
