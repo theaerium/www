@@ -235,6 +235,8 @@
     justify-content: center;
     transition: opacity 0.15s ease;
 }
+.trusted-logo:first-child,
+.trusted-logo:last-child { transform: translateX(10px); }
 .trusted-logo:hover { opacity: 0.6; }
 
 /* Text-link hover: BB7E1B -> F6A623 */
