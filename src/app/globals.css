@@ -231,6 +231,8 @@
 /* Trusted-by logos: clickable, subtle hover */
 .trusted-logo {
     display: inline-flex;
+    flex: 0 0 230px;
+    justify-content: center;
     transition: opacity 0.15s ease;
 }
 .trusted-logo:hover { opacity: 0.6; }
