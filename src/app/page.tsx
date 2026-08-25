@@ -141,18 +141,18 @@ export default function HomePage() {
             {[
               // Per-logo optical sizing: each logo has different internal whitespace,
               // so equal box sizes read unequally. Heights tuned so the wordmarks
-              // appear the same size (Hammond floats in padding, so it needs the most).
-              {
-                src: "/site/images/logo-hammond.png",
-                alt: "Hammond Power Solutions",
-                h: 118,
-                href: "https://americas.hammondpowersolutions.com/",
-              },
+              // appear the same size.
               {
                 src: "/site/images/logo-stak.png",
                 alt: "STAK Industries Inc.",
                 h: 96,
                 href: "https://www.stakindustries.com/",
+              },
+              {
+                src: "/site/images/logo-vantage.png",
+                alt: "Vantage",
+                h: 58,
+                href: "https://www.vantagegrp.com/en/",
               },
               { src: "/site/images/logo-ward.png", alt: "Ward Industrials", h: 58, href: "https://ward.ca/" },
             ].map((logo) => (
