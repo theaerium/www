@@ -151,7 +151,7 @@ export default function HomePage() {
               {
                 src: "/site/images/logo-hammond.png",
                 alt: "Hammond Power Solutions",
-                h: 118,
+                h: 132,
                 href: "https://americas.hammondpowersolutions.com/",
               },
               { src: "/site/images/logo-ward.png", alt: "Ward Industrials", h: 58, href: "https://ward.ca/" },
