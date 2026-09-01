@@ -149,10 +149,10 @@ export default function HomePage() {
                 href: "https://www.stakindustries.com/",
               },
               {
-                src: "/site/images/logo-vantage.png",
-                alt: "Vantage",
-                h: 58,
-                href: "https://www.vantagegrp.com/en/",
+                src: "/site/images/logo-hammond.png",
+                alt: "Hammond Power Solutions",
+                h: 118,
+                href: "https://americas.hammondpowersolutions.com/",
               },
               { src: "/site/images/logo-ward.png", alt: "Ward Industrials", h: 58, href: "https://ward.ca/" },
             ].map((logo) => (
