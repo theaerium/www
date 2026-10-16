@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteShell from "../components/site/SiteShell";
 import { Eyebrow, Section } from "../components/site/primitives";
 import { CONTACT_EMAIL } from "../components/site/routes";
+import { fundingAnnouncement } from "./funding-announcement";
 
 export const metadata: Metadata = {
   title: "Media & Events | Aerium",
-  description: "Where to find the Aerium team on the road in 2026.",
+  description: "The latest news from Aerium and where to find our team on the road in 2026.",
 };
 
 // Events ordered soonest first.
@@ -47,16 +49,39 @@ export default function MediaEventsPage() {
               textWrap: "balance",
             }}
           >
-            Come talk to us in person
+            The latest from Aerium
           </h1>
           <p style={{ margin: "24px auto 0", color: "var(--site-body)", fontSize: 17.5, lineHeight: 1.65, maxWidth: 560 }}>
-            Where to find the Aerium team on the road in 2026.
+            Company news and where to find the Aerium team on the road in 2026.
           </p>
         </div>
       </section>
 
+      <Section id="news">
+        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+          <Eyebrow style={{ display: "block", marginBottom: 24 }}>COMPANY NEWS</Eyebrow>
+          <Link
+            href={fundingAnnouncement.href}
+            aria-labelledby="funding-announcement-title"
+            className="site-card site-card-hover"
+            style={{ display: "block", padding: "clamp(24px, 4vw, 48px)", textDecoration: "none" }}
+          >
+            <article>
+              <Eyebrow style={{ display: "block", marginBottom: 18 }}>FUNDING</Eyebrow>
+              <h2 id="funding-announcement-title" style={{ maxWidth: "30ch", fontSize: "clamp(26px, 3.6vw, 38px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+                {fundingAnnouncement.title}
+              </h2>
+              <p style={{ maxWidth: 720, margin: "20px 0 24px", color: "var(--site-body)", fontSize: 17, lineHeight: 1.65 }}>
+                {fundingAnnouncement.excerpt}
+              </p>
+              <span className="site-link" style={{ fontSize: 15, fontWeight: 600 }}>Read the article →</span>
+            </article>
+          </Link>
+        </div>
+      </Section>
+
       {/* Upcoming events */}
-      <Section>
+      <Section style={{ borderTop: "1px solid var(--site-hairline)" }}>
         <div style={{ maxWidth: 760, margin: "0 auto 56px", textAlign: "center" }}>
           <Eyebrow style={{ display: "block", marginBottom: 18 }}>UPCOMING EVENTS</Eyebrow>
           <h2 style={{ fontSize: "clamp(30px, 4.4vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
