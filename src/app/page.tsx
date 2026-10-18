@@ -3,6 +3,7 @@ import Link from "next/link";
 import SiteShell from "./components/site/SiteShell";
 import { routes } from "./components/site/routes";
 import HomeHero from "./components/site/home/HomeHero";
+import ContextGraph from "./components/site/home/ContextGraph";
 import Showcase, { type ShowcaseItem } from "./components/site/home/Showcase";
 
 export const metadata: Metadata = {
@@ -178,6 +179,18 @@ export default function HomePage() {
   return (
     <SiteShell navOverlay>
       <HomeHero />
+
+      <section className="b-graph">
+        <div className="b-wrap b-graph-copy">
+          <div className="b-eyebrow">Grow or fall behind</div>
+          <h2 className="b-h2">More AI, more silos, less return</h2>
+          <p className="b-lede">
+            Each new tool adds another island of data. Without a way to connect it, AI spend goes negative. Aerium is the
+            layer that makes it pay off.
+          </p>
+        </div>
+        <ContextGraph />
+      </section>
 
       <Showcase
         id="product"

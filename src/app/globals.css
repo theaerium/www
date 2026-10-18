@@ -536,6 +536,56 @@ body {
 .b-hero-logos a:hover { opacity: 0.7; }
 .b-hero-logos img { display: block; object-fit: contain; }
 
+/* Context graph (three.js) */
+.b-graph {
+    position: relative; overflow: hidden;
+    background: var(--b-stone);
+    height: clamp(860px, 77.8vw, 1120px);
+}
+.b-graph-copy {
+    position: relative; z-index: 2;
+    padding-top: 120px;
+    display: flex; flex-direction: column; gap: 20px;
+    pointer-events: none;
+}
+.b-graph-copy > * { max-width: 440px; pointer-events: auto; }
+.b-graph-canvas { position: absolute; inset: 0; z-index: 1; touch-action: pan-y; }
+.b-graph-canvas canvas { position: absolute; inset: 0; display: block; }
+.b-graph-label {
+    position: absolute; top: 0; left: 0;
+    pointer-events: none; white-space: nowrap; will-change: transform;
+    font-family: var(--font-b-sans); font-size: 13px; line-height: 16px;
+    color: var(--b-muted);
+    transition: color 0.25s ease;
+}
+.b-graph-label span { display: block; transform: translate(10px, -50%); }
+.b-graph-label-entity { font-size: 15px; font-weight: 600; line-height: 18px; letter-spacing: -0.01em; color: var(--b-ink); }
+.b-graph-label-entity span { transform: translate(-50%, calc(-100% - 6px)); }
+.b-graph-label-agent { font-weight: 500; color: var(--b-ink); }
+.b-graph-label.is-active { color: var(--b-burgundy); }
+.b-graph-label-record.is-active, .b-graph-label-source.is-active { font-weight: 500; }
+.b-graph-callout {
+    position: absolute; top: 0; left: 0; z-index: 2; width: 240px;
+    pointer-events: none; opacity: 0; will-change: transform, opacity;
+    display: flex; flex-direction: column; gap: 4px;
+    background: #FFFFFF; border: 6px solid rgba(17, 17, 17, 0.07); background-clip: padding-box;
+    padding: 14px 16px;
+    font-family: var(--font-b-sans); font-size: 13px;
+}
+.b-graph-callout strong { color: var(--b-ink); font-weight: 600; line-height: 18px; }
+.b-graph-callout span { color: var(--b-muted); line-height: 19px; }
+
+@media (max-width: 899px) {
+    .b-graph { height: auto; }
+    .b-graph-copy { padding-top: 88px; }
+    .b-graph-canvas { position: relative; inset: auto; height: min(640px, 160vw); margin-top: 8px; }
+    .b-graph-label { font-size: 11px; line-height: 14px; }
+    .b-graph-label-entity { font-size: 13px; }
+    .b-graph-canvas[data-mobile="true"] .b-graph-label-record:not(.is-active),
+    .b-graph-canvas[data-mobile="true"] .b-graph-label-source:not(.is-active) { display: none; }
+    .b-graph-callout { width: calc(100% - 32px); max-width: 320px; }
+}
+
 /* Section intro: heading left, lede bottom-right */
 .b-intro {
     display: flex; justify-content: space-between; align-items: flex-end; gap: 48px;
