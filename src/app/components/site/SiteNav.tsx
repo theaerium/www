@@ -25,7 +25,7 @@ const MENUS: Menu[] = [
         size: "large",
         links: [
           { title: "Foundation", desc: "Every system you run, in one live model", href: routes.products.foundation },
-          { title: "Forge", desc: "Custom models trained on your jobs", href: routes.products.forge },
+          { title: "Forge", desc: "Custom models built for your business", href: routes.products.forge },
           { title: "Workforce", desc: "Agents that run workflows end to end", href: routes.products.workforce },
         ],
       },
@@ -44,7 +44,7 @@ const MENUS: Menu[] = [
           { title: "Power and electrical", href: routes.industries.power },
           { title: "Design to manufacture", href: routes.industries.designToManufacture },
           { title: "Chemicals", href: routes.industries.chemicals },
-          { title: "Data centers", href: routes.industries.dataCenters },
+          { title: "Distributors", href: routes.industries.distributors },
         ],
       },
     ],
@@ -103,6 +103,10 @@ const Arrow = () => (
   </svg>
 );
 
+// Hash links (homepage sections) and other origins skip client routing: native
+// navigation fires `hashchange`, which the homepage accordions listen for.
+const isPlainAnchor = (href: string) => /^(mailto:|https?:)/.test(href) || href.includes("#");
+
 function MenuAnchor({ link, className, onNavigate }: { link: MenuLink; className: string; onNavigate: () => void }) {
   const content = (
     <>
@@ -110,8 +114,8 @@ function MenuAnchor({ link, className, onNavigate }: { link: MenuLink; className
       {link.desc && <span className="b-mega-link-desc">{link.desc}</span>}
     </>
   );
-  return link.href.startsWith("mailto:") ? (
-    <a href={link.href} className={className}>
+  return isPlainAnchor(link.href) ? (
+    <a href={link.href} className={className} onClick={onNavigate}>
       {content}
     </a>
   ) : (
@@ -191,11 +195,17 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
                 {menu.title}
               </button>
             ))}
-            {LINKS.map((l) => (
-              <Link key={l.title} href={l.href} className="b-nav-link" onMouseEnter={close}>
-                {l.title}
-              </Link>
-            ))}
+            {LINKS.map((l) =>
+              isPlainAnchor(l.href) ? (
+                <a key={l.title} href={l.href} className="b-nav-link" onMouseEnter={close}>
+                  {l.title}
+                </a>
+              ) : (
+                <Link key={l.title} href={l.href} className="b-nav-link" onMouseEnter={close}>
+                  {l.title}
+                </Link>
+              ),
+            )}
             {MENUS.slice(1).map((menu) => (
               <button
                 key={menu.id}
@@ -269,8 +279,8 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
                   <div key={column.label}>
                     <div className="b-nav-mobile-label">{column.label}</div>
                     {column.links.map((link) =>
-                      link.href.startsWith("mailto:") ? (
-                        <a key={link.title} href={link.href} className="b-nav-mobile-sub">
+                      isPlainAnchor(link.href) ? (
+                        <a key={link.title} href={link.href} className="b-nav-mobile-sub" onClick={() => setMobileOpen(false)}>
                           {link.title}
                         </a>
                       ) : (
@@ -284,9 +294,9 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
               </div>
             ))}
             {LINKS.map((l) => (
-              <Link key={l.title} href={l.href} onClick={() => setMobileOpen(false)}>
+              <a key={l.title} href={l.href} onClick={() => setMobileOpen(false)}>
                 {l.title}
-              </Link>
+              </a>
             ))}
             <Link
               href={routes.bookDemo}

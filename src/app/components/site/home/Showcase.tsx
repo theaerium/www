@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type ShowcaseItem = {
+  /** Opens this item when the URL hash is `#<section id>-<slug>`. */
+  slug?: string;
   title: string;
   body: string;
   href: string;
@@ -53,13 +55,28 @@ export default function Showcase({
   frame: { width: number; height: number };
 }) {
   const [openIndex, setOpenIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Deep links from the nav and footer (e.g. #use-cases-costing) open the matching item.
+  useEffect(() => {
+    if (!id) return;
+    const openFromHash = () => {
+      const index = items.findIndex((item) => item.slug && `#${id}-${item.slug}` === window.location.hash);
+      if (index < 0) return;
+      setOpenIndex(index);
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, [id, items]);
   const active = items[openIndex];
   const shots = items.filter((item, i) => items.findIndex((other) => other.image === item.image) === i);
   const backdropFor = (item: ShowcaseItem) => item.backdrop ?? backdrop;
   const backdrops = [...new Set(items.map(backdropFor))];
 
   return (
-    <section id={id} className={`b-showcase b-showcase-media-${mediaSide}`}>
+    <section id={id} ref={sectionRef} className={`b-showcase b-showcase-media-${mediaSide}`}>
       <div className="b-showcase-copy">
         <div className="b-showcase-copy-inner" data-reveal="stagger">
           <div className="b-eyebrow">{eyebrow}</div>

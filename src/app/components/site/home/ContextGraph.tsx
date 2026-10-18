@@ -28,6 +28,17 @@ const RIGHT_EDGE_X = 1400;
 // Below this artboard y the layers fan out under the copy; fully fanned at FAN_END_Y.
 const FAN_START_Y = 470;
 const FAN_END_Y = 980;
+// How far each cluster turns either way, in radians.
+const CLUSTER_TURN = 0.45;
+// Dragging turns the graph about its vertical axis like a vase; it coasts, then settles back to face front.
+const DRAG_RADIANS_PER_PX = 0.005;
+const SPIN_FRICTION = 0.94;
+const SETTLE_DELAY_MS = 2200;
+// Points within this many pixels of the cursor ease away from it, by up to NUDGE_DISTANCE world units.
+const NUDGE_RADIUS = 110;
+const NUDGE_DISTANCE = 0.3;
+// Space kept clear around the resting graph: the fixed nav above, breathing room at the right and below.
+const FRAME_MARGIN = { top: 84, right: 16, bottom: 36 };
 
 const LABELLED_NODES: GraphNode[] = [...AGENTS, ...ENTITIES, ...RECORDS, ...SOURCES];
 const NODE_BY_ID = new Map(LABELLED_NODES.map((n) => [n.id, n]));
@@ -102,22 +113,26 @@ type Layout = {
   spread: Spread;
 };
 
-function computeLayout(width: number, height: number, copy: { left: number; right: number } | null): Layout {
+/** `scale` shrinks the graph when the fit pass finds it leaving the frame at some camera angle. */
+function computeLayout(width: number, height: number, copy: { left: number; right: number } | null, scale = 1): Layout {
   if (width < MOBILE_BREAKPOINT || !copy) {
     // Leaves room on the right for the longest labels and below for the callout.
-    const unitPx = Math.min(width / 10.6, height / 13.4);
+    const unitPx = Math.min(width / 10.6, height / 13.4) * scale;
     return { width, height, unitPx, centerX: width / 2 - unitPx * 0.55, offsetY: -0.9 * unitPx, mobile: true, spread: { spread: 1, fan: 1 } };
   }
-  const unitPx = Math.min(100, width / 14.4, height / 11.2);
-  const centerX = width - 4.4 * unitPx;
+  const baseUnitPx = Math.min(100, width / 14.4, height / 11.2);
+  const baseCenterX = width - 4.4 * baseUnitPx;
   const right = (RIGHT_EDGE_X - ARTBOARD.graphCenterX) / 100;
   const leftmost = (600 - ARTBOARD.graphCenterX) / 100;
   // Widen the upper layers into the gap beside the copy, then fan the lower
   // layers out underneath it so the bottom row reaches the copy's left edge.
-  const topLeftLimit = (copy.right - centerX) / unitPx + 0.6;
+  const topLeftLimit = (copy.right - baseCenterX) / baseUnitPx + 0.6;
   const spread = Math.min(1.45, Math.max(1, (right - topLeftLimit) / (right - leftmost)));
-  const leftLimit = (copy.left - centerX) / unitPx;
+  const leftLimit = (copy.left - baseCenterX) / baseUnitPx;
   const fan = Math.max(1, (right - leftLimit) / ((right - leftmost) * spread));
+  // Scaling keeps the spread and pins the right edge, so a smaller graph only pulls in from the left.
+  const unitPx = baseUnitPx * scale;
+  const centerX = width - 4.4 * unitPx;
   // Nudged down so the agents clear the fixed nav when the section is pinned to the top.
   return { width, height, unitPx, centerX, offsetY: 0.45 * unitPx, mobile: false, spread: { spread, fan } };
 }
@@ -233,7 +248,7 @@ export default function ContextGraph() {
     const updateClusters = (t: number, spread: Spread) => {
       for (const cluster of clusters) {
         const center = clusterCenter.get(cluster.id)!;
-        const angle = reducedMotion ? 0 : Math.sin(t * 0.16 + cluster.phase) * 0.45;
+        const angle = reducedMotion ? 0 : Math.sin(t * 0.16 + cluster.phase) * CLUSTER_TURN;
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
         const halfWidth = cluster.halfWidth * spread.spread;
@@ -367,6 +382,11 @@ export default function ContextGraph() {
     };
 
     // ── Layout + camera
+    const projected = new THREE.Vector3();
+    const project = (x: number, y: number, z: number) => {
+      projected.set(x, y, z).project(camera);
+      return { x: ((projected.x + 1) / 2) * layout.width, y: ((1 - projected.y) / 2) * layout.height };
+    };
     const copyBounds = () => {
       const copy = container.parentElement?.querySelectorAll(".b-graph-copy > h2, .b-graph-copy > .b-lede");
       if (!copy?.length) return null;
@@ -374,22 +394,82 @@ export default function ContextGraph() {
       const rects = [...copy].map((el) => el.getBoundingClientRect());
       return { left: Math.min(...rects.map((r) => r.left)) - box.left, right: Math.max(...rects.map((r) => r.right)) - box.left };
     };
-    let layout = computeLayout(container.clientWidth, container.clientHeight, copyBounds());
-    const applyLayout = () => {
-      layout = computeLayout(container.clientWidth, container.clientHeight, copyBounds());
+    const placeCamera = (yaw: number, pitch: number) => {
+      camera.position.set(
+        Math.sin(yaw) * Math.cos(pitch) * CAMERA_DISTANCE,
+        Math.sin(pitch) * CAMERA_DISTANCE,
+        Math.cos(yaw) * Math.cos(pitch) * CAMERA_DISTANCE,
+      );
+      camera.lookAt(0, 0, 0);
+      camera.updateMatrixWorld();
+    };
+    const projectCamera = () => {
       const { width, height, unitPx, centerX, offsetY } = layout;
-      renderer.setSize(width, height, false);
-      renderer.domElement.style.width = `${width}px`;
-      renderer.domElement.style.height = `${height}px`;
       const fullWidth = 2 * Math.max(centerX, width - centerX);
       const fullHeight = height + 2 * offsetY;
       camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(fullHeight / unitPx / 2 / CAMERA_DISTANCE));
       camera.aspect = fullWidth / fullHeight;
       camera.setViewOffset(fullWidth, fullHeight, fullWidth / 2 - centerX, 0, width, height);
       camera.updateProjectionMatrix();
+    };
+
+    // Screen bounds of every node and cluster corner in the resting, front-facing pose.
+    const restBounds = () => {
+      const corners: THREE.Vector3[] = [];
+      for (let i = 0; i < fixedAnchors.length; i++) corners.push(new THREE.Vector3().fromArray(fixedWorld, i * 3));
+      for (const cluster of clusters) {
+        const c = clusterCenter.get(cluster.id)!;
+        const halfWidth = cluster.halfWidth * layout.spread.spread;
+        // The diamond's tips, at either end of the cluster's turn and at rest.
+        for (const angle of [-CLUSTER_TURN, 0, CLUSTER_TURN]) {
+          const cos = Math.cos(angle);
+          const sin = Math.sin(angle);
+          for (const [lx, lz] of [[halfWidth, 0], [-halfWidth, 0], [0, cluster.halfDepth], [0, -cluster.halfDepth]]) {
+            corners.push(new THREE.Vector3(c.x + lx * cos - lz * sin, c.y, c.z + lx * sin + lz * cos));
+          }
+        }
+      }
+      const bounds = { top: Infinity, bottom: -Infinity, right: -Infinity };
+      placeCamera(0, BASE_PITCH);
+      for (const corner of corners) {
+        const { x, y } = project(corner.x, corner.y, corner.z);
+        bounds.top = Math.min(bounds.top, y);
+        bounds.bottom = Math.max(bounds.bottom, y);
+        bounds.right = Math.max(bounds.right, x);
+      }
+      return bounds;
+    };
+
+    let layout = computeLayout(container.clientWidth, container.clientHeight, copyBounds());
+    const applyLayout = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      const copy = copyBounds();
+      renderer.setSize(width, height, false);
+      renderer.domElement.style.width = `${width}px`;
+      renderer.domElement.style.height = `${height}px`;
+      const overflowFit = (scale: number) => {
+        layout = computeLayout(width, height, copy, scale);
+        projectCamera();
+        applySpread(layout.spread);
+        const bounds = restBounds();
+        const originY = height / 2 + layout.offsetY;
+        return Math.min(
+          1,
+          (height - FRAME_MARGIN.bottom - originY) / Math.max(1, bounds.bottom - originY),
+          (originY - FRAME_MARGIN.top) / Math.max(1, originY - bounds.top),
+          (width - FRAME_MARGIN.right - layout.centerX) / Math.max(1, bounds.right - layout.centerX),
+        );
+      };
+      // Shrink until the resting graph sits inside the frame. Projection scales about the graph's screen origin, so each pass solves for the overflow directly.
+      let scale = 1;
+      for (let pass = 0; pass < 4; pass++) {
+        const fit = overflowFit(scale);
+        if (fit > 0.995) break;
+        scale *= Math.max(0.5, fit);
+      }
       highlightMaterial.resolution.set(width, height);
       container.dataset.mobile = String(layout.mobile);
-      applySpread(layout.spread);
     };
     applyLayout();
     const resizeObserver = new ResizeObserver(applyLayout);
@@ -397,7 +477,8 @@ export default function ContextGraph() {
 
     // ── Pointer: nearest curated node (or its label) under the cursor picks the path
     const screen = new Map<string, { x: number; y: number }>();
-    const pointer = { x: 0, y: 0, inside: false, nx: 0, ny: 0 };
+    const pointer = { x: 0, y: 0, inside: false };
+    const spin = { yaw: 0, velocity: 0, dragging: false, lastX: 0, releasedAt: 0 };
     const curatedIds = [...new Set(CURATED_PATHS.flatMap((p) => p.nodes))];
     let hoveredId: string | null = null;
     const hoverTarget = () => {
@@ -428,40 +509,100 @@ export default function ContextGraph() {
       setActivePath(pathIndex);
     };
 
+    const updateCursor = () => {
+      container.style.cursor = spin.dragging ? "grabbing" : hoveredId ? "pointer" : "grab";
+    };
     const onPointerMove = (event: PointerEvent) => {
       const rect = container.getBoundingClientRect();
       pointer.x = event.clientX - rect.left;
       pointer.y = event.clientY - rect.top;
-      pointer.nx = (pointer.x / rect.width) * 2 - 1;
-      pointer.ny = (pointer.y / rect.height) * 2 - 1;
       pointer.inside = true;
-      hoveredId = hoverTarget();
-      container.style.cursor = hoveredId ? "pointer" : "";
-      if (hoveredId) selectPath(pathForNode(hoveredId, activePathRef.current));
+      if (spin.dragging) {
+        // Dragging right carries the front of the graph to the right, as a hand turns a vase.
+        const turn = (event.clientX - spin.lastX) * DRAG_RADIANS_PER_PX;
+        spin.lastX = event.clientX;
+        spin.yaw -= turn;
+        spin.velocity = -turn;
+      } else {
+        hoveredId = hoverTarget();
+        if (hoveredId) selectPath(pathForNode(hoveredId, activePathRef.current));
+      }
+      updateCursor();
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      onPointerMove(event);
+      // Leave the copy selectable; anywhere else in the section grabs the graph.
+      if (event.button !== 0 || (event.target as Element).closest(".b-graph-copy > *")) return;
+      spin.dragging = true;
+      spin.lastX = event.clientX;
+      spin.velocity = 0;
+      section.setPointerCapture(event.pointerId);
+      updateCursor();
+    };
+    const onPointerUp = () => {
+      if (!spin.dragging) return;
+      spin.dragging = false;
+      spin.releasedAt = performance.now();
+      updateCursor();
     };
     const onPointerLeave = () => {
+      if (spin.dragging) return;
       pointer.inside = false;
       hoveredId = null;
-      container.style.cursor = "";
+      updateCursor();
       selectPath(0);
     };
-    // Track the pointer across the whole section so the graph leans toward it even over the copy.
+    // Listen across the whole section so the graph can be grabbed beside and below the copy too.
     const section = container.parentElement ?? container;
     section.addEventListener("pointermove", onPointerMove);
-    section.addEventListener("pointerdown", onPointerMove);
+    section.addEventListener("pointerdown", onPointerDown);
+    section.addEventListener("pointerup", onPointerUp);
+    section.addEventListener("pointercancel", onPointerUp);
     section.addEventListener("pointerleave", onPointerLeave);
+    updateCursor();
+
+    // Points near the cursor drift away from it; offsets ease in and out so the field feels soft.
+    const nudges = new Float32Array(pointCount * 3);
+    const viewProjection = new THREE.Matrix4();
+    const nudgePoints = () => {
+      viewProjection.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+      const m = viewProjection.elements;
+      const rightX = Math.cos(spin.yaw);
+      const rightZ = -Math.sin(spin.yaw);
+      const active = pointer.inside && !spin.dragging && !reducedMotion;
+      for (let i = 0; i < pointCount; i++) {
+        const o = i * 3;
+        const x = positions[o];
+        const y = positions[o + 1];
+        const z = positions[o + 2];
+        let targetRight = 0;
+        let targetUp = 0;
+        if (active) {
+          const w = m[3] * x + m[7] * y + m[11] * z + m[15];
+          const sx = ((m[0] * x + m[4] * y + m[8] * z + m[12]) / w + 1) * 0.5 * layout.width;
+          const sy = (1 - (m[1] * x + m[5] * y + m[9] * z + m[13]) / w) * 0.5 * layout.height;
+          const dx = sx - pointer.x;
+          const dy = sy - pointer.y;
+          const distance = Math.hypot(dx, dy);
+          if (distance < NUDGE_RADIUS && distance > 0.001) {
+            const strength = NUDGE_DISTANCE * (1 - distance / NUDGE_RADIUS) ** 2;
+            targetRight = (dx / distance) * strength;
+            targetUp = (-dy / distance) * strength;
+          }
+        }
+        nudges[o] += (targetRight * rightX - nudges[o]) * 0.12;
+        nudges[o + 1] += (targetUp - nudges[o + 1]) * 0.12;
+        nudges[o + 2] += (targetRight * rightZ - nudges[o + 2]) * 0.12;
+        positions[o] = x + nudges[o];
+        positions[o + 1] = y + nudges[o + 1];
+        positions[o + 2] = z + nudges[o + 2];
+      }
+    };
 
     // ── Render loop, paused while off screen
     let frame = 0;
     let visible = false;
-    let yaw = 0;
-    let pitch = BASE_PITCH;
-    const projected = new THREE.Vector3();
     const startTime = performance.now();
-    const project = (x: number, y: number, z: number) => {
-      projected.set(x, y, z).project(camera);
-      return { x: ((projected.x + 1) / 2) * layout.width, y: ((1 - projected.y) / 2) * layout.height };
-    };
 
     const render = (now: number) => {
       frame = visible ? requestAnimationFrame(render) : 0;
@@ -472,25 +613,27 @@ export default function ContextGraph() {
         revealStart = reducedMotion ? now - REVEAL_MS : now;
       }
 
+      if (spin.dragging) {
+        // A hand held still stops the spin, so only a moving release flings it.
+        spin.velocity *= 0.8;
+      } else {
+        spin.yaw += spin.velocity;
+        spin.velocity *= SPIN_FRICTION;
+        if (Math.abs(spin.velocity) < 0.0005 && now - spin.releasedAt > SETTLE_DELAY_MS) {
+          const front = Math.round(spin.yaw / (Math.PI * 2)) * Math.PI * 2;
+          spin.yaw += (front - spin.yaw) * 0.03;
+        }
+      }
+      placeCamera(spin.yaw, BASE_PITCH);
+
+      positions.set(fixedWorld, 0);
       updateClusters(t, layout.spread);
+      nudgePoints();
       for (let e = 0; e < edges.length; e++) wiringPositions.set(positions.subarray(edges[e] * 3, edges[e] * 3 + 3), e * 3);
       wiringGeometry.attributes.position.needsUpdate = true;
       for (const geometry of pointGeometries) geometry.attributes.position.needsUpdate = true;
       const stops = updateHighlight();
 
-      // The camera leans toward the pointer, with a slow idle sway when it is away.
-      const idle = reducedMotion ? 0 : Math.sin(t * 0.12) * (pointer.inside ? 0.04 : 0.16);
-      const targetYaw = idle + (pointer.inside && !reducedMotion ? pointer.nx * 0.3 : 0);
-      const targetPitch = BASE_PITCH + (pointer.inside && !reducedMotion ? pointer.ny * 0.09 : 0);
-      yaw += (targetYaw - yaw) * 0.06;
-      pitch += (targetPitch - pitch) * 0.06;
-      camera.position.set(
-        Math.sin(yaw) * Math.cos(pitch) * CAMERA_DISTANCE,
-        Math.sin(pitch) * CAMERA_DISTANCE,
-        Math.cos(yaw) * Math.cos(pitch) * CAMERA_DISTANCE,
-      );
-      camera.lookAt(0, 0, 0);
-      camera.updateMatrixWorld();
 
       const progress = easeOutCubic(Math.min(1, (now - revealStart) / REVEAL_MS));
       highlightGeometry.instanceCount = Math.round(progress * PATH_SAMPLES);
@@ -552,7 +695,9 @@ export default function ContextGraph() {
       intersectionObserver.disconnect();
       resizeObserver.disconnect();
       section.removeEventListener("pointermove", onPointerMove);
-      section.removeEventListener("pointerdown", onPointerMove);
+      section.removeEventListener("pointerdown", onPointerDown);
+      section.removeEventListener("pointerup", onPointerUp);
+      section.removeEventListener("pointercancel", onPointerUp);
       section.removeEventListener("pointerleave", onPointerLeave);
       disposables.forEach((d) => d.dispose());
       renderer.dispose();

@@ -24,7 +24,6 @@ const PRODUCT_ITEMS: ShowcaseItem[] = [
     href: routes.products.foundation,
     image: "/site/home/product-sources.jpg",
     imageAlt: "Aerium Sources view: telemetry, field service, ERP and price sheets mapped into one model",
-    crop: { width: 150, left: -31, top: -4.5 },
   },
   {
     title: "Map how it all connects",
@@ -59,18 +58,21 @@ const QUOTE_SHOT = {
 
 const USE_CASE_ITEMS: ShowcaseItem[] = [
   {
+    slug: "quoting",
     title: "Quoting and estimation",
     body: "The agent reads the RFQ and drawings, finds the closest past jobs by geometry, and drafts a quote at today’s costs. Your estimator reviews and sends.",
     href: routes.products.workforce,
     ...QUOTE_SHOT,
   },
   {
+    slug: "costing",
     title: "Costing",
     body: "Should-cost every part from live material, labour and machine rates, and see where margin leaks before the job ships.",
     href: routes.products.forge,
     ...QUOTE_SHOT,
   },
   {
+    slug: "supply-chain",
     title: "Supply chain",
     body: "The agent watches open POs and supplier lead times, flags slips early, and drafts alternates for your buyer to approve.",
     href: routes.products.workforce,

@@ -25,7 +25,7 @@ const columns = [
       { label: "Power and electrical", href: routes.industries.power },
       { label: "Design to manufacture", href: routes.industries.designToManufacture },
       { label: "Chemicals", href: routes.industries.chemicals },
-      { label: "Data centers", href: routes.industries.dataCenters },
+      { label: "Distributors", href: routes.industries.distributors },
     ],
   },
   {
@@ -51,7 +51,8 @@ export default function SiteFooter() {
             <div key={col.title} className="b-footer-col">
               <span className="b-footer-label">{col.title}</span>
               {col.links.map((l) =>
-                l.href.startsWith("mailto:") ? (
+                // Hash links use native navigation so the homepage accordion hears `hashchange`.
+                l.href.startsWith("mailto:") || l.href.includes("#") ? (
                   <a key={l.label} href={l.href} className="b-footer-link">
                     {l.label}
                   </a>
