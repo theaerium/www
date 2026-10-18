@@ -4,6 +4,8 @@ import SiteShell from "./components/site/SiteShell";
 import { routes } from "./components/site/routes";
 import HomeHero from "./components/site/home/HomeHero";
 import ContextGraph from "./components/site/home/ContextGraph";
+import LayersSection from "./components/site/home/LayersSection";
+import IndustriesSection from "./components/site/home/IndustriesSection";
 import Showcase, { type ShowcaseItem } from "./components/site/home/Showcase";
 
 export const metadata: Metadata = {
@@ -192,6 +194,8 @@ export default function HomePage() {
         <ContextGraph />
       </section>
 
+      <LayersSection />
+
       <Showcase
         id="product"
         eyebrow="Product"
@@ -222,6 +226,8 @@ export default function HomePage() {
         mediaSide="left"
         frame={{ width: 666, height: 395 }}
       />
+
+      <IndustriesSection />
 
       <section id="customer-story" className="b-story">
         <div className="b-story-photo" role="img" aria-label="Ward Industrials leadership on the shop floor" />

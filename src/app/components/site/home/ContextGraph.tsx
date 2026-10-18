@@ -450,7 +450,7 @@ export default function ContextGraph() {
   const path = CURATED_PATHS[activePath];
 
   return (
-    <div ref={containerRef} className="b-graph-canvas">
+    <div ref={containerRef} className={`b-graph-canvas ${webglFailed ? "is-static" : ""}`}>
       {!webglFailed &&
         LABELLED_NODES.map((node) => (
           <div
