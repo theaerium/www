@@ -214,7 +214,7 @@ const LAYERS = [
 export default function LayersSection() {
   return (
     <section className="b-layers">
-      <div className="b-wrap b-layers-intro">
+      <div className="b-wrap b-layers-intro" data-reveal="stagger">
         <div className="b-eyebrow">Platform</div>
         <h2 className="b-h2">Three layers, built from the ground up</h2>
         <p className="b-lede">

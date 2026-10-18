@@ -7,6 +7,7 @@ import {
 import { routes } from "../routes";
 import Link from "next/link";
 import RollLabel from "../RollLabel";
+import SplitWords from "../SplitWords";
 
 const LOGOS = [
   { src: "/site/home/logo-stak-white.png", alt: "STAK Industries Inc.", width: 131, height: 48, href: "https://www.stakindustries.com/" },
@@ -27,7 +28,9 @@ export default function HomeHero() {
       <div className="b-hero-overlay" aria-hidden="true" />
 
       <div className="b-hero-content">
-        <h1 className="b-hero-title">Operationalizing manufacturer data to grow margin.</h1>
+        <h1 className="b-hero-title">
+          <SplitWords text="Operationalizing manufacturer data to grow margin." />
+        </h1>
         <p className="b-hero-sub">
           Every new system and AI tool adds another silo. Aerium turns all of it into faster quotes, healthier margins and
           growth, before your competitors do.

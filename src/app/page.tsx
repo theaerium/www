@@ -8,6 +8,8 @@ import LayersSection from "./components/site/home/LayersSection";
 import IndustriesSection from "./components/site/home/IndustriesSection";
 import Showcase, { type ShowcaseItem } from "./components/site/home/Showcase";
 import RollLabel from "./components/site/RollLabel";
+import SplitWords from "./components/site/SplitWords";
+import CountUp from "./components/site/home/CountUp";
 
 export const metadata: Metadata = {
   title: "Aerium | Operationalizing manufacturer data to grow margin",
@@ -157,7 +159,7 @@ const SECURITY_ITEMS = [
 
 function SectionIntro({ eyebrow, title, lede }: { eyebrow: string; title: string; lede: string }) {
   return (
-    <div className="b-intro">
+    <div className="b-intro" data-reveal="stagger">
       <div className="b-intro-heading">
         <div className="b-eyebrow">{eyebrow}</div>
         <h2 className="b-h2">{title}</h2>
@@ -169,7 +171,7 @@ function SectionIntro({ eyebrow, title, lede }: { eyebrow: string; title: string
 
 function RuledColumns({ items }: { items: { title: string; body: string }[] }) {
   return (
-    <div className="b-ruled-cols" style={{ ["--cols" as string]: items.length }}>
+    <div className="b-ruled-cols" data-reveal="stagger" style={{ ["--cols" as string]: items.length }}>
       {items.map((item) => (
         <div key={item.title} className="b-ruled-col">
           <h3>{item.title}</h3>
@@ -186,7 +188,7 @@ export default function HomePage() {
       <HomeHero />
 
       <section className="b-graph">
-        <div className="b-wrap b-graph-copy">
+        <div className="b-wrap b-graph-copy" data-reveal="stagger">
           <div className="b-eyebrow">Grow or fall behind</div>
           <h2 className="b-h2">More AI, more silos, less return</h2>
           <p className="b-lede">
@@ -233,9 +235,9 @@ export default function HomePage() {
       <IndustriesSection />
 
       <section id="customer-story" className="b-story">
-        <div className="b-story-photo" role="img" aria-label="Ward Industrials leadership on the shop floor" />
+        <div className="b-story-photo" data-reveal="mask" role="img" aria-label="Ward Industrials leadership on the shop floor" />
         <div className="b-story-copy">
-          <div className="b-story-copy-inner">
+          <div className="b-story-copy-inner" data-reveal="stagger">
             <div className="b-eyebrow">Customer story</div>
             <blockquote className="b-story-quote">
               “Aerium’s workforce is already automating 90% of the work we need to do.”
@@ -247,7 +249,9 @@ export default function HomePage() {
             <dl className="b-story-stats">
               {STORY_STATS.map((stat) => (
                 <div key={stat.value}>
-                  <dt>{stat.value}</dt>
+                  <dt>
+                    <CountUp value={stat.value} />
+                  </dt>
                   <dd>{stat.label}</dd>
                 </div>
               ))}
@@ -272,7 +276,7 @@ export default function HomePage() {
 
       <section id="security" className="b-section b-stone">
         <div className="b-wrap b-security">
-          <div className="b-security-copy">
+          <div className="b-security-copy" data-reveal="stagger">
             <div className="b-eyebrow">Security</div>
             <h2 className="b-h2">Enterprise-grade security, wherever your data lives</h2>
             <p className="b-body-copy">
@@ -286,7 +290,7 @@ export default function HomePage() {
               </svg>
             </Link>
           </div>
-          <div className="b-security-grid">
+          <div className="b-security-grid" data-reveal="stagger">
             {SECURITY_ITEMS.map((item) => (
               <div key={item.title} className="b-security-item">
                 <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
@@ -300,8 +304,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="b-cta">
-        <h2 className="b-cta-title">Grow faster than your market</h2>
+      <section className="b-cta" data-reveal="stagger">
+        <h2 className="b-cta-title">
+          <SplitWords text="Grow faster than your market" />
+        </h2>
         <div className="b-btn-row">
           <Link href={routes.bookDemo} className="b-btn b-btn-burgundy" style={{ fontWeight: 600 }}>
             <RollLabel>Book a demo</RollLabel>

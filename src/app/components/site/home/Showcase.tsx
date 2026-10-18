@@ -61,7 +61,7 @@ export default function Showcase({
   return (
     <section id={id} className={`b-showcase b-showcase-media-${mediaSide}`}>
       <div className="b-showcase-copy">
-        <div className="b-showcase-copy-inner">
+        <div className="b-showcase-copy-inner" data-reveal="stagger">
           <div className="b-eyebrow">{eyebrow}</div>
           <h2 className="b-h2 b-showcase-title">{title}</h2>
           <div className="b-accordion">
@@ -106,7 +106,7 @@ export default function Showcase({
             aria-hidden="true"
           />
         ))}
-        <div className="b-showcase-frame" style={{ ["--frame-aspect" as string]: frame.width / frame.height }}>
+        <div className="b-showcase-frame" data-reveal="rise" style={{ ["--frame-aspect" as string]: frame.width / frame.height }}>
           {shots.map((shot) => {
             const visible = shot.image === active.image;
             return (

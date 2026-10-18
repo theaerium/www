@@ -25,6 +25,7 @@ export default function ExpandingCards({
   return (
     <div
       className={`b-expand ${className}`}
+      data-reveal="stagger"
       onMouseLeave={() => setHoveredIndex(null)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setHoveredIndex(null);

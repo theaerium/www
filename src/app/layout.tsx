@@ -109,7 +109,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Additional meta tags for better link previews */}
         <meta property="og:image:width" content="1200" />

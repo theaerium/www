@@ -26,7 +26,7 @@ const INDUSTRIES = [
 export default function IndustriesSection() {
   return (
     <section className="b-industries">
-      <div className="b-wrap b-industries-intro">
+      <div className="b-wrap b-industries-intro" data-reveal="stagger">
         <div className="b-eyebrow">Industries</div>
         <h2 className="b-h2">Built for the companies that build everything else</h2>
       </div>
