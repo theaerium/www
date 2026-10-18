@@ -7,6 +7,7 @@ import ContextGraph from "./components/site/home/ContextGraph";
 import LayersSection from "./components/site/home/LayersSection";
 import IndustriesSection from "./components/site/home/IndustriesSection";
 import Showcase, { type ShowcaseItem } from "./components/site/home/Showcase";
+import RollLabel from "./components/site/RollLabel";
 
 export const metadata: Metadata = {
   title: "Aerium | Operationalizing manufacturer data to grow margin",
@@ -301,10 +302,10 @@ export default function HomePage() {
         <h2 className="b-cta-title">Grow faster than your market</h2>
         <div className="b-btn-row">
           <Link href={routes.bookDemo} className="b-btn b-btn-burgundy" style={{ fontWeight: 600 }}>
-            Book a demo
+            <RollLabel>Book a demo</RollLabel>
           </Link>
           <Link href={routes.seeItInAction} className="b-btn b-btn-outline">
-            See it in action
+            <RollLabel>See it in action</RollLabel>
           </Link>
         </div>
       </section>

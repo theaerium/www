@@ -1,48 +1,135 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AeriumMark from "./AeriumMark";
-import { routes } from "./routes";
+import RollLabel from "./RollLabel";
+import { CONTACT_EMAIL, routes } from "./routes";
 
-const products = [
+type MenuLink = { title: string; href: string; desc?: string };
+type MenuColumn = { label: string; links: MenuLink[]; size?: "large" | "regular" | "plain" };
+type Menu = {
+  id: string;
+  title: string;
+  columns: MenuColumn[];
+  featured: { label: string; image: string; caption: string; href: string };
+};
+
+const MENUS: Menu[] = [
   {
-    href: routes.products.foundation,
-    title: "Foundation",
-    desc: "Every system you run, in one live model.",
+    id: "product",
+    title: "Product",
+    columns: [
+      {
+        label: "Platform",
+        size: "large",
+        links: [
+          { title: "Foundation", desc: "Every system you run, in one live model", href: routes.products.foundation },
+          { title: "Forge", desc: "Custom models trained on your jobs", href: routes.products.forge },
+          { title: "Workforce", desc: "Agents that run workflows end to end", href: routes.products.workforce },
+        ],
+      },
+      {
+        label: "Use cases",
+        links: [
+          { title: "Quoting and estimation", desc: "Quotes drafted from the RFQ and drawings", href: routes.useCases.quoting },
+          { title: "Costing", desc: "Every part costed at today’s rates", href: routes.useCases.costing },
+          { title: "Supply chain", desc: "Open POs and lead times, watched", href: routes.useCases.supplyChain },
+        ],
+      },
+      {
+        label: "Industries",
+        size: "plain",
+        links: [
+          { title: "Power and electrical", href: routes.industries.power },
+          { title: "Design to manufacture", href: routes.industries.designToManufacture },
+          { title: "Chemicals", href: routes.industries.chemicals },
+          { title: "Data centers", href: routes.industries.dataCenters },
+        ],
+      },
+    ],
+    featured: {
+      label: "Customer story",
+      image: "/site/home/customer-story.jpg",
+      caption: "How Ward Industrials automated 90% of its targeted work in three weeks",
+      href: routes.customers,
+    },
   },
   {
-    href: routes.products.forge,
-    title: "Forge",
-    desc: "Custom models trained on your jobs and parts.",
-  },
-  {
-    href: routes.products.workforce,
-    title: "Workforce",
-    desc: "Agents that run workflows end to end.",
+    id: "resources",
+    title: "Resources",
+    columns: [
+      {
+        label: "Company",
+        size: "large",
+        links: [
+          { title: "About", desc: "Who we are and how we work", href: routes.about },
+          { title: "Careers", desc: "Build with us on site", href: routes.careers },
+        ],
+      },
+      {
+        label: "Learn",
+        links: [
+          { title: "Media and events", desc: "Talks, press and where to find us", href: routes.media },
+          { title: "Security", desc: "Hosting, access and audit", href: routes.security },
+        ],
+      },
+      {
+        label: "Contact",
+        size: "plain",
+        links: [
+          { title: "Book a demo", href: routes.bookDemo },
+          { title: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+        ],
+      },
+    ],
+    featured: {
+      label: "Platform",
+      image: "/site/images/equipment.jpg",
+      caption: "See how Foundation, Forge and Workforce fit together",
+      href: routes.platform,
+    },
   },
 ];
 
-const links = [
+const LINKS = [
   { href: routes.customers, title: "Customers" },
   { href: routes.research, title: "Research" },
-  { href: routes.resources, title: "Resources" },
 ];
 
 const Arrow = () => (
-  <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style={{ flexShrink: 0 }}>
+  <svg className="b-arrow" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
     <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
+function MenuAnchor({ link, className, onNavigate }: { link: MenuLink; className: string; onNavigate: () => void }) {
+  const content = (
+    <>
+      <span className="b-mega-link-title">{link.title}</span>
+      {link.desc && <span className="b-mega-link-desc">{link.desc}</span>}
+    </>
+  );
+  return link.href.startsWith("mailto:") ? (
+    <a href={link.href} className={className}>
+      {content}
+    </a>
+  ) : (
+    <Link href={link.href} className={className} onClick={onNavigate}>
+      {content}
+    </Link>
+  );
+}
 
 /**
  * `overlay` floats the nav transparently over a dark full-bleed hero until the
  * page scrolls, then it settles into the solid white bar used everywhere else.
  */
 export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
-  const [productOpen, setProductOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     if (!overlay) return;
@@ -52,53 +139,81 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [overlay]);
 
-  const transparent = overlay && !scrolled && !mobileOpen;
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpenMenu(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const open = (id: string) => {
+    clearTimeout(closeTimer.current);
+    setOpenMenu(id);
+  };
+  // A short grace period lets the pointer cross the gap between trigger and panel.
+  const scheduleClose = () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
+  };
+  const close = () => {
+    clearTimeout(closeTimer.current);
+    setOpenMenu(null);
+  };
+
+  const transparent = overlay && !scrolled && !mobileOpen && !openMenu;
 
   return (
     <>
       {!overlay && <div className="b-nav-spacer" />}
-      <header className={`b-nav ${transparent ? "b-nav-transparent" : ""}`}>
+      <div className={`b-nav-scrim ${openMenu ? "is-open" : ""}`} aria-hidden="true" onClick={close} />
+      <header
+        className={`b-nav ${transparent ? "b-nav-transparent" : ""} ${openMenu ? "b-nav-menu-open" : ""}`}
+        onMouseLeave={scheduleClose}
+      >
         <div className="b-nav-inner">
-          <Link href={routes.home} className="b-nav-brand" aria-label="Aerium home">
+          <Link href={routes.home} className="b-nav-brand" aria-label="Aerium home" onMouseEnter={close}>
             {transparent ? <AeriumMark fill="#FFFFFF" stroke="#111111" /> : <AeriumMark fill="#111111" stroke="#FFFFFF" />}
             <span>Aerium</span>
           </Link>
 
           <nav className="b-nav-links">
-            <div
-              className="b-nav-dd-wrap"
-              onMouseEnter={() => setProductOpen(true)}
-              onMouseLeave={() => setProductOpen(false)}
-            >
+            {MENUS.slice(0, 1).map((menu) => (
               <button
+                key={menu.id}
                 type="button"
-                className="b-nav-link"
-                aria-expanded={productOpen}
-                onClick={() => setProductOpen((v) => !v)}
+                className={`b-nav-link ${openMenu === menu.id ? "is-active" : ""}`}
+                aria-expanded={openMenu === menu.id}
+                aria-controls={`mega-${menu.id}`}
+                onMouseEnter={() => open(menu.id)}
+                onClick={() => (openMenu === menu.id ? close() : open(menu.id))}
               >
-                Product
+                {menu.title}
               </button>
-              {productOpen && (
-                <div className="b-nav-dropdown">
-                  {products.map((p) => (
-                    <Link key={p.title} href={p.href} className="b-nav-dditem" onClick={() => setProductOpen(false)}>
-                      <span className="b-nav-dditem-title">{p.title}</span>
-                      <span className="b-nav-dditem-desc">{p.desc}</span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-            {links.map((l) => (
-              <Link key={l.title} href={l.href} className="b-nav-link">
+            ))}
+            {LINKS.map((l) => (
+              <Link key={l.title} href={l.href} className="b-nav-link" onMouseEnter={close}>
                 {l.title}
               </Link>
             ))}
+            {MENUS.slice(1).map((menu) => (
+              <button
+                key={menu.id}
+                type="button"
+                className={`b-nav-link ${openMenu === menu.id ? "is-active" : ""}`}
+                aria-expanded={openMenu === menu.id}
+                aria-controls={`mega-${menu.id}`}
+                onMouseEnter={() => open(menu.id)}
+                onClick={() => (openMenu === menu.id ? close() : open(menu.id))}
+              >
+                {menu.title}
+              </button>
+            ))}
           </nav>
 
-          <div className="b-nav-end">
+          <div className="b-nav-end" onMouseEnter={close}>
             <Link href={routes.seeItInAction} className="b-btn b-btn-burgundy b-nav-cta">
-              See it in action
+              <RollLabel>See it in action</RollLabel>
               <Arrow />
             </Link>
             <button
@@ -118,15 +233,57 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
           </div>
         </div>
 
+        {MENUS.map((menu) => (
+          <div
+            key={menu.id}
+            id={`mega-${menu.id}`}
+            className={`b-mega ${openMenu === menu.id ? "is-open" : ""}`}
+            onMouseEnter={() => open(menu.id)}
+            inert={openMenu !== menu.id}
+          >
+            <div className="b-mega-columns">
+              {menu.columns.map((column) => (
+                <div key={column.label} className={`b-mega-col b-mega-col-${column.size ?? "regular"}`}>
+                  <div className="b-mega-label">{column.label}</div>
+                  {column.links.map((link) => (
+                    <MenuAnchor key={link.title} link={link} className="b-mega-link" onNavigate={close} />
+                  ))}
+                </div>
+              ))}
+            </div>
+            <Link href={menu.featured.href} className="b-mega-featured" onClick={close}>
+              <div className="b-mega-label">{menu.featured.label}</div>
+              <span className="b-mega-featured-image" style={{ backgroundImage: `url(${menu.featured.image})` }} />
+              <span className="b-mega-featured-caption">
+                {menu.featured.caption} <Arrow />
+              </span>
+            </Link>
+          </div>
+        ))}
+
         {mobileOpen && (
           <div className="b-nav-mobile">
-            <div className="b-nav-mobile-label">Product</div>
-            {products.map((p) => (
-              <Link key={p.title} href={p.href} className="b-nav-mobile-sub" onClick={() => setMobileOpen(false)}>
-                {p.title}
-              </Link>
+            {MENUS.map((menu) => (
+              <div key={menu.id} className="b-nav-mobile-group">
+                {menu.columns.map((column) => (
+                  <div key={column.label}>
+                    <div className="b-nav-mobile-label">{column.label}</div>
+                    {column.links.map((link) =>
+                      link.href.startsWith("mailto:") ? (
+                        <a key={link.title} href={link.href} className="b-nav-mobile-sub">
+                          {link.title}
+                        </a>
+                      ) : (
+                        <Link key={link.title} href={link.href} className="b-nav-mobile-sub" onClick={() => setMobileOpen(false)}>
+                          {link.title}
+                        </Link>
+                      ),
+                    )}
+                  </div>
+                ))}
+              </div>
             ))}
-            {links.map((l) => (
+            {LINKS.map((l) => (
               <Link key={l.title} href={l.href} onClick={() => setMobileOpen(false)}>
                 {l.title}
               </Link>
@@ -137,7 +294,7 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
               style={{ marginTop: 20, width: "100%" }}
               onClick={() => setMobileOpen(false)}
             >
-              Book a demo
+              <RollLabel>Book a demo</RollLabel>
             </Link>
           </div>
         )}

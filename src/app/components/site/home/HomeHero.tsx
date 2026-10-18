@@ -6,6 +6,7 @@ import {
 } from "../platformHeroSlides";
 import { routes } from "../routes";
 import Link from "next/link";
+import RollLabel from "../RollLabel";
 
 const LOGOS = [
   { src: "/site/home/logo-stak-white.png", alt: "STAK Industries Inc.", width: 131, height: 48, href: "https://www.stakindustries.com/" },
@@ -33,10 +34,10 @@ export default function HomeHero() {
         </p>
         <div className="b-btn-row">
           <Link href={routes.bookDemo} className="b-btn b-btn-white">
-            Book a demo
+            <RollLabel>Book a demo</RollLabel>
           </Link>
           <Link href={routes.seeItInAction} className="b-btn b-btn-burgundy">
-            See it in action
+            <RollLabel>See it in action</RollLabel>
           </Link>
         </div>
       </div>
