@@ -7,8 +7,7 @@ import ContextGraph from "./components/site/home/ContextGraph";
 import LayersSection from "./components/site/home/LayersSection";
 import IndustriesSection from "./components/site/home/IndustriesSection";
 import Showcase, { type ShowcaseItem } from "./components/site/home/Showcase";
-import RollLabel from "./components/site/RollLabel";
-import SplitWords from "./components/site/SplitWords";
+import { ClosingCta, RuledColumns, SectionIntro } from "./components/site/sections";
 import CountUp from "./components/site/home/CountUp";
 
 export const metadata: Metadata = {
@@ -159,31 +158,6 @@ const SECURITY_ITEMS = [
   },
 ];
 
-function SectionIntro({ eyebrow, title, lede }: { eyebrow: string; title: string; lede: string }) {
-  return (
-    <div className="b-intro" data-reveal="stagger">
-      <div className="b-intro-heading">
-        <div className="b-eyebrow">{eyebrow}</div>
-        <h2 className="b-h2">{title}</h2>
-      </div>
-      <p className="b-lede b-intro-lede">{lede}</p>
-    </div>
-  );
-}
-
-function RuledColumns({ items }: { items: { title: string; body: string }[] }) {
-  return (
-    <div className="b-ruled-cols" data-reveal="stagger" style={{ ["--cols" as string]: items.length }}>
-      {items.map((item) => (
-        <div key={item.title} className="b-ruled-col">
-          <h3>{item.title}</h3>
-          <p>{item.body}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function HomePage() {
   return (
     <SiteShell navOverlay>
@@ -306,19 +280,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="b-cta" data-reveal="stagger">
-        <h2 className="b-cta-title">
-          <SplitWords text="Grow faster than your market" />
-        </h2>
-        <div className="b-btn-row">
-          <Link href={routes.bookDemo} className="b-btn b-btn-burgundy" style={{ fontWeight: 600 }}>
-            <RollLabel>Book a demo</RollLabel>
-          </Link>
-          <Link href={routes.seeItInAction} className="b-btn b-btn-outline">
-            <RollLabel>See it in action</RollLabel>
-          </Link>
-        </div>
-      </section>
+      <ClosingCta
+        title="Grow faster than your market"
+        primary={{ label: "Book a demo", href: routes.bookDemo }}
+        secondary={{ label: "See it in action", href: routes.seeItInAction }}
+      />
     </SiteShell>
   );
 }
