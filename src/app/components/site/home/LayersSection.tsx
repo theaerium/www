@@ -23,7 +23,6 @@ const SOURCE_ICONS = {
       <path d="M1 4.5h10M1 7.5h10M4.5 1.5v9" />
     </>
   ),
-  folder: <path d="M1 3h3.5l1 1.2H11V10H1V3z" />,
   check: (
     <>
       <circle cx="6" cy="6" r="4.5" />
@@ -37,6 +36,7 @@ const SOURCE_ICONS = {
     </>
   ),
   swap: <path d="M1 4h8.5L7.5 2M11 8H2.5l2 2" />,
+  snowflake: <path d="M6 1v10M1.7 3.5l8.6 5M1.7 8.5l8.6-5M4.8 1.8L6 3l1.2-1.2M4.8 10.2L6 9l1.2 1.2" />,
 };
 
 const SOURCES: {
@@ -51,7 +51,7 @@ const SOURCES: {
   { name: "SolidWorks", detail: "41,305 drawings", icon: "cube", left: 196, top: 14 },
   { name: "Outlook", detail: "9,870 RFQs", icon: "mail", left: 50, top: 74 },
   { name: "Excel", detail: "312 price lists", icon: "grid", left: 210, top: 74 },
-  { name: "SharePoint", detail: "6,140 files", icon: "folder", left: 16, top: 134 },
+  { name: "Snowflake", detail: "2.4M rows", icon: "snowflake", left: 16, top: 134 },
   { name: "Quality system", detail: "1,204 NCRs", icon: "check", left: 196, top: 134 },
   { name: "Press brake PLC", detail: "No API, connected", icon: "chip", left: 30, top: 194, highlight: true },
   { name: "Supplier EDI", detail: "88 suppliers", icon: "swap", left: 220, top: 194 },
