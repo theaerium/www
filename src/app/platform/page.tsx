@@ -4,27 +4,17 @@ import { Eyebrow, Section, SiteButton } from "../components/site/primitives";
 import { routes } from "../components/site/routes";
 import CtaBand from "../components/site/CtaBand";
 import VideoHero from "../components/site/VideoHero";
+import {
+  PLATFORM_HERO_INTERVAL_MS,
+  PLATFORM_HERO_SEQUENCE,
+  PLATFORM_HERO_SLIDES,
+} from "../components/site/platformHeroSlides";
 
 export const metadata: Metadata = {
   title: "Platform | Aerium",
   description:
     "A workforce built on context. AI agents that act, models tuned to your business, a live operational data foundation, and governance around all of it.",
 };
-
-// Platform-specific hero clips (Home keeps its own set). Three unique clips;
-// equipment is framed slightly lower (objectPosition).
-const HERO_SLIDES = [
-  { video: "/site/videos/platform-equipment.mp4", poster: "/site/images/equipment.jpg", objectPosition: "50% 62%", resume: true }, // 0
-  { video: "/site/videos/platform-chemicals.mp4", poster: "/site/images/specialty-chemicals.jpg" }, // 1
-  { video: "/site/videos/platform-distribution.mp4", poster: "/site/images/distribution.jpg" }, // 2
-];
-
-// Rotation order: equipment, chemical, distribution, metal fab (= equipment).
-// The metal-fab step wraps straight into the top equipment step (same clip,
-// back to back, no crossfade), so equipment plays ~20s continuously across the
-// loop. The long equipment clip is one mounted element that resumes where it
-// left off. 10s per step.
-const HERO_SEQUENCE = [0, 1, 2, 0];
 
 const STACK = [
   {
@@ -74,7 +64,7 @@ const DEPLOY = [
 export default function PlatformPage() {
   return (
     <SiteShell>
-      <VideoHero slides={HERO_SLIDES} sequence={HERO_SEQUENCE} intervalMs={10000}>
+      <VideoHero slides={PLATFORM_HERO_SLIDES} sequence={PLATFORM_HERO_SEQUENCE} intervalMs={PLATFORM_HERO_INTERVAL_MS}>
         <Eyebrow style={{ color: "var(--site-amber)", display: "block", marginBottom: 20 }}>THE PLATFORM</Eyebrow>
         <h1
           style={{

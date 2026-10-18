@@ -1,429 +1,292 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SiteShell from "./components/site/SiteShell";
-import { Eyebrow, Section, SiteButton } from "./components/site/primitives";
 import { routes } from "./components/site/routes";
 import HomeHero from "./components/site/home/HomeHero";
-import StackSection from "./components/site/home/StackSection";
+import Showcase, { type ShowcaseItem } from "./components/site/home/Showcase";
 
 export const metadata: Metadata = {
-  title: "Aerium | The AI workforce for industrials",
+  title: "Aerium | Operationalizing manufacturer data to grow margin",
   description:
-    "AI purpose-built for industrial manufacturers and distributors. An always-on workforce across supply chain, operations, commercial, and back office, deployed in your environment.",
+    "Every new system and AI tool adds another silo. Aerium turns all of it into faster quotes, healthier margins and growth, before your competitors do.",
 };
 
-const BUILD_CARDS = [
+const SOURCES_SHOT = {
+  image: "/site/home/product-sources.jpg",
+  imageAlt: "Aerium Sources view: telemetry, field service, ERP and price sheets mapped into one model",
+  crop: { width: 167.6, left: -32.7, top: -5.7 },
+};
+
+const PRODUCT_ITEMS: ShowcaseItem[] = [
   {
-    num: "01",
+    title: "Connect every source",
+    body: "ERP, telemetry, field service, price sheets and document shares, mapped into one model with every entity and relationship counted.",
+    href: routes.products.foundation,
+    ...SOURCES_SHOT,
+  },
+  {
+    title: "Map how it all connects",
+    body: "Parts, jobs, customers, suppliers and machines linked across every system, so a change in one place shows up everywhere it matters.",
+    href: routes.products.foundation,
+    ...SOURCES_SHOT,
+  },
+  {
+    title: "Find anything in milliseconds",
+    body: "Ask about any order, part or supplier in plain language and get the answer with the records behind it.",
+    href: routes.products.foundation,
+    ...SOURCES_SHOT,
+  },
+  {
+    title: "Search past jobs by drawing",
+    body: "Drop in a drawing and pull up the closest jobs you’ve run before, with what they cost and how long they took.",
+    href: routes.products.forge,
+    ...SOURCES_SHOT,
+  },
+];
+
+const QUOTE_SHOT = {
+  image: "/site/home/use-cases-quote.jpg",
+  imageAlt: "Aerium quote estimation for a brake pressuriser, with estimated hours, sell value and cost",
+};
+
+const USE_CASE_ITEMS: ShowcaseItem[] = [
+  {
+    title: "Quoting and estimation",
+    body: "The agent reads the RFQ and drawings, finds the closest past jobs by geometry, and drafts a quote at today’s costs. Your estimator reviews and sends.",
+    href: routes.products.workforce,
+    ...QUOTE_SHOT,
+  },
+  {
+    title: "Costing",
+    body: "Should-cost every part from live material, labour and machine rates, and see where margin leaks before the job ships.",
+    href: routes.products.forge,
+    ...QUOTE_SHOT,
+  },
+  {
     title: "Supply chain",
-    bullets: [
-      "Proactively track material markets across every SKU you buy",
-      "Model real landed cost including freight, tariffs, insurance, yield",
-      "Predict shortage before they impact your lead time or production",
-      "Automate tail spend without mass supplier consolidation",
-    ],
+    body: "The agent watches open POs and supplier lead times, flags slips early, and drafts alternates for your buyer to approve.",
+    href: routes.products.workforce,
+    ...QUOTE_SHOT,
+  },
+];
+
+const DIFFERENTIATORS = [
+  {
+    title: "Any source, even without an API",
+    body: "ERPs, inboxes, drawings, spreadsheets and machines with no connector. If your team can see it, we can connect it.",
+  },
+  { title: "Built around how you work", body: "Bespoke to your processes and built on site alongside your people" },
+  { title: "Value in weeks, used every day", body: "Live on real work fast, inside the tools your team already uses" },
+];
+
+const TEAMS = [
+  {
+    title: "Finance",
+    body: "Predictable cost, and returns you can measure in margin and revenue, not seats or usage.",
   },
   {
-    num: "02",
     title: "Operations",
-    bullets: [
-      "Live production views with dynamic job scheduling",
-      "Root-causes downtime and scrap from your own data",
-      "Context-aware job archive searchable by any keyword, filter, or drawing similarity",
-      "Real-time job and order slip-risk identification",
-    ],
+    body: "Know where every job, part and dollar is right now, without chasing anyone for an update.",
   },
   {
-    num: "03",
-    title: "Commercial",
-    bullets: [
-      "Automated estimation, quoting, and should-costing, in minutes",
-      "New opportunity identification for the products you already sell",
-      "Win/loss and margin analysis on every deal",
-      "Automatically adjust prices with relevant material markets",
-    ],
+    title: "Estimating and sales",
+    body: "Quote faster from every job you’ve run before, and win more of the work you want.",
   },
   {
-    num: "04",
-    title: "Back Office",
-    bullets: [
-      "Capture know-how before your most experienced people retire",
-      "Bring new hires up to speed and productive in weeks, not quarters",
-      "Inventory reconciliation across systems and sites",
-      "Track and coordinate certifications, contracts, and compliance documentation",
-    ],
+    title: "IT and security",
+    body: "Deployed on-prem or in your cloud, with full audit trails. Your data and models stay yours.",
   },
 ];
 
-const INDUSTRY_CARDS = [
+const STORY_STATS = [
+  { value: "90%", label: "of targeted work automated" },
+  { value: "10 hrs", label: "saved per week" },
+  { value: "3 wks", label: "kickoff to live" },
+];
+
+const SECURITY_ITEMS = [
   {
-    title: "Equipment Manufacturing",
-    blurb: "Quote faster, buy smarter, improve OEE.",
-    href: routes.solutions.equipment,
-    img: "/site/images/equipment.jpg",
-    alt: "Equipment manufacturing floor",
+    title: "SOC 2",
+    body: "Independently audited controls",
+    icon: (
+      <>
+        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" fill="currentColor" />
+        <path d="M8.8 12.2l2.2 2.2 4.2-4.4" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </>
+    ),
   },
   {
-    title: "Specialty Chemicals",
-    blurb: "Feedstock, yield, and compliance in one live picture.",
-    href: routes.solutions.chemicals,
-    img: "/site/images/specialty-chemicals.jpg",
-    alt: "Specialty chemicals plant",
+    title: "SSO and SAML",
+    body: "Unified access controls",
+    icon: (
+      <>
+        <circle cx="8" cy="12" r="4.2" fill="none" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 12h9M18 12v3.5M21 12v2.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </>
+    ),
   },
   {
-    title: "Metal Fabrication",
-    blurb: "From RFQ to shipped part, with nothing lost in between.",
-    href: routes.solutions.metal,
-    img: "/site/images/metal-fabrication.jpg",
-    alt: "Metal fabrication welding",
+    title: "Canadian and US hosting",
+    body: "Your data stays in your country",
+    icon: (
+      <>
+        <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z" fill="currentColor" />
+        <circle cx="12" cy="10" r="2.4" fill="#FFFFFF" />
+      </>
+    ),
   },
   {
-    title: "Distribution",
-    blurb: "Right stock, right branch, right price.",
-    href: routes.solutions.distribution,
-    img: "/site/images/distribution.jpg",
-    alt: "Distribution warehouse",
+    title: "On-prem or your cloud",
+    body: "Deploy inside your own walls",
+    icon: (
+      <>
+        <rect x="4" y="4" width="16" height="6.5" rx="1.5" fill="currentColor" />
+        <rect x="4" y="13.5" width="16" height="6.5" rx="1.5" fill="currentColor" />
+        <circle cx="7.5" cy="7.25" r="1" fill="#FFFFFF" />
+        <circle cx="7.5" cy="16.75" r="1" fill="#FFFFFF" />
+      </>
+    ),
   },
 ];
 
-const DEPLOY_STEPS = [
-  {
-    num: "01",
-    title: "Embed.",
-    body: " We join your team on site and map how work actually flows and where it gets held up.",
-  },
-  {
-    num: "02",
-    title: "Unify and Tune.",
-    body: " We unify data across your systems into a governed, live picture to tune custom models specific to your business.",
-  },
-  {
-    num: "03",
-    title: "Run.",
-    body: " The workforce goes live inside the tools your team already uses, on real work, with oversight built in from day one.",
-  },
-  {
-    num: "04",
-    title: "Expand.",
-    body: " Each new workflow lands faster, because the foundation and guardrails are already there.",
-  },
-];
+function SectionIntro({ eyebrow, title, lede }: { eyebrow: string; title: string; lede: string }) {
+  return (
+    <div className="b-intro">
+      <div className="b-intro-heading">
+        <div className="b-eyebrow">{eyebrow}</div>
+        <h2 className="b-h2">{title}</h2>
+      </div>
+      <p className="b-lede b-intro-lede">{lede}</p>
+    </div>
+  );
+}
+
+function RuledColumns({ items }: { items: { title: string; body: string }[] }) {
+  return (
+    <div className="b-ruled-cols" style={{ ["--cols" as string]: items.length }}>
+      {items.map((item) => (
+        <div key={item.title} className="b-ruled-col">
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
-    <SiteShell>
+    <SiteShell navOverlay>
       <HomeHero />
 
-      {/* Trusted by */}
-      <section style={{ padding: "56px 32px", borderBottom: "1px solid var(--site-hairline)" }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-          <div
-            style={{
-              textAlign: "center",
-              color: "var(--site-muted)",
-              fontWeight: 700,
-              fontSize: 12,
-              letterSpacing: "0.15em",
-              marginBottom: 22,
-            }}
-          >
-            TRUSTED BY TEAMS AT
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 104,
-              flexWrap: "wrap",
-            }}
-          >
-            {[
-              // Per-logo optical sizing: each logo has different internal whitespace,
-              // so equal box sizes read unequally. Heights tuned so the wordmarks
-              // appear the same size.
-              {
-                src: "/site/images/logo-stak.png",
-                alt: "STAK Industries Inc.",
-                h: 108,
-                href: "https://www.stakindustries.com/",
-              },
-              {
-                src: "/site/images/logo-hammond.png",
-                alt: "Hammond Power Solutions",
-                h: 132,
-                href: "https://americas.hammondpowersolutions.com/",
-              },
-              { src: "/site/images/logo-ward.png", alt: "Ward Industrials", h: 58, href: "https://ward.ca/" },
-            ].map((logo) => (
-              <a
-                key={logo.src}
-                href={logo.href}
-                target="_blank"
-                rel="noreferrer"
-                className="trusted-logo"
-                aria-label={logo.alt}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={logo.src} alt={logo.alt} style={{ height: logo.h, width: "auto", display: "block" }} />
-              </a>
-            ))}
-          </div>
-          <div
-            style={{
-              textAlign: "center",
-              color: "var(--site-muted)",
-              fontWeight: 700,
-              fontSize: 12,
-              letterSpacing: "0.15em",
-              marginTop: 22,
-            }}
-          >
-            AND MORE
-          </div>
+      <Showcase
+        id="product"
+        eyebrow="Product"
+        title="See your whole operation in one place"
+        items={PRODUCT_ITEMS}
+        backdrop="/site/home/product-backdrop.jpg"
+        mediaSide="right"
+        frame={{ width: 720, height: 540 }}
+      />
+
+      <section className="b-section b-white">
+        <div className="b-wrap">
+          <SectionIntro
+            eyebrow="Why Aerium"
+            title="The final step, not another layer"
+            lede="A data warehouse is where data goes to sit. Aerium goes out to every system, collects what’s there, makes sense of it and puts it to work."
+          />
+          <RuledColumns items={DIFFERENTIATORS} />
         </div>
       </section>
 
-      {/* Customer spotlight */}
-      <section style={{ padding: "88px 32px", borderBottom: "1px solid var(--site-hairline)" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
-          <blockquote
-            style={{
-              margin: 0,
-              color: "var(--site-ink)",
-              fontSize: "clamp(28px, 4.6vw, 46px)",
-              fontWeight: 600,
-              lineHeight: 1.25,
-              letterSpacing: "-0.02em",
-              textWrap: "balance",
-            }}
-          >
-            &ldquo;Aerium&rsquo;s workforce is already automating{" "}
-            <span style={{ color: "var(--site-link)" }}>90% of the work</span> we need to do.&rdquo;
-          </blockquote>
-          <div style={{ marginTop: 28, color: "#6E635B", fontSize: 15.5 }}>
-            <strong style={{ color: "var(--site-ink)" }}>Michael Ward</strong>, President, Ward Industrials
-          </div>
-        </div>
-      </section>
+      <Showcase
+        id="use-cases"
+        eyebrow="Use cases"
+        title="Win more work, at a margin you can defend"
+        items={USE_CASE_ITEMS}
+        backdrop="/site/home/use-cases-backdrop.jpg"
+        mediaSide="left"
+        frame={{ width: 666, height: 395 }}
+      />
 
-      {/* What we build */}
-      <Section>
-        <div style={{ maxWidth: 760, margin: "0 auto 56px", textAlign: "center" }}>
-          <Eyebrow style={{ display: "block", marginBottom: 18 }}>WHAT WE BUILD</Eyebrow>
-          <h2 style={{ fontSize: "clamp(30px, 4.4vw, 44px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-            An AI workforce for industrials.
-          </h2>
-        </div>
-        <div className="site-grid-2">
-          {BUILD_CARDS.map((c) => (
-            <div key={c.num} className="site-card site-card-hover" style={{ padding: 32 }}>
-              <div className="mono" style={{ color: "var(--site-link)", fontSize: 13, marginBottom: 12 }}>
-                {c.num}
-              </div>
-              <h3 style={{ margin: "0 0 16px", fontSize: 21, fontWeight: 700, letterSpacing: "-0.01em" }}>{c.title}</h3>
-              <ul
-                style={{
-                  margin: 0,
-                  padding: 0,
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 10,
-                  color: "var(--site-body)",
-                  fontSize: 15,
-                  lineHeight: 1.5,
-                }}
-              >
-                {c.bullets.map((b, i) => (
-                  <li key={i} style={{ borderTop: "1px solid #E6D4C2", paddingTop: 10 }}>
-                    {b}
-                  </li>
-                ))}
-              </ul>
+      <section id="customer-story" className="b-story">
+        <div className="b-story-photo" role="img" aria-label="Ward Industrials leadership on the shop floor" />
+        <div className="b-story-copy">
+          <div className="b-story-copy-inner">
+            <div className="b-eyebrow">Customer story</div>
+            <blockquote className="b-story-quote">
+              “Aerium’s workforce is already automating 90% of the work we need to do.”
+            </blockquote>
+            <div className="b-story-attribution">
+              <strong>Michael Ward</strong>
+              <span>President, Ward Industrials</span>
             </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Why it works — interactive stack */}
-      <StackSection />
-
-      {/* How we deploy */}
-      <section style={{ padding: "96px 32px", borderBottom: "1px solid var(--site-hairline)" }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-          <div style={{ maxWidth: 760, margin: "0 auto 56px", textAlign: "center" }}>
-            <Eyebrow style={{ display: "block", marginBottom: 18 }}>HOW WE DEPLOY</Eyebrow>
-            <h2
-              style={{
-                margin: "0 0 12px",
-                fontSize: "clamp(30px, 4.4vw, 44px)",
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                lineHeight: 1.1,
-              }}
-            >
-              Built with your team for your business.
-            </h2>
-            <p style={{ margin: "0 auto", maxWidth: 620, color: "var(--site-body)", fontSize: 16.5, lineHeight: 1.65 }}>
-              Our engineers embed on site with your team and build the deployment around how you actually operate.
-            </p>
-          </div>
-          <div className="site-split">
-            <div style={{ aspectRatio: "4 / 3.4", borderRadius: 14, overflow: "hidden", position: "relative" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/site/images/deploy.jpg"
-                alt="Supplies delivered by parachute against a clear sky"
-                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {DEPLOY_STEPS.map((s, i) => (
-                <div
-                  key={s.num}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "44px 1fr",
-                    gap: 18,
-                    borderTop: "1px solid var(--site-hairline)",
-                    borderBottom: i === DEPLOY_STEPS.length - 1 ? "1px solid var(--site-hairline)" : undefined,
-                    padding: "20px 0",
-                  }}
-                >
-                  <span className="mono" style={{ color: "var(--site-link)", fontSize: 13, paddingTop: 3 }}>
-                    {s.num}
-                  </span>
-                  <div>
-                    <strong style={{ fontSize: 16.5, color: "var(--site-ink)" }}>{s.title}</strong>
-                    <span style={{ color: "var(--site-body)", fontSize: 15.5, lineHeight: 1.55 }}>{s.body}</span>
-                  </div>
+            <dl className="b-story-stats">
+              {STORY_STATS.map((stat) => (
+                <div key={stat.value}>
+                  <dt>{stat.value}</dt>
+                  <dd>{stat.label}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
+            <Link href={routes.customers} className="b-text-link b-story-link">
+              Read the full story
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Who it's for */}
-      <Section>
-        <div style={{ maxWidth: 1000, margin: "0 auto 52px", textAlign: "center" }}>
-          <Eyebrow style={{ display: "block", marginBottom: 18 }}>WHO IT&rsquo;S FOR</Eyebrow>
-          <h2
-            style={{
-              margin: "0 auto",
-              maxWidth: "24ch",
-              fontSize: "clamp(30px, 4.4vw, 44px)",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-              textWrap: "balance",
-            }}
-          >
-            For the teams who make and move the physical world.
-          </h2>
+      <section className="b-section b-white">
+        <div className="b-wrap">
+          <SectionIntro
+            eyebrow="For everyone in the room"
+            title="Built to make your whole team look good"
+            lede="One platform that pays back in margin and revenue, answers the questions your team asks every day, and never leaves your walls."
+          />
+          <RuledColumns items={TEAMS} />
         </div>
-        <div className="site-grid-4">
-          {INDUSTRY_CARDS.map((c) => (
-            <Link
-              key={c.title}
-              href={c.href}
-              className="industry-card"
-              style={{ display: "flex", flexDirection: "column", textDecoration: "none" }}
-            >
-              <div style={{ aspectRatio: "16 / 11", position: "relative", overflow: "hidden", borderRadius: 12 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={c.img}
-                  alt={c.alt}
-                  className="industry-card-img"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-              <h3 className="industry-card-title" style={{ margin: "18px 0 6px", fontSize: 18, fontWeight: 700, color: "var(--site-ink)" }}>
-                {c.title}
-              </h3>
-              <p style={{ margin: 0, color: "var(--site-body)", fontSize: 14.5, lineHeight: 1.55 }}>{c.blurb}</p>
-            </Link>
-          ))}
-        </div>
-        <div className="site-grid-2" style={{ marginTop: 64 }}>
-          <div className="site-card" style={{ padding: 34 }}>
-            <div
-              style={{
-                color: "var(--site-eyebrow)",
-                fontWeight: 700,
-                fontSize: 12,
-                letterSpacing: "0.15em",
-                marginBottom: 12,
-              }}
-            >
-              FOR LEADERSHIP & STRATEGY
-            </div>
-            <p style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: "var(--site-ink)", fontWeight: 500 }}>
-              <b>One live picture of the whole operation:</b> where the margin is, where it&rsquo;s leaking, and what the
-              workforce is doing about it.
-            </p>
-          </div>
-          <div className="site-card" style={{ padding: 34 }}>
-            <div
-              style={{
-                color: "var(--site-eyebrow)",
-                fontWeight: 700,
-                fontSize: 12,
-                letterSpacing: "0.15em",
-                marginBottom: 12,
-              }}
-            >
-              FOR EXECUTION
-            </div>
-            <p style={{ margin: 0, fontSize: 18, lineHeight: 1.55, color: "var(--site-ink)", fontWeight: 500 }}>
-              <b>Fast, trustworthy answers in the moment:</b> for those doing the day-to-day work, in the tools they
-              already use.
-            </p>
-          </div>
-        </div>
-      </Section>
+      </section>
 
-      {/* CTA band */}
-      <section className="railed rail-amber" style={{ background: "var(--site-amber)", padding: "96px 32px" }}>
-        <div className="rail-lines" aria-hidden="true" />
-        <div
-          className="site-container cta-home"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.4fr 1fr",
-            gap: 64,
-            alignItems: "center",
-          }}
-        >
-          <h2
-            style={{
-              margin: 0,
-              color: "var(--site-ink)",
-              fontSize: "clamp(28px, 3.6vw, 40px)",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-              textWrap: "balance",
-            }}
-          >
-            Margin leaks where context is missing. Our always-on workforce helps you get it back.
-          </h2>
-          <div style={{ display: "flex", gap: 14, justifyContent: "flex-end", flexWrap: "wrap" }}>
-            <SiteButton href={routes.bookDemo} variant="dark">
-              Book a demo
-            </SiteButton>
-            <SiteButton href={routes.platform} variant="outline-dark">
-              Explore the platform
-            </SiteButton>
+      <section id="security" className="b-section b-stone">
+        <div className="b-wrap b-security">
+          <div className="b-security-copy">
+            <div className="b-eyebrow">Security</div>
+            <h2 className="b-h2">Enterprise-grade security, wherever your data lives</h2>
+            <p className="b-body-copy">
+              You keep full ownership of your data and models. Host in Canada or the US, or run Aerium on-prem or in your
+              own cloud. Your data is never used to train anyone else’s models.
+            </p>
+            <Link href={routes.security} className="b-arrow-link">
+              More about security
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
+          <div className="b-security-grid">
+            {SECURITY_ITEMS.map((item) => (
+              <div key={item.title} className="b-security-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                  {item.icon}
+                </svg>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="b-cta">
+        <h2 className="b-cta-title">Grow faster than your market</h2>
+        <div className="b-btn-row">
+          <Link href={routes.bookDemo} className="b-btn b-btn-burgundy" style={{ fontWeight: 600 }}>
+            Book a demo
+          </Link>
+          <Link href={routes.seeItInAction} className="b-btn b-btn-outline">
+            See it in action
+          </Link>
         </div>
       </section>
     </SiteShell>
