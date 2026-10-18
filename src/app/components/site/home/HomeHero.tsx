@@ -49,6 +49,7 @@ export default function HomeHero() {
             <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} />
           </a>
         ))}
+        <span className="b-hero-logos-more">+ more</span>
       </div>
     </section>
   );

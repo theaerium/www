@@ -10,6 +10,8 @@ export type ShowcaseItem = {
   /** Product screenshot shown in the frame while this item is open. */
   image: string;
   imageAlt: string;
+  /** Blurred photo behind the frame; falls back to the section's backdrop. */
+  backdrop?: string;
   /**
    * Crops the screenshot inside the frame, as percentages of the frame's inner box:
    * the image's width and its left/top offsets. Defaults to filling the frame.
@@ -47,12 +49,14 @@ export default function Showcase({
   items: ShowcaseItem[];
   backdrop: string;
   mediaSide: "left" | "right";
-  /** Outer size of the screenshot frame at desktop width, in px. */
+  /** Screenshot frame proportions, in px; the frame scales with the column. */
   frame: { width: number; height: number };
 }) {
   const [openIndex, setOpenIndex] = useState(0);
   const active = items[openIndex];
   const shots = items.filter((item, i) => items.findIndex((other) => other.image === item.image) === i);
+  const backdropFor = (item: ShowcaseItem) => item.backdrop ?? backdrop;
+  const backdrops = [...new Set(items.map(backdropFor))];
 
   return (
     <section id={id} className={`b-showcase b-showcase-media-${mediaSide}`}>
@@ -92,12 +96,17 @@ export default function Showcase({
       </div>
 
       <div className="b-showcase-media">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="b-showcase-backdrop" src={backdrop} alt="" aria-hidden="true" />
-        <div
-          className="b-showcase-frame"
-          style={{ width: `min(${frame.width}px, 88%)`, aspectRatio: `${frame.width} / ${frame.height}` }}
-        >
+        {backdrops.map((src) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={src}
+            className={`b-showcase-backdrop ${src === backdropFor(active) ? "is-visible" : ""}`}
+            src={src}
+            alt=""
+            aria-hidden="true"
+          />
+        ))}
+        <div className="b-showcase-frame" style={{ ["--frame-aspect" as string]: frame.width / frame.height }}>
           {shots.map((shot) => {
             const visible = shot.image === active.image;
             return (
@@ -107,9 +116,8 @@ export default function Showcase({
                 src={shot.image}
                 alt={visible ? shot.imageAlt : ""}
                 aria-hidden={!visible}
-                className="b-showcase-shot"
+                className={`b-showcase-shot ${visible ? "is-visible" : ""}`}
                 style={{
-                  opacity: visible ? 1 : 0,
                   width: `${shot.crop?.width ?? 100}%`,
                   left: `${shot.crop?.left ?? 0}%`,
                   top: `${shot.crop?.top ?? 0}%`,

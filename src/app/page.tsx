@@ -15,36 +15,38 @@ export const metadata: Metadata = {
     "Every new system and AI tool adds another silo. Aerium turns all of it into faster quotes, healthier margins and growth, before your competitors do.",
 };
 
-const SOURCES_SHOT = {
-  image: "/site/home/product-sources.jpg",
-  imageAlt: "Aerium Sources view: telemetry, field service, ERP and price sheets mapped into one model",
-  crop: { width: 167.6, left: -32.7, top: -5.7 },
-};
-
 const PRODUCT_ITEMS: ShowcaseItem[] = [
   {
     title: "Connect every source",
     body: "ERP, telemetry, field service, price sheets and document shares, mapped into one model with every entity and relationship counted.",
     href: routes.products.foundation,
-    ...SOURCES_SHOT,
+    image: "/site/home/product-sources.jpg",
+    imageAlt: "Aerium Sources view: telemetry, field service, ERP and price sheets mapped into one model",
+    crop: { width: 150, left: -31, top: -4.5 },
   },
   {
     title: "Map how it all connects",
     body: "Parts, jobs, customers, suppliers and machines linked across every system, so a change in one place shows up everywhere it matters.",
     href: routes.products.foundation,
-    ...SOURCES_SHOT,
+    image: "/site/home/product-graph.jpg",
+    imageAlt: "Aerium graph view linking work orders, equipment, customers, parts and suppliers",
+    backdrop: "/site/home/product-backdrop-whiteboard.jpg",
   },
   {
     title: "Find anything in milliseconds",
     body: "Ask about any order, part or supplier in plain language and get the answer with the records behind it.",
     href: routes.products.foundation,
-    ...SOURCES_SHOT,
+    image: "/site/home/product-search.jpg",
+    imageAlt: "Aerium search returning 539 matching alarms in 29 milliseconds",
+    backdrop: "/site/home/product-backdrop-laptop.jpg",
   },
   {
     title: "Search past jobs by drawing",
     body: "Drop in a drawing and pull up the closest jobs you’ve run before, with what they cost and how long they took.",
     href: routes.products.forge,
-    ...SOURCES_SHOT,
+    image: "/site/home/product-job-archive.jpg",
+    imageAlt: "Aerium historical job archive with search by drawing",
+    backdrop: "/site/home/product-backdrop-estimator.jpg",
   },
 ];
 
@@ -86,11 +88,11 @@ const DIFFERENTIATORS = [
 const TEAMS = [
   {
     title: "Finance",
-    body: "Predictable cost, and returns you can measure in margin and revenue, not seats or usage.",
+    body: "Predictable cost, with returns you can measure in margin and revenue.",
   },
   {
     title: "Operations",
-    body: "Know where every job, part and dollar is right now, without chasing anyone for an update.",
+    body: "Know where every job, part and dollar is, right now.",
   },
   {
     title: "Estimating and sales",
@@ -204,7 +206,7 @@ export default function HomePage() {
         items={PRODUCT_ITEMS}
         backdrop="/site/home/product-backdrop.jpg"
         mediaSide="right"
-        frame={{ width: 720, height: 540 }}
+        frame={{ width: 1027, height: 854 }}
       />
 
       <section className="b-section b-white">
