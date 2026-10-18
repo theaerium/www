@@ -1061,8 +1061,29 @@ body {
 .b-intro-flush { margin-bottom: 0; }
 .b-press-copy { display: flex; flex-direction: column; gap: 16px; }
 
+.b-definition {
+    display: inline-flex; align-items: baseline; gap: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3); padding: 12px 20px;
+}
+.b-definition-word { font-family: var(--font-b-display); font-size: 24px; line-height: 28px; color: #FFFFFF; }
+.b-definition-note { font-family: var(--font-b-sans); font-size: 14px; line-height: 18px; color: rgba(255, 255, 255, 0.7); }
+
+/* Photo beside copy on stone */
+.b-split { display: grid; grid-template-columns: 1fr 1fr; background: var(--b-stone); }
+.b-split-photo { position: relative; overflow: hidden; min-height: clamp(560px, 53vw, 860px); }
+.b-split-photo::before {
+    content: ""; position: absolute; inset: 0;
+    background: url(/site/home/grain.png) 0 0 / 256px 256px repeat, linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--photo) center / cover no-repeat;
+}
+.b-split-copy { display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: 96px clamp(24px, 8.3vw, 160px) 96px clamp(24px, 6.7vw, 120px); }
+.b-split-copy .b-h2 { margin-top: -8px; }
+.b-split-copy > * { max-width: 560px; }
+
 @media (max-width: 900px) {
     .b-page-hero { min-height: 600px; }
+    .b-split { grid-template-columns: 1fr; }
+    .b-split-photo { min-height: 0; aspect-ratio: 4 / 3; }
+    .b-split-copy { padding: 72px 24px 88px; }
     .b-header { padding: 128px 0 72px; }
     .b-header-row { flex-direction: column; align-items: flex-start; }
 }
