@@ -1128,12 +1128,89 @@ body {
 .b-prose-role li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; background: var(--b-burgundy); }
 .b-prose-role a { color: var(--b-ink); text-decoration: underline 1px; text-underline-position: from-font; }
 
+/* Media: featured news, events */
+.b-news-meta { display: flex; align-items: center; gap: 10px; font-family: var(--font-b-sans); font-size: 14px; line-height: 18px; color: var(--b-muted); }
+.b-news-meta .b-tag { padding: 4px 10px; }
+.b-news-feature { display: grid; grid-template-columns: 55fr 45fr; background: var(--b-stone); }
+.b-news-feature-photo {
+    display: block; min-height: 440px;
+    background: url(/site/home/grain.png) 0 0 / 256px 256px repeat, linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--photo) center / cover no-repeat;
+}
+.b-news-feature-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: 48px; }
+.b-news-feature-text { display: flex; flex-direction: column; gap: 18px; }
+.site .b-news-feature-title { font-family: var(--font-b-display); font-weight: 400; font-size: clamp(30px, 2.8vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--b-ink); }
+.b-news-feature-title a { color: inherit; text-decoration: none; }
+.b-news-list { margin-top: 24px; border-top: 1px solid var(--b-rule); }
+.b-news-row { display: flex; align-items: center; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--b-rule); text-decoration: none; }
+.b-news-row-title { font-family: var(--font-b-sans); font-size: 18px; font-weight: 600; line-height: 24px; color: var(--b-ink); }
+.b-news-row:hover .b-news-row-title { text-decoration: underline 1px; text-underline-position: from-font; }
+
+.b-event { display: flex; align-items: flex-start; gap: 24px 48px; padding: 36px; border-bottom: 1px solid var(--b-hairline, #EEEEEE); }
+.b-event:last-child { border-bottom: 0; }
+.b-event-date { flex: 0 0 200px; display: flex; flex-direction: column; gap: 4px; }
+.b-event-date span { font-family: var(--font-b-display); font-size: 36px; line-height: 40px; letter-spacing: -0.015em; color: var(--b-burgundy); white-space: nowrap; }
+.b-event-date small { font-family: var(--font-b-sans); font-size: 14px; line-height: 18px; color: var(--b-muted); }
+.b-event-main { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.b-event-main .b-body-copy { max-width: 620px; }
+.b-event-title { font-size: 22px; line-height: 28px; letter-spacing: -0.01em; }
+.b-event-link { padding-block: 12px; flex-shrink: 0; }
+
+/* News article */
+.b-byline { display: flex; align-items: center; gap: 14px; padding-top: 8px; }
+.b-avatars { display: flex; }
+.b-avatars span {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid #1A0D0E;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-b-sans); font-size: 14px; font-weight: 600; line-height: 18px;
+    background: var(--b-burgundy); color: #FFFFFF;
+}
+.b-avatars span + span { margin-left: -10px; background: #F6E7E9; color: var(--b-burgundy); }
+.b-byline-names { font-family: var(--font-b-sans); font-size: 15px; font-weight: 600; line-height: 20px; color: #FFFFFF; }
+.b-byline-meta { margin-top: 2px; font-family: var(--font-b-sans); font-size: 14px; line-height: 18px; color: rgba(255, 255, 255, 0.65); }
+.b-article { padding: 80px 0 120px; }
+.b-article-photo {
+    width: 100%; aspect-ratio: 1160 / 560;
+    background: url(/site/home/grain.png) 0 0 / 256px 256px repeat, linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--photo) center / cover no-repeat;
+}
+.b-article-body { max-width: 680px; margin: 72px auto 0; }
+.b-prose-article { font-family: var(--font-b-sans); font-size: 18px; line-height: 30px; color: var(--b-body); }
+.b-prose-article p { margin: 28px 0 0; }
+.b-prose-article > p:first-child { margin-top: 0; font-size: 22px; line-height: 34px; color: var(--b-ink); }
+.site .b-prose-article h2 { margin: 40px 0 0; font-family: var(--font-b-display); font-weight: 400; font-size: 32px; line-height: 38px; letter-spacing: -0.01em; color: var(--b-ink); }
+/* Paragraphs under a section heading sit closer together than the opening ones. */
+.b-prose-article h2 ~ p { margin-top: 16px; }
+.b-prose-article blockquote { margin: 28px 0 0; padding: 12px 0 12px 32px; border-left: 2px solid var(--b-burgundy); }
+.b-prose-article blockquote p:first-child { margin: 0; font-family: var(--font-b-display); font-size: clamp(30px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.015em; color: var(--b-ink); }
+.b-prose-article blockquote p + p { margin-top: 14px; font-size: 14px; line-height: 18px; color: var(--b-muted); }
+.b-prose-article ul, .b-prose-article ol { margin: 20px 0 0; padding-left: 22px; }
+.b-prose-article li + li { margin-top: 8px; }
+.b-prose-article a { color: var(--b-ink); text-decoration: underline 1px; text-underline-position: from-font; }
+.b-article-callout {
+    margin-top: 28px; padding: 28px 32px; background: var(--b-stone);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.b-article-callout > div { display: flex; flex-direction: column; gap: 6px; }
+.b-article-callout p { margin: 0; font-family: var(--font-b-sans); font-size: 15px; line-height: 22px; color: var(--b-body-2); }
+.b-article-signoff { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--b-rule); font-family: var(--font-b-sans); line-height: 22px; }
+.b-article-signoff div { font-size: 16px; font-weight: 600; color: var(--b-ink); }
+.b-article-signoff span { font-size: 15px; color: var(--b-muted); }
+
 @media (max-width: 1100px) {
     .b-role-row { flex-direction: column; align-items: flex-start; }
     .b-role { gap: 48px; }
     .b-role-card { flex-basis: 320px; }
 }
 @media (max-width: 900px) {
+    .b-news-feature { grid-template-columns: 1fr; }
+    .b-news-feature-photo { min-height: 0; aspect-ratio: 16 / 10; }
+    .b-news-feature-copy { padding: 32px 24px; }
+    .b-event { flex-direction: column; padding: 28px 24px; }
+    .b-event-date { flex-basis: auto; }
+    .b-event-link { padding-block: 0; }
+    .b-article { padding: 48px 0 88px; }
+    .b-article-photo { aspect-ratio: 4 / 3; }
+    .b-article-body { margin-top: 48px; }
+    .b-article-callout { flex-direction: column; align-items: flex-start; }
     .b-role { flex-direction: column; padding: 72px 0 88px; }
     .b-role-main { flex-basis: auto; }
     .b-role-card { position: static; width: 100%; flex-basis: auto; }

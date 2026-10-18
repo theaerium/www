@@ -73,7 +73,7 @@ export function formatDate(date: string | undefined) {
 }
 
 export function readingMinutes(body: string) {
-  return Math.max(1, Math.round(body.split(/\s+/).length / 220));
+  return Math.max(1, Math.ceil(body.split(/\s+/).length / 220));
 }
 
 export const rolePath = (slug: string) => `/careers/${slug}`;

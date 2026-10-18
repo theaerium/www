@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         destination: "/legal/condition-eligibility",
         permanent: true,
       },
+      // The seed round announcement moved to the markdown news template; keep the published link working.
+      {
+        source: "/media-events/aerium-raises-2-5-million",
+        destination: "/news/aerium-raises-seed-round",
+        permanent: true,
+      },
     ];
   },
 };
