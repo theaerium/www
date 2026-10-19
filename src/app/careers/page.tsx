@@ -56,7 +56,6 @@ export default function CareersPage() {
                 <div className="b-role-row-main">
                   <div className="b-role-row-title">
                     <Link href={rolePath(role.slug)}>{role.title}</Link>
-                    {role.hiring && <span className="b-tag b-tag-accent">Hiring now</span>}
                   </div>
                   <p className="b-body-copy">{role.summary}</p>
                 </div>

@@ -33,7 +33,6 @@ export type Role = Entry<{
   availability: string;
   reportsTo?: string;
   compensation?: string;
-  hiring?: boolean;
   order?: number;
   applyUrl?: string;
 }>;

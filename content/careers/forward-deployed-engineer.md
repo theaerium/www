@@ -8,7 +8,6 @@ workStyle: Regular travel to customer sites
 location: Toronto, Canada
 availability: Full time, Toronto with regular travel to customer sites
 compensation: $140K–$200K CAD + equity
-hiring: true
 order: 1
 ---
 

@@ -11,7 +11,6 @@ location: North America                 # header chip and sidebar
 availability: Full time, on site across North America   # grey line in the open roles list
 reportsTo: CTO                          # optional sidebar row
 compensation: $150K–$180K + equity      # optional sidebar row
-hiring: true                            # shows the "Hiring now" tag
 order: 2                                # position in the open roles list
 applyUrl:                               # optional; defaults to an email to the founders
 draft: true

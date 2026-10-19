@@ -168,7 +168,7 @@ export default function HomePage() {
           <div className="b-eyebrow">Grow or fall behind</div>
           <h2 className="b-h2">More AI, more silos, less return</h2>
           <p className="b-lede">
-            Each new tool adds another island of data. Without a way to connect it, AI spend goes negative. Aerium is the
+            Each new tool adds another island of data. Without a way to connect it, AI spend generates negative ROI. Aerium is the
             layer that makes it pay off.
           </p>
         </div>
