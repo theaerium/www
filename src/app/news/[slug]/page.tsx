@@ -50,7 +50,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <article className="b-white b-article">
         <div className="b-wrap">
-          <div className="b-article-photo" role="img" aria-label={article.imageAlt ?? ""} style={{ ["--photo" as string]: `url(${article.image})` }} />
           <div className="b-article-body">
             <Markdown className="b-prose-article">{article.body}</Markdown>
             {article.hiringCallout && (

@@ -1168,11 +1168,7 @@ body {
 .b-byline-names { font-family: var(--font-b-sans); font-size: 15px; font-weight: 600; line-height: 20px; color: #FFFFFF; }
 .b-byline-meta { margin-top: 2px; font-family: var(--font-b-sans); font-size: 14px; line-height: 18px; color: rgba(255, 255, 255, 0.65); }
 .b-article { padding: 80px 0 120px; }
-.b-article-photo {
-    width: 100%; aspect-ratio: 1160 / 560;
-    background: url(/site/home/grain.png) 0 0 / 256px 256px repeat, linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--photo) center / cover no-repeat;
-}
-.b-article-body { max-width: 680px; margin: 72px auto 0; }
+.b-article-body { max-width: 680px; margin-inline: auto; }
 .b-prose-article { font-family: var(--font-b-sans); font-size: 18px; line-height: 30px; color: var(--b-body); }
 .b-prose-article p { margin: 28px 0 0; }
 .b-prose-article > p:first-child { margin-top: 0; font-size: 22px; line-height: 34px; color: var(--b-ink); }
@@ -1214,8 +1210,6 @@ body {
     .b-event-date { flex-basis: auto; }
     .b-event-link { padding-block: 0; }
     .b-article { padding: 48px 0 88px; }
-    .b-article-photo { aspect-ratio: 4 / 3; }
-    .b-article-body { margin-top: 48px; }
     .b-article-callout { flex-direction: column; align-items: flex-start; }
     .b-role { flex-direction: column; padding: 72px 0 88px; }
     .b-role-main { flex-basis: auto; }

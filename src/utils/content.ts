@@ -43,7 +43,6 @@ export type Article = Entry<{
   category: string;
   summary: string;
   image: string;
-  imageAlt?: string;
   date?: string;
   authors: { name: string; initials: string }[];
   authorRole: string;

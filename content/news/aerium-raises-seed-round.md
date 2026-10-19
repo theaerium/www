@@ -3,7 +3,6 @@ title: Aerium raises US$2.5 million to build the future of industrial work
 category: Funding
 summary: Aerium closed US$2.5 million in seed funding from Gutter Capital and strategic angel investors, and is sharing the milestone as the team grows.
 image: /site/news/seed-round.jpg
-imageAlt: A welder at work on a dim factory floor
 date:            # YYYY-MM-DD; left blank until the publish date is set
 authors:
   - name: Adam Trotman
@@ -20,9 +19,7 @@ Manufacturers and distributors power the physical economy, and the people who ma
 
 We both grew up around manufacturing, then spent years at McKinsey building software and agentic AI for industrial clients. Again and again we saw how hard it is to coordinate work when the information lives across systems, spreadsheets, inboxes and people's heads.
 
-> “We want Aerium to be the next Honeywell, Emerson or Siemens.”
->
-> Adam Trotman and Michael Dawes
+We want Aerium to be the next Honeywell, Emerson or Siemens.
 
 We expect AI to become part of industry's core infrastructure, and we are building an operating layer that companies can rely on for decades.
 

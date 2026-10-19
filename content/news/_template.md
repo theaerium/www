@@ -5,8 +5,7 @@
 title: Headline of the press release
 category: Funding                       # tag on the listing; "Company news · <category>" on the article
 summary: One or two sentences for the news card on /media-events.
-image: /site/news/your-image.jpg        # put the image in public/site/news
-imageAlt: Short description of the image
+image: /site/news/your-image.jpg        # news card photo on /media-events; put it in public/site/news
 date: 2026-11-01                        # YYYY-MM-DD; leave blank to hide the date
 authors:
   - name: Adam Trotman
