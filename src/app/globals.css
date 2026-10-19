@@ -966,12 +966,13 @@ body {
     .b-ruled-cols { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
     .b-showcase, .b-showcase-media-left { grid-template-columns: 1fr; min-height: 0; }
     .b-showcase-media-left .b-showcase-media { order: 0; }
-    .b-showcase-copy, .b-showcase-media-left .b-showcase-copy { padding: 88px 24px 56px; }
+    /* Match .b-wrap's gutter so stacked copy lines up with the sections around it. */
+    .b-showcase-copy, .b-showcase-media-left .b-showcase-copy { padding: 88px clamp(24px, 9vw, 180px) 56px; }
     .b-showcase-copy-inner { max-width: 600px; }
     .b-showcase-media { padding-block: 48px; }
     .b-story { grid-template-columns: 1fr; }
     .b-story-photo { aspect-ratio: 4 / 3; }
-    .b-story-copy { padding: 72px 24px 88px; }
+    .b-story-copy { padding: 72px clamp(24px, 9vw, 180px) 88px; }
     .b-security { flex-direction: column; gap: 56px; }
     .b-security-grid { flex-basis: auto; width: 100%; }
     .b-cta { padding: 112px 24px; }
