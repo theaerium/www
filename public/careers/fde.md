@@ -25,7 +25,7 @@ Being a part of the Forward Deployed Engineering Team, you'll be a core part of 
 
 - 100% medical, dental & vision insurance coverage for you
 - Flexible PTO
-- Weekly meal stipend while travelling, in office lunch & dinner
+- Weekly meal stipend while traveling, in office lunch & dinner
 - Health & wellness stipend
 
 ## How to Apply

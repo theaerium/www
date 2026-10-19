@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 const EXPECT = [
-  { title: "We learn your operation", body: "Meet with someone who will listen and learn how quoting, costing and supply chain run in your business today." },
+  { title: "We learn your operation", body: "Meet with someone who will listen and learn how quoting, costing, and supply chain run in your business today." },
   { title: "We show where Aerium fits", body: "See how Aerium connects to the systems you already use and which work it can take off your team’s plate." },
-  { title: "We tailor it to you", body: "Ask for the custom models, agents and add-ons your workflows need." },
+  { title: "We tailor it to you", body: "Ask for the custom models, agents, and add-ons your workflows need." },
 ];
 
 export default function BookADemoPage() {

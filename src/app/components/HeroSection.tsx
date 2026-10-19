@@ -200,7 +200,7 @@ export default function HeroSection() {
                         className="text-sm font-bold"
                         style={{ color: "#FD870B" }}
                       >
-                        Should-Cost Modelling
+                        Should-Cost Modeling
                       </div>
                       <div style={{ color: "#390007" }}>
                         Move supplier conversations to transparent, data-backed

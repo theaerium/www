@@ -4,7 +4,7 @@ import ExpandingCards from "./ExpandingCards";
 const INDUSTRIES = [
   {
     title: "Power and Electrical",
-    body: "Transformers, switchgear and motors. Quote faster while copper and steel move under you.",
+    body: "Transformers, switchgear, and motors. Quote faster while copper and steel move under you.",
     hashId: "industries-power",
     href: routes.industries.power,
     image: "/site/home/industry-power.jpg",

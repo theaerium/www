@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AeriumLogo from "./AeriumLogo";
 import RollLabel from "./RollLabel";
+import { SiteLink } from "./sections";
 import { CONTACT_EMAIL, routes } from "./routes";
 
 type MenuLink = { title: string; href: string; desc?: string };
@@ -32,9 +33,9 @@ const MENUS: Menu[] = [
       {
         label: "Use cases",
         links: [
-          { title: "Quoting and estimation", desc: "Quotes drafted from the RFQ and drawings", href: routes.useCases.quoting },
-          { title: "Costing", desc: "Every part costed at today’s rates", href: routes.useCases.costing },
-          { title: "Supply chain", desc: "Open POs and lead times, watched", href: routes.useCases.supplyChain },
+          { title: "Quoting, estimation, & costing", desc: "Faster quotes, accurate costs, and healthier margins", href: routes.useCases.quoting },
+          { title: "Supply Chain Planning", desc: "Demand, inventory, and suppliers, in sync", href: routes.useCases.supplyChain },
+          { title: "Plant & Warehouse Operations", desc: "Production, stock, and shipments, coordinated", href: routes.useCases.operations },
         ],
       },
       {
@@ -56,8 +57,8 @@ const MENUS: Menu[] = [
     },
   },
   {
-    id: "resources",
-    title: "Resources",
+    id: "company",
+    title: "Company",
     columns: [
       {
         label: "Company",
@@ -70,8 +71,8 @@ const MENUS: Menu[] = [
       {
         label: "Learn",
         links: [
-          { title: "Media and events", desc: "Talks, press and where to find us", href: routes.media },
-          { title: "Security", desc: "Hosting, access and audit", href: routes.security },
+          { title: "Media and events", desc: "Talks, press, and where to find us", href: routes.media },
+          { title: "Security", desc: "Hosting, access, and audit", href: routes.security },
         ],
       },
       {
@@ -86,7 +87,7 @@ const MENUS: Menu[] = [
     featured: {
       label: "Platform",
       image: "/site/images/equipment.jpg",
-      caption: "See how Foundation, Forge and Workforce fit together",
+      caption: "See how Foundation, Forge, and Workforce fit together",
       href: routes.platform,
     },
   },
@@ -260,13 +261,13 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
                 </div>
               ))}
             </div>
-            <Link href={menu.featured.href} className="b-mega-featured" onClick={close}>
+            <SiteLink href={menu.featured.href} className="b-mega-featured" onClick={close}>
               <div className="b-mega-label">{menu.featured.label}</div>
               <span className="b-mega-featured-image" style={{ backgroundImage: `url(${menu.featured.image})` }} />
               <span className="b-mega-featured-caption">
                 {menu.featured.caption} <Arrow />
               </span>
-            </Link>
+            </SiteLink>
           </div>
         ))}
 

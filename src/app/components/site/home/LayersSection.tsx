@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SiteLink } from "../sections";
 import { routes } from "../routes";
 import ExpandingCards from "./ExpandingCards";
 import FitToBox from "./FitToBox";
@@ -201,14 +201,14 @@ const LAYERS = [
   {
     title: "Forge",
     hashId: "platform-forge",
-    body: "Custom models trained on your jobs, parts and history, not the internet’s. They price, cost and plan the way your best people do.",
+    body: "Custom models trained on your jobs, parts, and history, not the internet’s. They price, cost, and plan the way your best people do.",
     href: routes.products.forge,
     visual: <ForgeVisual />,
   },
   {
     title: "Workforce",
     hashId: "platform-workforce",
-    body: "AI agents that run workflows end to end inside email, Teams and your ERP, with your people approving the calls that matter.",
+    body: "AI agents that run workflows end to end inside email, Teams, and your ERP, with your people approving the calls that matter.",
     href: routes.products.workforce,
     visual: <WorkforceVisual />,
   },
@@ -218,7 +218,7 @@ const LAYER_HASH_IDS = LAYERS.map((layer) => layer.hashId);
 
 export default function LayersSection() {
   return (
-    <section className="b-layers">
+    <section id="platform" className="b-layers">
       <div className="b-wrap b-layers-intro" data-reveal="stagger">
         <div className="b-eyebrow">Platform</div>
         <h2 className="b-h2">Three layers, built from the ground up</h2>
@@ -226,9 +226,9 @@ export default function LayersSection() {
           Start with the data foundation, live in weeks. Then add models and agents one workflow at a time, on the same
           foundation.
         </p>
-        <Link href={routes.platform} className="b-text-link b-layers-link">
+        <SiteLink href={routes.products.foundation} className="b-text-link b-layers-link">
           Explore the platform
-        </Link>
+        </SiteLink>
       </div>
       <ExpandingCards defaultIndex={1} activeGrow={588 / 390} className="b-layer-cards" hashIds={LAYER_HASH_IDS}>
         {LAYERS.map((layer) => (

@@ -12,7 +12,7 @@ export default function DetailCardsSection() {
       description:
         "Our data extraction pipelines take data from multiple sources and different data types and create a single source of truth representing the data foundation of your business",
       subText:
-        "We currently support Excel, CSV, Word, PDFs, standard text files, SQL / database exports and common ERPs such as Epicor Kinetic or Netsuite",
+        "We currently support Excel, CSV, Word, PDFs, standard text files, SQL / database exports, and common ERPs such as Epicor Kinetic or Netsuite",
       imageSrc: "/details/ingestion.png", // TODO: Get a cooler picture
       imageAlt: "Ingest data",
       isReversed: false,

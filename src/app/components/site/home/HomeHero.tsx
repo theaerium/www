@@ -32,7 +32,7 @@ export default function HomeHero() {
           <SplitWords text="Operationalizing manufacturer data to grow margin." />
         </h1>
         <p className="b-hero-sub">
-          Every new system and AI tool adds another silo. Aerium turns all of it into faster quotes, healthier margins and
+          Every new system and AI tool adds another silo. Aerium turns all of it into faster quotes, healthier margins, and
           growth, before your competitors do.
         </p>
         <div className="b-btn-row">

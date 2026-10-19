@@ -50,7 +50,7 @@ const SECURITY = [
   },
   {
     title: "Audit trail on every action",
-    body: "Every draft, every send, every update is logged and reviewable. Oversight is built in, not bolted on.",
+    body: "Every draft, every send, and every update is logged and reviewable. Oversight is built in, not bolted on.",
   },
 ];
 

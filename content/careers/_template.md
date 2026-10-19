@@ -8,7 +8,7 @@ headline: The opening line of "About the role", set large.
 type: Full time                         # header chip and sidebar
 workStyle: On site with customers       # header chip and sidebar
 location: North America                 # header chip and sidebar
-availability: Full time, on site across North America   # grey line in the open roles list
+availability: Full time, on site across North America   # gray line in the open roles list
 reportsTo: CTO                          # optional sidebar row
 compensation: $150K–$180K + equity      # optional sidebar row
 order: 2                                # position in the open roles list

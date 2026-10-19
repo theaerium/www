@@ -14,9 +14,9 @@ const columns = [
   {
     title: "Use cases",
     links: [
-      { label: "Quoting and estimation", href: routes.useCases.quoting },
-      { label: "Costing", href: routes.useCases.costing },
-      { label: "Supply chain", href: routes.useCases.supplyChain },
+      { label: "Quoting, estimation, & costing", href: routes.useCases.quoting },
+      { label: "Supply Chain Planning", href: routes.useCases.supplyChain },
+      { label: "Plant & Warehouse Operations", href: routes.useCases.operations },
     ],
   },
   {

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const HOW_WE_WORK = [
   { title: "Small team, high ownership", body: "You own a customer outcome end to end, from the first site visit to the agent running in production." },
-  { title: "Forward deployed", body: "You spend real time on site with estimators, planners and plant managers, learning how the work actually flows." },
+  { title: "Forward deployed", body: "You spend real time on site with estimators, planners, and plant managers, learning how the work actually flows." },
   { title: "Live in weeks", body: "We ship to production fast, then improve it weekly with the people using it." },
   {
     title: "Hard problems",

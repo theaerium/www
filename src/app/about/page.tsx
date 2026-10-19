@@ -22,7 +22,7 @@ export default function AboutPage() {
       <PhotoHero
         image="/site/pages/about-hero.jpg"
         title="A place for people who keep the physical economy running"
-        sub="Our name comes from -arium, a place for. Aerium is where the people who make, move and maintain things get AI built for their work."
+        sub="Our name comes from -arium, a place for. Aerium is where the people who make, move, and maintain things get AI built for their work."
       >
         <div className="b-definition">
           <span className="b-definition-word">ae·ri·um</span>
@@ -47,8 +47,8 @@ export default function AboutPage() {
           <div className="b-eyebrow">Our story</div>
           <h2 className="b-h2">Built with industrials</h2>
           <p className="b-lede">
-            Manufacturers and distributors run on knowledge that lives in people’s heads, inboxes and spreadsheets.
-            General-purpose AI is of little use until it understands their equipment, their margins and their customers.
+            Manufacturers and distributors run on knowledge that lives in people’s heads, inboxes, and spreadsheets.
+            General-purpose AI is of little use until it understands their equipment, their margins, and their customers.
           </p>
           <p className="b-lede">
             So our engineers go on site. They learn how the work actually flows, connect every system that holds it, and

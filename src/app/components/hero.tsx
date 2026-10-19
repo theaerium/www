@@ -28,7 +28,7 @@ export default function Hero() {
                 The operating system for supply chain teams
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-xl">
-                Easy to use data-cleaning, RFQ orchestration and cost analysis
+                Easy to use data-cleaning, RFQ orchestration, and cost analysis
                 tools to turn supply chain into your advantage
               </p>
 

@@ -147,7 +147,7 @@ export function PressSection({ tone = "white" }: { tone?: "white" | "stone" }) {
           <h2 className="b-h2">Writing about Aerium?</h2>
         </div>
         <div className="b-intro-lede b-press-copy">
-          <p className="b-lede">For interviews, speaking requests and media inquiries, write to the founders.</p>
+          <p className="b-lede">For interviews, speaking requests, and media inquiries, write to the founders.</p>
           <ArrowLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</ArrowLink>
         </div>
       </div>

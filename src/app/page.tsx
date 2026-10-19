@@ -13,28 +13,28 @@ import CountUp from "./components/site/home/CountUp";
 export const metadata: Metadata = {
   title: "Aerium | Operationalizing manufacturer data to grow margin",
   description:
-    "Every new system and AI tool adds another silo. Aerium turns all of it into faster quotes, healthier margins and growth, before your competitors do.",
+    "Every new system and AI tool adds another silo. Aerium turns all of it into faster quotes, healthier margins, and growth, before your competitors do.",
 };
 
 const PRODUCT_ITEMS: ShowcaseItem[] = [
   {
     title: "Connect every source",
-    body: "ERP, telemetry, field service, price sheets and document shares, mapped into one model with every entity and relationship counted.",
+    body: "ERP, telemetry, field service, price sheets, and document shares, mapped into one model with every entity and relationship counted.",
     href: routes.products.foundation,
     image: "/site/home/product-sources.jpg",
-    imageAlt: "Aerium Sources view: telemetry, field service, ERP and price sheets mapped into one model",
+    imageAlt: "Aerium Sources view: telemetry, field service, ERP, and price sheets mapped into one model",
   },
   {
     title: "Map how it all connects",
-    body: "Parts, jobs, customers, suppliers and machines linked across every system, so a change in one place shows up everywhere it matters.",
+    body: "Parts, jobs, customers, suppliers, and machines linked across every system, so a change in one place shows up everywhere it matters.",
     href: routes.products.foundation,
     image: "/site/home/product-graph.jpg",
-    imageAlt: "Aerium graph view linking work orders, equipment, customers, parts and suppliers",
+    imageAlt: "Aerium graph view linking work orders, equipment, customers, parts, and suppliers",
     backdrop: "/site/home/product-backdrop-whiteboard.jpg",
   },
   {
     title: "Find anything in milliseconds",
-    body: "Ask about any order, part or supplier in plain language and get the answer with the records behind it.",
+    body: "Ask about any order, part, or supplier in plain language and get the answer with the records behind it.",
     href: routes.products.foundation,
     image: "/site/home/product-search.jpg",
     imageAlt: "Aerium search returning 539 matching alarms in 29 milliseconds",
@@ -52,28 +52,28 @@ const PRODUCT_ITEMS: ShowcaseItem[] = [
 
 const QUOTE_SHOT = {
   image: "/site/home/use-cases-quote.jpg",
-  imageAlt: "Aerium quote estimation for a brake pressuriser, with estimated hours, sell value and cost",
+  imageAlt: "Aerium quote estimation for a brake pressurizer, with estimated hours, sell value, and cost",
 };
 
 const USE_CASE_ITEMS: ShowcaseItem[] = [
   {
     slug: "quoting",
-    title: "Quoting and estimation",
-    body: "The agent reads the RFQ and drawings, finds the closest past jobs by geometry, and drafts a quote at today’s costs. Your estimator reviews and sends.",
+    title: "Quoting, estimation, & costing",
+    body: "Turn RFQs and drawings into quotes grounded in similar past jobs and today’s material, labor, and machine rates. Your estimator reviews the costs and margin before sending.",
     href: routes.products.workforce,
     ...QUOTE_SHOT,
   },
   {
-    slug: "costing",
-    title: "Costing",
-    body: "Should-cost every part from live material, labour and machine rates, and see where margin leaks before the job ships.",
-    href: routes.products.forge,
+    slug: "supply-chain",
+    title: "Supply Chain Planning",
+    body: "Plan purchasing and inventory against live demand, supplier lead times, and open POs. Spot shortages and delays early, with alternate suppliers and orders ready for your buyer to approve.",
+    href: routes.products.workforce,
     ...QUOTE_SHOT,
   },
   {
-    slug: "supply-chain",
-    title: "Supply chain",
-    body: "The agent watches open POs and supplier lead times, flags slips early, and drafts alternates for your buyer to approve.",
+    slug: "plant-warehouse-operations",
+    title: "Plant & Warehouse Operations",
+    body: "Keep production, maintenance, and warehouse work moving with a shared view of jobs, machines, and stock. Catch bottlenecks, coordinate picking and shipping, and flag exceptions for your team to resolve. Use predictive maintenance to spot equipment risks early and schedule service before failures disrupt production.",
     href: routes.products.workforce,
     ...QUOTE_SHOT,
   },
@@ -82,7 +82,7 @@ const USE_CASE_ITEMS: ShowcaseItem[] = [
 const DIFFERENTIATORS = [
   {
     title: "Any source, even without an API",
-    body: "ERPs, inboxes, drawings, spreadsheets and machines with no connector. If your team can see it, we can connect it.",
+    body: "ERPs, inboxes, drawings, spreadsheets, and machines with no connector. If your team can see it, we can connect it.",
   },
   { title: "Built around how you work", body: "Bespoke to your processes and built on site alongside your people" },
   { title: "Value in weeks, used every day", body: "Live on real work fast, inside the tools your team already uses" },
@@ -95,7 +95,7 @@ const TEAMS = [
   },
   {
     title: "Operations",
-    body: "Know where every job, part and dollar is, right now.",
+    body: "Know where every job, part, and dollar is, right now.",
   },
   {
     title: "Estimating and sales",
@@ -192,7 +192,7 @@ export default function HomePage() {
           <SectionIntro
             eyebrow="Why Aerium"
             title="The final step, not another layer"
-            lede="A data warehouse is where data goes to sit. Aerium goes out to every system, collects what’s there, makes sense of it and puts it to work."
+            lede="A data warehouse is where data goes to sit. Aerium goes out to every system, collects what’s there, makes sense of it, and puts it to work."
           />
           <RuledColumns items={DIFFERENTIATORS} />
         </div>

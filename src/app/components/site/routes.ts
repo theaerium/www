@@ -1,7 +1,7 @@
 // Central route map for the marketing site.
 export const routes = {
   home: "/",
-  platform: "/platform",
+  platform: "/#platform",
   solutions: {
     equipment: "/solutions/equipment-manufacturing",
     chemicals: "/solutions/specialty-chemicals",
@@ -21,8 +21,8 @@ export const routes = {
   // Each opens its item in the homepage Use cases accordion (see Showcase).
   useCases: {
     quoting: "/#use-cases-quoting",
-    costing: "/#use-cases-costing",
     supplyChain: "/#use-cases-supply-chain",
+    operations: "/#use-cases-plant-warehouse-operations",
   },
   // Each opens its card in the homepage Industries section.
   industries: {

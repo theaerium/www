@@ -52,10 +52,10 @@ Aerium lets you deposit eligible items (e.g., clothing, accessories, footwear, b
 * **Holds & reserves.** We may place holds, reserves, or spending limits on your Balance (or negative balances) to manage risk, fraud, or disputes.
 * **Set‑off & collection.** If you fail to ship after a sale, send the wrong item, a buyer wins a dispute/chargeback, or fees are owed, you authorize Aerium to **debit your Balance**, reverse Spendable Value, charge a payment method you provide, and/or engage collection efforts. We may also reduce future Spendable Values and withhold payouts to satisfy amounts you owe.
 
-## 8) Shipping & Fulfilment
+## 8) Shipping & Fulfillment
 
 * **Labels & timing.** When your item sells, Aerium will provide a prepaid shipping label and instructions.
-* **Address accuracy.** You must keep your shipping address accurate and up to date. If you ship to an outdated or incorrect address, you are responsible for any resulting loss, delay, or additional costs. We may disable spending or fulfilment if no valid address is on file. **You must ship the item within 48 hours** of receiving the label (or a shorter time shown in the app). Failure to ship on time may result in reversal of Spendable Value and additional fees.
+* **Address accuracy.** You must keep your shipping address accurate and up to date. If you ship to an outdated or incorrect address, you are responsible for any resulting loss, delay, or additional costs. We may disable spending or fulfillment if no valid address is on file. **You must ship the item within 48 hours** of receiving the label (or a shorter time shown in the app). Failure to ship on time may result in reversal of Spendable Value and additional fees.
 * **Packaging & proof.** You are responsible for secure packaging. Keep proof of drop‑off and tracking. If you do not use the provided label, you are responsible for any loss, delay, or added cost.
 * **Lost/damaged in transit.** For shipments using Aerium‑provided labels, Aerium will assist with carrier claims. Our liability is limited to amounts recovered from the carrier and, in any case, will not exceed the Spendable Value for the item unless required by law.
 * **Returns & SNAD.** If a buyer claims an item is significantly not as described (e.g., counterfeit, wrong item, materially different condition), Aerium may require a return to you or to Aerium, refund the buyer, and **debit your Balance** for the refund, return shipping, and related costs.
