@@ -35,7 +35,7 @@ export const routes = {
   research: "https://research.aeriumhq.com",
   resources: "/media-events",
   security: "/#security",
-  seeItInAction: "/platform",
+  seeItInAction: "/book-a-demo",
 } as const;
 
 export const CONTACT_EMAIL = "founders@aeriumhq.com";

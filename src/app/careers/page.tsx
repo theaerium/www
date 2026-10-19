@@ -10,14 +10,17 @@ import { getRoles, rolePath } from "@/utils/content";
 export const metadata: Metadata = {
   title: "Careers | Aerium",
   description:
-    "Do the best work of your career, where the work is real. Small team, high ownership, forward deployed onto real factory floors.",
+    "Do the best work of your career. Ship AI onto real factory floors and see it change how a business runs within weeks.",
 };
 
 const HOW_WE_WORK = [
   { title: "Small team, high ownership", body: "You own a customer outcome end to end, from the first site visit to the agent running in production." },
   { title: "Forward deployed", body: "You spend real time on site with estimators, planners and plant managers, learning how the work actually flows." },
-  { title: "Live in weeks", body: "We put real work into production fast, then improve it every week alongside the people who use it." },
-  { title: "Hard, unglamorous data", body: "ERPs, CAD files, inboxes and machines with no API. If it can be seen, we find a way to use it." },
+  { title: "Live in weeks", body: "We ship to production fast, then improve it weekly with the people using it." },
+  {
+    title: "Hard problems",
+    body: "From connecting systems no one thought was possible to developing models on data no one thought existed.",
+  },
 ];
 
 export default function CareersPage() {
@@ -27,8 +30,8 @@ export default function CareersPage() {
     <SiteShell navOverlay>
       <PhotoHero
         image="/site/pages/careers-hero.jpg"
-        title="Do the best work of your career, where the work is real"
-        sub="Small team, high ownership, forward deployed. You will ship AI onto real factory floors and see it change how a business runs within weeks."
+        title="Do the best work of your career"
+        sub="You will ship AI onto real factory floors and see it change how a business runs within weeks."
       >
         <a href="#open-roles" className="b-btn b-btn-white">
           <RollLabel>See open roles</RollLabel>
@@ -40,7 +43,6 @@ export default function CareersPage() {
           <SectionIntro
             eyebrow="How we work"
             title="Built on the factory floor, with the people who run it"
-            lede="We are a small team building custom AI for manufacturers. Everyone ships, everyone talks to customers, and the work shows up in their numbers."
           />
           <RuledColumns items={HOW_WE_WORK} />
         </div>
