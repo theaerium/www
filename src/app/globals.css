@@ -1195,12 +1195,18 @@ body {
 .b-article-signoff div { font-size: 16px; font-weight: 600; color: var(--b-ink); }
 .b-article-signoff span { font-size: 15px; color: var(--b-muted); }
 
+/* Book a demo */
+/* Cal.com draws its own card; the min-height only holds space while it loads. */
+.b-demo-calendar { margin-top: 64px; min-height: 600px; }
+.b-demo-fallback { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+
 @media (max-width: 1100px) {
     .b-role-row { flex-direction: column; align-items: flex-start; }
     .b-role { gap: 48px; }
     .b-role-card { flex-basis: 320px; }
 }
 @media (max-width: 900px) {
+    .b-demo-calendar { margin-top: 48px; }
     .b-news-feature { grid-template-columns: 1fr; }
     .b-news-feature-photo { min-height: 0; aspect-ratio: 16 / 10; }
     .b-news-feature-copy { padding: 32px 24px; }
