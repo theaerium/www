@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AeriumMark from "./AeriumMark";
+import AeriumLogo from "./AeriumLogo";
 import { routes, CONTACT_EMAIL } from "./routes";
 
 const columns = [
@@ -43,8 +43,7 @@ export default function SiteFooter() {
     <footer className="b-footer">
       <div className="b-footer-top">
         <Link href={routes.home} className="b-footer-brand" aria-label="Aerium home">
-          <AeriumMark fill="#FFFFFF" stroke="#6B0F1A" />
-          <span>Aerium</span>
+          <AeriumLogo color="#FFFFFF" gap="#6B0F1A" />
         </Link>
         <div className="b-footer-cols">
           {columns.map((col) => (

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import AeriumMark from "./AeriumMark";
+import AeriumLogo from "./AeriumLogo";
 import RollLabel from "./RollLabel";
 import { CONTACT_EMAIL, routes } from "./routes";
 
@@ -177,8 +177,7 @@ export default function SiteNav({ overlay = false }: { overlay?: boolean }) {
       >
         <div className="b-nav-inner">
           <Link href={routes.home} className="b-nav-brand" aria-label="Aerium home" onMouseEnter={close}>
-            {transparent ? <AeriumMark fill="#FFFFFF" stroke="#111111" /> : <AeriumMark fill="#111111" stroke="#FFFFFF" />}
-            <span>Aerium</span>
+            {transparent ? <AeriumLogo color="#FFFFFF" gap="#1A0D0E" /> : <AeriumLogo color="#111111" gap="#FFFFFF" />}
           </Link>
 
           <nav className="b-nav-links">
