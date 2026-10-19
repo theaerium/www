@@ -73,7 +73,7 @@ const USE_CASE_ITEMS: ShowcaseItem[] = [
   {
     slug: "plant-warehouse-operations",
     title: "Plant & Warehouse Operations",
-    body: "Keep production, maintenance, and warehouse work moving with a shared view of jobs, machines, and stock. Catch bottlenecks, coordinate picking and shipping, and flag exceptions for your team to resolve. We build and implement predictive maintenance models tailored to your equipment, helping your team identify risks early and schedule service before failures disrupt production.",
+    body: "Keep production, maintenance, and warehouse work moving with a shared view of jobs, machines, and stock. Catch bottlenecks, coordinate picking and shipping, and flag exceptions for your team to resolve. Implement custom predictive maintenance models to identify equipment risks early and schedule service before failures disrupt production.",
     href: routes.products.workforce,
     ...QUOTE_SHOT,
   },
