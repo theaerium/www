@@ -81,7 +81,7 @@ export function ClosingCta({ title, primary, secondary }: { title: string; prima
 }
 
 /** Full-bleed photo hero with a centred headline, for top-level pages like About and Careers. */
-export function PhotoHero({ image, title, sub, children }: { image: string; title: string; sub: string; children?: React.ReactNode }) {
+export function PhotoHero({ image, title, sub, children }: { image: string; title: string; sub?: string; children?: React.ReactNode }) {
   return (
     <section className="b-page-hero">
       <div className="b-page-hero-photo" style={{ backgroundImage: `url(${image})` }} />
@@ -89,7 +89,7 @@ export function PhotoHero({ image, title, sub, children }: { image: string; titl
         <h1 className="b-page-hero-title">
           <SplitWords text={title} />
         </h1>
-        <p className="b-hero-sub">{sub}</p>
+        {sub && <p className="b-hero-sub">{sub}</p>}
         {children && <div className="b-page-hero-extra">{children}</div>}
       </div>
     </section>

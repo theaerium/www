@@ -31,7 +31,6 @@ export default function CareersPage() {
       <PhotoHero
         image="/site/pages/careers-hero.jpg"
         title="Do the best work of your career"
-        sub="You will ship AI onto real factory floors and see it change how a business runs within weeks."
       >
         <a href="#open-roles" className="b-btn b-btn-white">
           <RollLabel>See open roles</RollLabel>
