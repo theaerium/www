@@ -12,6 +12,30 @@ export const routes = {
   careers: "/careers",
   media: "/media-events",
   bookDemo: "/book-a-demo",
+  // Each opens its card in the homepage Platform section (see ExpandingCards).
+  products: {
+    foundation: "/#platform-foundation",
+    forge: "/#platform-forge",
+    workforce: "/#platform-workforce",
+  },
+  // Each opens its item in the homepage Use cases accordion (see Showcase).
+  useCases: {
+    quoting: "/#use-cases-quoting",
+    costing: "/#use-cases-costing",
+    supplyChain: "/#use-cases-supply-chain",
+  },
+  // Each opens its card in the homepage Industries section.
+  industries: {
+    power: "/#industries-power",
+    designToManufacture: "/#industries-design-to-manufacture",
+    chemicals: "/#industries-chemicals",
+    distributors: "/#industries-distributors",
+  },
+  customers: "/#customer-story",
+  research: "https://research.aeriumhq.com",
+  resources: "/media-events",
+  security: "/#security",
+  seeItInAction: "/book-a-demo",
 } as const;
 
 export const CONTACT_EMAIL = "founders@aeriumhq.com";

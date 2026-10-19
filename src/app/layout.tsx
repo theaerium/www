@@ -5,6 +5,8 @@ import {
   Instrument_Serif,
   Archivo,
   IBM_Plex_Mono,
+  Inter,
+  Newsreader,
 } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -41,6 +43,19 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+// Burgundy redesign typography: Newsreader for display, Inter for UI/body.
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -94,7 +109,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Additional meta tags for better link previews */}
         <meta property="og:image:width" content="1200" />
@@ -105,7 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${dmSans.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} ${archivo.variable} ${ibmPlexMono.variable} antialiased`}
+        className={`${dmSans.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} ${archivo.variable} ${ibmPlexMono.variable} ${inter.variable} ${newsreader.variable} antialiased`}
         style={{
           fontFamily: "'DM Sans', sans-serif",
         }}

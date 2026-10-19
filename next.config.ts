@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // The demo booking page moved; keep old links from emails and print working.
+      {
+        source: "/demo",
+        destination: "/book-a-demo",
+        permanent: true,
+      },
       {
         source: "/condition-and-eligibility-guidelines",
         destination: "/legal/condition-eligibility",
@@ -32,6 +38,12 @@ const nextConfig: NextConfig = {
       {
         source: "/condition-eligibility",
         destination: "/legal/condition-eligibility",
+        permanent: true,
+      },
+      // The seed round announcement moved to the markdown news template; keep the published link working.
+      {
+        source: "/media-events/aerium-raises-2-5-million",
+        destination: "/news/aerium-raises-seed-round",
         permanent: true,
       },
     ];
