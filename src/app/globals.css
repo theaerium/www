@@ -1287,6 +1287,10 @@ body {
     color: #fff;
 }
 
+/* Redesigned pages select in brand burgundy; the burgundy footer inverts so selections stay visible. */
+.site ::selection { background-color: var(--b-burgundy); color: #FFFFFF; }
+.site .b-footer ::selection { background-color: #FFFFFF; color: var(--b-burgundy); }
+
 /* ─── TYPOGRAPHY BASE ─── */
 h1, h2, h3, h4 {
     font-family: var(--font-display);
