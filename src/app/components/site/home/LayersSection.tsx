@@ -193,23 +193,28 @@ function WorkforceVisual() {
 const LAYERS = [
   {
     title: "Foundation",
+    hashId: "platform-foundation",
     body: "Your operational data foundation. Connects every system you run, API or not, into one live model of the business. Live in weeks.",
     href: routes.products.foundation,
     visual: <FoundationVisual />,
   },
   {
     title: "Forge",
+    hashId: "platform-forge",
     body: "Custom models trained on your jobs, parts and history, not the internet’s. They price, cost and plan the way your best people do.",
     href: routes.products.forge,
     visual: <ForgeVisual />,
   },
   {
     title: "Workforce",
+    hashId: "platform-workforce",
     body: "AI agents that run workflows end to end inside email, Teams and your ERP, with your people approving the calls that matter.",
     href: routes.products.workforce,
     visual: <WorkforceVisual />,
   },
 ];
+
+const LAYER_HASH_IDS = LAYERS.map((layer) => layer.hashId);
 
 export default function LayersSection() {
   return (
@@ -225,9 +230,9 @@ export default function LayersSection() {
           Explore the platform
         </Link>
       </div>
-      <ExpandingCards defaultIndex={1} activeGrow={588 / 390} className="b-layer-cards">
+      <ExpandingCards defaultIndex={1} activeGrow={588 / 390} className="b-layer-cards" hashIds={LAYER_HASH_IDS}>
         {LAYERS.map((layer) => (
-          <Link key={layer.title} href={layer.href} className="b-layer-card">
+          <a key={layer.title} href={layer.href} className="b-layer-card">
             <div className="b-layer-visual">
               <FitToBox>{layer.visual}</FitToBox>
             </div>
@@ -235,7 +240,7 @@ export default function LayersSection() {
               <span className="b-layer-title">{layer.title}</span>
               <p>{layer.body}</p>
             </div>
-          </Link>
+          </a>
         ))}
       </ExpandingCards>
     </section>

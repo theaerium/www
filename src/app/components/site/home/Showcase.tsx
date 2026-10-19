@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { SiteLink } from "../sections";
 import { useEffect, useRef, useState } from "react";
 
 export type ShowcaseItem = {
@@ -100,9 +100,9 @@ export default function Showcase({
                   <div id={panelId} className={`b-accordion-panel ${open ? "is-open" : ""}`} role="region">
                     <div className="b-accordion-panel-inner">
                       <p>{item.body}</p>
-                      <Link href={item.href} className="b-text-link" tabIndex={open ? 0 : -1}>
+                      <SiteLink href={item.href} className="b-text-link" tabIndex={open ? 0 : -1}>
                         Learn more
-                      </Link>
+                      </SiteLink>
                     </div>
                   </div>
                 </div>
