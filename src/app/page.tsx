@@ -232,9 +232,6 @@ export default function HomePage() {
                 </div>
               ))}
             </dl>
-            <Link href={routes.customers} className="b-text-link b-story-link">
-              Read the full story
-            </Link>
           </div>
         </div>
       </section>
