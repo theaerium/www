@@ -73,6 +73,7 @@ const MENUS: Menu[] = [
         links: [
           { title: "Media and events", desc: "Talks, press, and where to find us", href: routes.media },
           { title: "Security", desc: "Hosting, access, and audit", href: routes.security },
+          { title: "FAQ", desc: "Security, effort, and timelines", href: routes.faq },
         ],
       },
       {

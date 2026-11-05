@@ -24,6 +24,20 @@ export const ExternalIcon = () => (
   </svg>
 );
 
+export function PlusMinus({ open }: { open: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <path d="M2 9h14" stroke="currentColor" strokeWidth="2" />
+      <path
+        d="M9 2v14"
+        stroke="currentColor"
+        strokeWidth="2"
+        style={{ transform: open ? "scaleY(0)" : "scaleY(1)", transformOrigin: "center", transition: "transform 0.25s ease" }}
+      />
+    </svg>
+  );
+}
+
 /** Underlined link with a trailing arrow, used for "Read the article", emails and event links. */
 export function ArrowLink({ href, children, external = false }: { href: string; children: React.ReactNode; external?: boolean }) {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { SiteLink } from "../sections";
+import { PlusMinus, SiteLink } from "../sections";
 import { useEffect, useRef, useState } from "react";
 
 export type ShowcaseItem = {
@@ -20,20 +20,6 @@ export type ShowcaseItem = {
    */
   crop?: { width: number; left: number; top: number };
 };
-
-function PlusMinus({ open }: { open: boolean }) {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <path d="M2 9h14" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M9 2v14"
-        stroke="currentColor"
-        strokeWidth="2"
-        style={{ transform: open ? "scaleY(0)" : "scaleY(1)", transformOrigin: "center", transition: "transform 0.25s ease" }}
-      />
-    </svg>
-  );
-}
 
 /** Split section: an accordion on one side, a framed screenshot over a blurred photo on the other. */
 export default function Showcase({

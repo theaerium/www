@@ -11,6 +11,7 @@ export const routes = {
   about: "/about",
   careers: "/careers",
   media: "/media-events",
+  faq: "/faq",
   bookDemo: "/book-a-demo",
   // Each opens its card in the homepage Platform section (see ExpandingCards).
   products: {

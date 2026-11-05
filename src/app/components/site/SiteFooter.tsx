@@ -33,6 +33,7 @@ const columns = [
     links: [
       { label: "About", href: routes.about },
       { label: "Careers", href: routes.careers },
+      { label: "FAQ", href: routes.faq },
       { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
     ],
   },
