@@ -98,7 +98,7 @@ export default function FaqPage() {
     <SiteShell navOverlay>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
 
-      <GrainHeader eyebrow="FAQ" title="Questions we hear most">
+      <GrainHeader title="Questions we hear most">
         <p className="b-header-sub">How we protect your data, how much of your team’s time it takes, and how quickly you see value.</p>
       </GrainHeader>
 

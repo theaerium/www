@@ -120,7 +120,7 @@ export function GrainHeader({
   size = "large",
 }: {
   back?: CtaLink;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   children?: React.ReactNode;
   aside?: React.ReactNode;
@@ -139,7 +139,7 @@ export function GrainHeader({
         )}
         <div className="b-header-row">
           <div className={`b-header-main b-header-main-${size}`}>
-            <div className="b-header-eyebrow">{eyebrow}</div>
+            {eyebrow && <div className="b-header-eyebrow">{eyebrow}</div>}
             <h1 className="b-header-title">
               <SplitWords text={title} />
             </h1>
