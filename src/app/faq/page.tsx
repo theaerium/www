@@ -28,7 +28,7 @@ const FAQ_GROUPS: { eyebrow: string; title: string; entries: FaqEntry[] }[] = [
       {
         question: "What security standards do you meet?",
         answer:
-          "Our controls are independently audited for SOC 2. Access runs through your existing identity provider with SSO and SAML, and every action is captured in a full audit trail.",
+          "Our controls are independently audited for SOC 2 Type 1. Access runs through your existing identity provider with SSO and SAML, and every action is captured in a full audit trail.",
       },
       {
         question: "How do you connect to our systems without opening up our network?",
@@ -44,7 +44,7 @@ const FAQ_GROUPS: { eyebrow: string; title: string; entries: FaqEntry[] }[] = [
       {
         question: "How much capacity do we need to commit?",
         answer:
-          "Very little. Our forward deployed engineers do the build, on site with your team. We ask for a sponsor to set priorities, a few hours with the people who do the work today so we learn how it really flows, and a point of contact in IT to grant access.",
+          "Very little. Our forward deployed engineers do the build, on site with your team. We ask for a sponsor to set priorities, a few hours with the people who do the work to understand the workflow, and a point of contact in IT to grant access.",
       },
       {
         question: "Does our IT team need to build anything?",
@@ -65,7 +65,7 @@ const FAQ_GROUPS: { eyebrow: string; title: string; entries: FaqEntry[] }[] = [
       {
         question: "How long until we see value?",
         answer:
-          "Typically 3 to 5 weeks from kickoff to first value, with Aerium running on real work for your team rather than in a pilot sandbox.",
+          "Typically 3 to 5 weeks from kickoff to first value.",
       },
       {
         question: "What happens during those first weeks?",
