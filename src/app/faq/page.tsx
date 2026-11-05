@@ -28,7 +28,7 @@ const FAQ_GROUPS: { eyebrow: string; title: string; entries: FaqEntry[] }[] = [
       {
         question: "What security standards do you meet?",
         answer:
-          "Our controls are independently audited for SOC 2 Type 1. Access runs through your existing identity provider with SSO and SAML, and every action is captured in a full audit trail.",
+          "Our controls are independently audited for SOC 2 Type 1, with a Type 2 audit underway. Access runs through your existing identity provider with SSO and SAML, and every action is captured in a full audit trail.",
       },
       {
         question: "How do you connect to our systems without opening up our network?",

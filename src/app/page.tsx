@@ -116,7 +116,7 @@ const STORY_STATS = [
 const SECURITY_ITEMS = [
   {
     title: "SOC 2",
-    body: "Independently audited controls",
+    body: "Type 1, with Type 2 audit underway",
     icon: (
       <>
         <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" fill="currentColor" />
