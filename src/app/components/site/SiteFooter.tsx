@@ -68,7 +68,12 @@ export default function SiteFooter() {
       </div>
       <div className="b-footer-bottom">
         <span>© 2026 Senchi Technologies Inc.</span>
-        <span>Toronto and New York</span>
+        <span className="b-footer-bottom-links">
+          <Link href={routes.privacy} className="b-footer-bottom-link">
+            Privacy Policy
+          </Link>
+          <span>Toronto and New York</span>
+        </span>
       </div>
     </footer>
   );

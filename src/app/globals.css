@@ -516,6 +516,9 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.18); padding-top: 24px;
     color: rgba(255, 255, 255, 0.6); font-size: 13px; line-height: 16px;
 }
+.b-footer-bottom-links { display: flex; flex-wrap: wrap; gap: 16px 24px; }
+.b-footer-bottom-link { color: inherit; text-decoration: none; transition: color 0.15s ease; }
+.b-footer-bottom-link:hover { color: #FFFFFF; }
 
 @media (max-width: 1200px) {
     .b-footer { padding: 64px 48px 36px; }

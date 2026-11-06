@@ -24,9 +24,15 @@ const nextConfig: NextConfig = {
         destination: "/legal/photo-guidelines",
         permanent: true,
       },
+      // The privacy policy lives at the root; send the old legal path and /privacy there.
       {
-        source: "/privacy-policy",
-        destination: "/legal/privacy-policy",
+        source: "/legal/privacy-policy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/privacy",
+        destination: "/privacy-policy",
         permanent: true,
       },
       {
