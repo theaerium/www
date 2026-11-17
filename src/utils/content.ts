@@ -35,6 +35,7 @@ export type Role = Entry<{
   compensation?: string;
   order?: number;
   applyUrl?: string;
+  private?: boolean;
 }>;
 
 export type Article = Entry<{
@@ -50,6 +51,11 @@ export type Article = Entry<{
 
 export function getRoles(): Role[] {
   return readCollection<Role>("careers").sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || a.title.localeCompare(b.title));
+}
+
+// Private roles keep their page for direct links but stay off the open roles list.
+export function getListedRoles(): Role[] {
+  return getRoles().filter((role) => !role.private);
 }
 
 export function getRole(slug: string) {

@@ -5,7 +5,7 @@ import RollLabel from "../components/site/RollLabel";
 import HowWeHire from "../components/site/careers/HowWeHire";
 import { ArrowIcon, ArrowLink, ClosingCta, PhotoHero, RuledColumns, SectionIntro } from "../components/site/sections";
 import { CONTACT_EMAIL } from "../components/site/routes";
-import { getRoles, rolePath } from "@/utils/content";
+import { getListedRoles, rolePath } from "@/utils/content";
 
 export const metadata: Metadata = {
   title: "Careers | Aerium",
@@ -24,7 +24,7 @@ const HOW_WE_WORK = [
 ];
 
 export default function CareersPage() {
-  const roles = getRoles();
+  const roles = getListedRoles();
 
   return (
     <SiteShell navOverlay>
