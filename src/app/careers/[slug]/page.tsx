@@ -16,7 +16,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const role = getRole((await params).slug);
-  return role ? { title: `${role.title} | Careers | Aerium`, description: role.summary } : {};
+  if (!role) return {};
+  return {
+    title: `${role.title} | Careers | Aerium`,
+    description: role.summary,
+    ...(role.private && { robots: { index: false, follow: false } }),
+  };
 }
 
 const applyHref = (role: Role) =>

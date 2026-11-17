@@ -9,6 +9,7 @@ location: Toronto, Canada
 availability: Full time, Toronto with regular travel to customer sites
 compensation: $140K–$200K CAD + equity
 order: 1
+private: true
 ---
 
 This role is for someone equally comfortable writing production code, walking a factory or warehouse floor, and explaining technical decisions to non-technical audiences.

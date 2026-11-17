@@ -1,6 +1,7 @@
 ---
 # Copy this file to content/careers/<url-slug>.md to publish a role at /careers/<url-slug>.
 # Files starting with "_" are ignored. Set `draft: true` to hide a role without deleting it.
+# Set `private: true` to keep the role page live for direct links but leave it off /careers and out of search.
 title: Role title
 team: Engineering                       # eyebrow on the role page and the listing
 summary: One or two sentences for the open roles list on /careers.
@@ -13,6 +14,7 @@ reportsTo: CTO                          # optional sidebar row
 compensation: $150K–$180K + equity      # optional sidebar row
 order: 2                                # position in the open roles list
 applyUrl:                               # optional; defaults to an email to the founders
+private: false                          # optional; true hides the role from the list but keeps its link working
 draft: true
 ---
 
